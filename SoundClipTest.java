@@ -29,14 +29,11 @@ public class SoundClipTest extends JFrame {
 		clip.start();
 	}
 	public static AudioInputStream createAudioInputStream() {
-		boolean addHarmonic = false;
-		int intSR = 80000;
-		int intFPW = 444;
-		float sampleRate = (float)intSR;
-		// oddly, the sound does not loop well for less than
-		// around 5 or so, wavelengths
-		int wavelengths = 1000;
-		byte[] buf = new byte[intFPW*wavelengths];
+		float sampleRate = 8000;
+		int totalFrames = 10*(int)sampleRate;
+		// TODO: oddly, the sound does not loop well for less than around 5 or so, wavelengths
+		// TODO: should end on a whole-number multiple of the wavelength to allow looping
+		byte[] buf = new byte[totalFrames];
 		AudioFormat af = new AudioFormat(
 			sampleRate,
 			8,  // sample size in bits
@@ -45,9 +42,9 @@ public class SoundClipTest extends JFrame {
 			true  // bigendian
 		);
 		int maxVol = 127;
-		for(int i=0; i<intFPW*wavelengths; i++){
-			double angle = ((float)i/((float)intFPW))*2*(Math.PI);
-			buf[i]=getByteValue(angle);
+		for(int i=0; i<totalFrames; i++){
+			double time = i/sampleRate;
+			buf[i]=getByteValue(time);
 		}
 		try {
 			byte[] b = buf;
@@ -62,7 +59,7 @@ public class SoundClipTest extends JFrame {
 		return null;
 	}
 	/** Provides the byte value for this point in the sinusoidal wave. */
-	private static byte getByteValue(double angle) {
+	private static byte getByteValue(double time) {
 		int maxVol = 127;
 		//double[] harmonics = {1};
 		//double[] harmonics = {1,1.2599,1.4983};
@@ -83,10 +80,18 @@ public class SoundClipTest extends JFrame {
 		//double[] fseries = {0.1,0.2,0.3,0.4,0.5,0.6,1,0.5,0.4,0.5,0.7,0.4,0.3,0.2,0.2,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.2,0.3,0.4,0.5,0.4,0.3,0.2,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1};
 		//double[] fseries = {0.3,0.6,1,0.6,0.3,0.3,0.3,0.3,0.3,0.2,0.2,0.2,0.1,0.1,0.1,0.0,0.0,0.1,0.1,0.1,0.2,0.3,0.4,0.3,0.2,0.1,0.0,0.1,0.2,0.2,0.3,0.4,0.3,0.2,0.1,0.1,0.1,0.1,0.1,0.1};
 		//double[] fseries = {0.3,0.6,2,4,2,0.6,0.3,0.1,0.1,0.1,0.3,0.6,0.9,2,0.9,0.6,0.3,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1};
-		//double[] fseries = {558.3772707, 97.49393952, 419.3362939, 629.2136276, 432.4306074, 360.2188581, 526.1940966, 225.3759405, 213.9292877, 120.8162031, 68.260161, 68.27375977, 64.59446287, 27.7937151, 78.08167336, 56.70842341, 112.3805458, 65.90399199, 26.55082095, 21.2850158}; // ah
-		double[] fseries = {500, 1389, 42, 91, 101, 224}; // oo
+		double fundamental = 170;//183;
+		//double[] fseries = {558, 97, 419, 629, 432, 360, 526, 225, 213, 120, 68, 68, 64, 27, 78, 56, 112, 65, 26, 21}; // ah
+		//double fundamental = 170;//170;
+		//double[] fseries = {500, 1389, 42, 91, 101, 224, 9, 26, 27, 18, 30, 19, 20, 16, 15, 8, 54, 19, 15}; // oo
+		//double fundamental = 178; //178;
+		//double[] fseries = {813, 2042, 617, 30, 12, 0, 162, 18, 6, 2, 2, 1, 5, 11, 0, 0, 0, 3}; // oo (audacity)
+		//double fundamental = 170;//159; // 190
 		//double[] fseries = {260, 197, 1311, 74, 221, 247, 32, 10, 7, 8, 45, 33, 99, 8, 6, 21, 26, 69, 214, 21}; // oh
-		double dvalue = generateFromFourierSeries(angle,fseries);
+		//double fundamental = 170;//159;//146;
+		double[] fseries = {145, 100, 194, 262, 640, 515, 279, 198, 239, 311, 514, 1116, 1539, 575, 474, 309, 207, 182, 55}; // aa
+		//double[] fseries = {258, 141, 211, 442, 420, 1918, 272, 61, 141, 54, 47, 20}; // criag_ah
+		double dvalue = generateFromFourierSeries(time,fundamental,fseries);
 		byte bvalue = (new Integer((int)Math.round(dvalue*maxVol))).byteValue();
 		return bvalue;
 	}
@@ -106,18 +111,18 @@ public class SoundClipTest extends JFrame {
 		//dvalue = dvalue*0.5*(Math.sin(2*angle)+Math.sin(3*angle));
 		return dvalue;
 	}
-	public static double generateFromFourierSeries(double angle, double[] fseries) {
+	public static double generateFromFourierSeries(double time, double fundamental, double[] fseries) {
 		double dvalue = 0;
 		double norm = 0;
 		for(int k=0; k<fseries.length; k++) {
-			dvalue += fseries[k]*Math.cos((k+1)*angle);
+			dvalue += fseries[k]*Math.cos(fundamental*(k+1)*time*2*Math.PI);
 			norm += fseries[k];
 		}
 		dvalue = dvalue/norm;
 		//dvalue = dvalue*Math.sin(angle*5);
-		if(angle<10) {
+		//if(angle<10) {
 			//System.out.println(angle+","+dvalue);
-		}
+		//}
 		return dvalue;
 	}
 }
