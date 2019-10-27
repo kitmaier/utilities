@@ -80,7 +80,7 @@ public class SoundClipTest extends JFrame {
 		//double[] fseries = {0.1,0.2,0.3,0.4,0.5,0.6,1,0.5,0.4,0.5,0.7,0.4,0.3,0.2,0.2,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.2,0.3,0.4,0.5,0.4,0.3,0.2,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1};
 		//double[] fseries = {0.3,0.6,1,0.6,0.3,0.3,0.3,0.3,0.3,0.2,0.2,0.2,0.1,0.1,0.1,0.0,0.0,0.1,0.1,0.1,0.2,0.3,0.4,0.3,0.2,0.1,0.0,0.1,0.2,0.2,0.3,0.4,0.3,0.2,0.1,0.1,0.1,0.1,0.1,0.1};
 		//double[] fseries = {0.3,0.6,2,4,2,0.6,0.3,0.1,0.1,0.1,0.3,0.6,0.9,2,0.9,0.6,0.3,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1};
-		double fundamental = 170;//183;
+		//double fundamental = 170;//183;
 		//double[] fseries = {558, 97, 419, 629, 432, 360, 526, 225, 213, 120, 68, 68, 64, 27, 78, 56, 112, 65, 26, 21}; // ah
 		//double fundamental = 170;//170;
 		//double[] fseries = {500, 1389, 42, 91, 101, 224, 9, 26, 27, 18, 30, 19, 20, 16, 15, 8, 54, 19, 15}; // oo
@@ -88,12 +88,75 @@ public class SoundClipTest extends JFrame {
 		//double[] fseries = {813, 2042, 617, 30, 12, 0, 162, 18, 6, 2, 2, 1, 5, 11, 0, 0, 0, 3}; // oo (audacity)
 		//double fundamental = 170;//159; // 190
 		//double[] fseries = {260, 197, 1311, 74, 221, 247, 32, 10, 7, 8, 45, 33, 99, 8, 6, 21, 26, 69, 214, 21}; // oh
-		//double fundamental = 170;//159;//146;
-		double[] fseries = {145, 100, 194, 262, 640, 515, 279, 198, 239, 311, 514, 1116, 1539, 575, 474, 309, 207, 182, 55}; // aa
-		//double[] fseries = {258, 141, 211, 442, 420, 1918, 272, 61, 141, 54, 47, 20}; // criag_ah
-		double dvalue = generateFromFourierSeries(time,fundamental,fseries);
+		//double fundamental = 146;
+		//double[] fseries = {145, 100, 194, 262, 640, 515, 279, 198, 239, 311, 514, 1116, 1539, 575, 474, 309, 207, 182, 55}; // aa
+		//double fundamental = 73;
+		//double[] fseries = {145, 145, 100, 100, 194, 194, 262, 262, 640, 640, 515, 515, 279, 279, 198, 198, 239, 239, 311, 311, 514, 514, 1116, 1116, 1539, 1539, 575, 575, 474, 474, 309, 309, 207, 207, 182, 182, 55, 55}; // aa
+		//double fundamental = 292;
+		//double[] fseries = {145, 194, 640, 279, 239, 514, 1539, 474, 207, 55}; // aa
+		//double fundamental = 170;//150;
+		//double[] fseries = {3, 4, 6, 38, 7, 3, 0, 2, 2, 3, 3, 9, 13, 5, 3, 6, 4, 4, 0, 1, 0, 0}; // eh (audacity)
+		//double fundamental = 170;//184;
+		//double[] fseries = {15, 151, 6, 2, 0, 0, 1, 1, 1, 1, 6, 5, 2, 1, 4, 6, 1, 2, 5}; // ee (audacity)
+		//double fundamental = 152;
+		//double[] fseries = {2089, 1047, 89, 1, 4, 1, 2, 1, 6, 5, 18, 9, 4, 7, 3, 4, 25}; // nn (audacity)
+		//double fundamental = 146;
+		//double[] fseries = {78, 355, 2344, 89, 21, 525, 1000, 32, 5}; // rr (audacity)
+		//double fundamental = 132;
+		//double[] fseries = {24, 19, 12, 5, 1, 5, 4, 13, 5, 1, 1, 1, 1, 1, 1, 2, 4, 1, 2, 2, 3, 3, 6, 5, 2, 1}; // vv (audacity)
+		//double fundamental = 135;
+		//double[] fseries = {2, 9, 18, 56, 6, 2, 1, 2, 17, 3, 2, 1, 1, 1, 1, 1, 3, 0, 0, 0, 0, 1, 2, 5, 1}; // uh (audacity)
+		//double fundamental = 159;
+		//double[] fseries = {9, 59, 858, 12, 1, 0, 1, 3, 5, 5, 50, 14, 9, 7, 22, 14, 2, 1, 1, 4, 1}; // ih (audacity)
+		//double fundamental = 98;
+		//double[] fseries = {5541, 8343, 4425, 2205, 992, 351, 84, 112, 127, 145, 192, 315, 360, 281, 856, 252, 426, 388, 119, 76, 111, 79, 185, 442, 286, 120, 232, 226, 573, 236, 323, 153, 116, 30, 13, 73, 126, 486, 455, 293, 319, 271, 934, 1072, 1221, 351, 1138, 897, 325, 1238, 1966, 2157, 1087, 1648, 712, 1808, 4196, 1797, 2935, 820, 2446, 1770, 1431, 572, 1394, 1125, 900, 112, 760, 912, 725, 525, 233, 66, 24, 1, 24, 19, 21}; // zz
+		//double dvalue = generateFromFourierSeries(time,fundamental,fseries);
+		double dvalue = generateFromFormantList(time,100,"ah");
 		byte bvalue = (new Integer((int)Math.round(dvalue*maxVol))).byteValue();
 		return bvalue;
+	}
+	public static double generateFromFormantList(double time, double fundamental, String vowelName) {
+		double referenceFundamental = 150;
+		double[] formantSeries = {20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1};
+		if(vowelName=="aa") {
+			referenceFundamental = 146;
+			double[] tmp = {145, 100, 194, 262, 640, 515, 279, 198, 239, 311, 514, 1116, 1539, 575, 474, 309, 207, 182, 55};
+			formantSeries = tmp;
+		} else if(vowelName=="oh") {
+			referenceFundamental = 159;
+			double[] tmp = {260, 197, 1311, 74, 221, 247, 32, 10, 7, 8, 45, 33, 99, 8, 6, 21, 26, 69, 214, 21};
+			formantSeries = tmp;
+		} else if(vowelName=="uh") {
+			referenceFundamental = 135;
+			double[] tmp = {2, 9, 18, 56, 6, 2, 1, 2, 17, 3, 2, 1, 1, 1, 1, 1, 3, 0, 0, 0, 0, 1, 2, 5, 1};
+			formantSeries = tmp;
+		} else if(vowelName=="ih") {
+			referenceFundamental = 159;
+			double[] tmp = {9, 59, 858, 12, 1, 0, 1, 3, 5, 5, 50, 14, 9, 7, 22, 14, 2, 1, 1, 4, 1};
+			formantSeries = tmp;
+		} else if(vowelName=="ee") {
+			referenceFundamental = 184;
+			double[] tmp = {15, 151, 6, 2, 0, 0, 1, 1, 1, 1, 6, 5, 2, 1, 4, 6, 1, 2, 5};
+			formantSeries = tmp;
+		} else if(vowelName=="ah") {
+			referenceFundamental = 183;
+			double[] tmp = {558, 97, 419, 629, 432, 360, 526, 225, 213, 120, 68, 68, 64, 27, 78, 56, 112, 65, 26, 21};
+			formantSeries = tmp;
+		}
+		double[] fourierSeries = new double[(int)(formantSeries.length*referenceFundamental/fundamental)];
+		for(int k=0; k<fourierSeries.length; k++) {
+			// TODO: this should not really be zero-indexed
+			fourierSeries[k] = formantSeries[(int)(k*fundamental/referenceFundamental)];
+			//System.out.println(k+","+fourierSeries[k]+","+fundamental*(k+1));
+		}
+		double dvalue = 0;
+		double norm = 0;
+		for(int k=0; k<fourierSeries.length; k++) {
+			dvalue += fourierSeries[k]*Math.cos(fundamental*(k+1)*time*2*Math.PI);
+			norm += fourierSeries[k];
+		}
+		dvalue = dvalue/norm;
+		return dvalue;
 	}
 	public static double generateHarmonics(double angle, double[] harmonics) {
 		double dvalue = 0;
