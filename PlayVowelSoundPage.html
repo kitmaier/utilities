@@ -4,17 +4,24 @@
 		<title>capture microphone audio into buffer</title>
 	</head>
 	<body>
-		<button onclick="playAudio()">Play Audio</button>
+		<p><button onclick="playAudio('uh')">Play UH</button></p>
+		<p><button onclick="playAudio('aa')">Play AA</button></p>
+		<p><button onclick="playAudio('oh')">Play OH</button></p>
 	</body>
 	<script type="text/javascript">
-		function playAudio() {
-			playOscillator();
+		function playAudio(vowel) {
+			playOscillator(vowel);
 		}
-		function playOscillator() {
+		function playOscillator(vowel) {
 			var audioContext = new AudioContext();
-			//var frequencies = [0, 2, 9, 18, 56, 6, 2, 1, 2, 17, 3, 2, 1, 1, 1, 1, 1, 3, 0, 0, 0, 0, 1, 2, 5, 1]; // uh 160
-			//var frequencies = [0, 145, 100, 194, 262, 640, 515, 279, 198, 239, 311, 514, 1116, 1539, 575, 474, 309, 207, 182, 55]; // aa 160
-			var frequencies = [0, 6.4, 6.9, 45.7, 4.9, 4.1, 4.6, 3.0, 1.2, 0.8, 0.7, 0.3, 0.5, 0.6, 1.4, 0.2, 0.1, 0.1, 0.6, 0.1]; // oh 160
+			var frequencies = [0,1]
+			if(vowel=="uh") {
+				var frequencies = [0, 2, 9, 18, 56, 6, 2, 1, 2, 17, 3, 2, 1, 1, 1, 1, 1, 3, 0, 0, 0, 0, 1, 2, 5, 1]; // uh 160
+			} else if(vowel=="aa") {
+				var frequencies = [0, 145, 100, 194, 262, 640, 515, 279, 198, 239, 311, 514, 1116, 1539, 575, 474, 309, 207, 182, 55]; // aa 160
+			} else if(vowel=="oh") {
+				var frequencies = [0, 6.4, 6.9, 45.7, 4.9, 4.1, 4.6, 3.0, 1.2, 0.8, 0.7, 0.3, 0.5, 0.6, 1.4, 0.2, 0.1, 0.1, 0.6, 0.1]; // oh 160
+			}
 			var real = new Float32Array(frequencies.length);
 			var imag = new Float32Array(frequencies.length);
 			var osc = audioContext.createOscillator();
