@@ -4,11 +4,19 @@
 		<title>capture microphone audio into buffer</title>
 	</head>
 	<body>
-		<p><button onclick="playAudio('uh')">Play UH</button></p>
-		<p><button onclick="playAudio('aa')">Play AA</button></p>
-		<p><button onclick="playAudio('oh')">Play OH</button></p>
+		<p><button onclick="playAudio('uh')">Play UH (BUT)</button></p>
+		<p><button onclick="playAudio('aa')">Play AA (BAT)</button></p>
+		<p><button onclick="playAudio('oh')">Play OH (BOAT)</button></p>
+		<p><button onclick="playAudio('ee')">Play EE (BEAT)</button></p>
+		<p><button onclick="playAudio('ih')">Play IH (BIT)</button></p>
+		<p><button onclick="playAudio('eh')">Play EH (BET)</button></p>
+		<p><button onclick="playAudio('ah')">Play AH (BOT)</button></p>
+		<p><button onclick="playAudio('oo')">Play OO (BOOT)</button></p>
 	</body>
 	<script type="text/javascript">
+		// TODO: provide slider and text input to control pitch
+		// TODO: provide interactive visual display to control formant shape
+		// TODO: take audio input, analyze spectrum, store formant shape, play back generated sound
 		function playAudio(vowel) {
 			playOscillator(vowel);
 		}
@@ -16,11 +24,22 @@
 			var audioContext = new AudioContext();
 			var frequencies = [0,1]
 			if(vowel=="uh") {
-				var frequencies = [0, 2, 9, 18, 56, 6, 2, 1, 2, 17, 3, 2, 1, 1, 1, 1, 1, 3, 0, 0, 0, 0, 1, 2, 5, 1]; // uh 160
+				var frequencies = [0, 0, 1, 3, 9, 3, 1, 1, 3, 9, 3, 1, 0, 0, 0, 1, 3, 9, 3, 1, 0, 0, 1, 3, 9, 3, 1]; // uh 160
 			} else if(vowel=="aa") {
-				var frequencies = [0, 145, 100, 194, 262, 640, 515, 279, 198, 239, 311, 514, 1116, 1539, 575, 474, 309, 207, 182, 55]; // aa 160
+				var frequencies = [0, 0, 0, 1, 3, 9, 3, 1, 0, 0, 0, 1, 3, 1, 1, 3, 1]; // aa 160
 			} else if(vowel=="oh") {
-				var frequencies = [0, 6.4, 6.9, 45.7, 4.9, 4.1, 4.6, 3.0, 1.2, 0.8, 0.7, 0.3, 0.5, 0.6, 1.4, 0.2, 0.1, 0.1, 0.6, 0.1]; // oh 160
+				var frequencies = [0, 1, 3, 9, 4, 3, 1, 0, 0, 0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 1, 3, 1]; // oh 160
+			} else if(vowel=="ee") {
+				var frequencies = [0, 3, 9, 3, 1, 0, 0, 0, 0, 0, 0, 0, 1, 3, 9, 3, 1, 0, 1, 3, 9, 3, 1]; // ee 160
+			} else if(vowel=="ih") {
+				var frequencies = [0, 1, 3, 9, 3, 1, 0, 0, 0, 0, 0, 1, 3, 9, 3, 2, 3, 9, 3, 1]; // ih 160
+			} else if(vowel=="eh") {
+				var frequencies = [0, 0, 1, 3, 9, 3, 1, 0, 0, 0, 0, 1, 3, 9, 3, 2, 3, 9, 3, 1]; // eh 160
+			} else if(vowel=="ah") {
+				var frequencies = [0, 0, 0, 1, 3, 9, 4, 4, 9, 3, 1, 0, 0, 1, 3, 9, 3, 1]; // ah 160
+			} else if(vowel=="oo") {
+				var frequencies = [0, 3, 9, 3, 1, 0, 1, 3, 9, 3, 1, 0, 0, 1, 3, 1, 0, 0, 0, 1, 3, 1]; // oo 160
+				//                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20]
 			}
 			var real = new Float32Array(frequencies.length);
 			var imag = new Float32Array(frequencies.length);
