@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<script>
+			//updateElementPath()
+			function updateElementPath() {
+				var points = [
+					{"point":[90,90],"left-control":null,"right-control":[-10,0]},// thumb
+					{"point":[80,110],"left-control":[2,-10],"right-control":[-2,10]},
+					{"point":[73,100],"left-control":[-1,20],"right-control":null},
+					{"point":[75,35],"left-control":null,"right-control":[0,-10]},// index finger
+					{"point":[65,35],"left-control":[0,-10],"right-control":null},// index finger
+					{"point":[59,80],"left-control":[3,0],"right-control":[-3,0]},
+					{"point":[55,28],"left-control":null,"right-control":[0,-10]},// middle finger
+					{"point":[45,28],"left-control":[0,-10],"right-control":null},// middle finger
+					{"point":[41,80],"left-control":[3,0],"right-control":[-3,0]},
+					{"point":[34,35],"left-control":null,"right-control":[0,-10]},// ring finger
+					{"point":[24,35],"left-control":[0,-10],"right-control":null},// ring finger
+					{"point":[24,83],"left-control":[2,-1],"right-control":[-2,1]},
+					{"point":[12,45],"left-control":null,"right-control":[-2,-8]},// pinky finger
+					{"point":[4,50],"left-control":[-2,-8],"right-control":null},// pinky finger
+					{"point":[15,95],"left-control":null,"right-control":[2,10]},
+					{"point":[30,160],"left-control":[-15,0],"right-control":[10,0]},
+					{"point":[45,158],"left-control":[-5,0],"right-control":[5,0]},
+					{"point":[60,160],"left-control":[-10,0],"right-control":[10,0]},
+					{"point":[90,120],"left-control":[-10,20],"right-control":[2,-7]},
+					{"point":[90,90],"left-control":[0,10],"right-control":null},// thumb
+				]
+				var dStr = generatePathString(points)
+				console.log(JSON.stringify(points))
+				console.log(dStr)
+				document.getElementById("elementPathId").setAttribute("d",dStr)
+			}
+			function generatePathString(points) {
+				/* Test Cases: 
+					Input: points = [{"point":[15,100],"left-control":null,"right-control":null},{"point":[30,160],"left-control":null,"right-control":null},{"point":[70,160],"left-control":null,"right-control":null},{"point":[90,120],"left-control":null,"right-control":null},{"point":[90,90],"left-control":null,"right-control":null},{"point":[70,90],"left-control":null,"right-control":null},{"point":[70,40],"left-control":null,"right-control":null},{"point":[50,20],"left-control":null,"right-control":null},{"point":[45,20],"left-control":null,"right-control":null},{"point":[40,70],"left-control":[3,0],"right-control":[-3,0]},{"point":[35,25],"left-control":null,"right-control":[0,-10]},{"point":[25,25],"left-control":[0,-10],"right-control":null},{"point":[25,70],"left-control":[2,-1],"right-control":[-2,1]},{"point":[15,35],"left-control":null,"right-control":[-2,-5]},{"point":[10,40],"left-control":[-1,-5],"right-control":null},{"point":[15,85],"left-control":null,"right-control":null}]
+					Output: dStr = "M 15 100 L 30 160 L 70 160 L 90 120 L 90 90 L 70 90 L 70 40 L 50 20 L 45 20 C 43 70, 43 70, 40 70 C 37 70, 37 70, 35 25 C 35 15, 25 15, 25 25 C 27 69, 27 69, 25 70 C 23 71, 23 71, 15 35 C 13 30, 9 35, 10 40 L 15 85 Z"
+				*/
+				var dStr = "M"
+				dStr += " "+points[0]["point"][0]+" "+points[0]["point"][1]
+				for(var k=1; k<points.length; k++) {
+					var lastPoint = points[k-1]["point"]
+					var firstControl = points[k-1]["right-control"]
+					var secondControl = points[k]["left-control"]
+					var point = points[k]["point"]
+					if(firstControl==null&&secondControl==null) {
+						dStr += " L "+point[0]+" "+point[1]
+					} else {
+						if(firstControl!=null) {
+							firstControl = [firstControl[0]+lastPoint[0],firstControl[1]+lastPoint[1]]
+						}
+						if(secondControl!=null) {
+							secondControl = [secondControl[0]+point[0],secondControl[1]+point[1]]
+						}
+						if(firstControl==null) {
+							firstControl = secondControl
+						}
+						if(secondControl==null) {
+							secondControl = firstControl
+						}
+						dStr += " C "+firstControl[0]+" "+firstControl[1]+", "+secondControl[0]+" "+secondControl[1]+", "+point[0]+" "+point[1]
+					}
+					
+				}
+				dStr += " Z"
+				return dStr
+			}
+			//convertFromInkScape()
+			function convertFromInkScape() {
+				var inkscapeString = "M 95.69307,93.465346 C 82.227723,86.534653 84.634882,118.51846 78.514851,116.43565 75.757217,115.49715 72.990099,106.38614 73,100 L 75,35 C 75,25 65,25 65,35 62,80 62,80 59,80 56,80 56,80 55,28 55,18 45,18 45,28 c -1,52 -1,52 -4,52 -3,0 -3,0 -7,-45 0,-10 -8.762376,-10 -8.762376,0 2,47 2.247525,47 0.247525,48 -2,1 -3.237625,-2.217822 -9.029704,-33.792079 -2,-8 -9.9999994,-3 -7.9999994,5 L 15,95 c 2,10 2.84423,62.59996 17.722772,64.50495 6.717721,0.86011 9.739308,-1.54769 14.73746,-1.73746 6.05075,-0.22973 9.910426,1.68979 15.26254,1.73746 5.737033,0.0511 12.981063,-2.96633 17.635041,-9.40792 12.174692,-18.36701 14.612051,-36.89648 15.335257,-56.631684 z"
+				var tokens = inkscapeString.split(" ")
+				console.log(tokens)
+				var out = ""
+				var out2 = ""
+				var index = 0
+				var lastPoint = null
+				var refPoint = null
+				var mode = null
+				while(index<tokens.length) {
+					var token = tokens[index]
+					if(token=="M") {
+						out += "M"
+						out2 += "M"
+						mode = null
+						index += 1
+					} else if(token=="Z"||token=="z") {
+						out += " Z"
+						out2 += " Z"
+						mode = null
+						index += 1
+					} else if(token.match(/[0-9]/g)!==null) {
+						if(mode==null) {
+							var subtokens = token.split(",")
+							var x = Math.round(parseFloat(subtokens[0]))
+							var y = Math.round(parseFloat(subtokens[1]))
+							out += " "+x+" "+y
+							out2 += " "+(200-x)+" "+y
+							lastPoint = [x,y]
+							index += 1
+						} else if(mode=="C") {
+							out += " C"
+							out2 += " C"
+							for(var k=0; k<3; k++) {
+								var subtokens = tokens[index+k].split(",")
+								var x = Math.round(parseFloat(subtokens[0]))
+								var y = Math.round(parseFloat(subtokens[1]))
+								if(k==2) {
+									out += " "+x+" "+y
+									out2 += " "+(200-x)+" "+y
+								} else {
+									out += " "+x+" "+y+","
+									out2 += " "+(200-x)+" "+y+","
+								}
+								lastPoint = [x,y]
+							}
+							index += 3
+						} else if(mode=="c") {
+							out += " C"
+							out2 += " C"
+							refPoint = lastPoint
+							console.log(refPoint)
+							for(var k=0; k<3; k++) {
+								var subtokens = tokens[index+k].split(",")
+								var x = Math.round(parseFloat(subtokens[0]))+refPoint[0]
+								var y = Math.round(parseFloat(subtokens[1]))+refPoint[1]
+								if(k==2) {
+									out += " "+x+" "+y
+									out2 += " "+(200-x)+" "+y
+								} else {
+									out += " "+x+" "+y+","
+									out2 += " "+(200-x)+" "+y+","
+								}
+								lastPoint = [x,y]
+							}
+							index += 3
+						}
+					} else if(token=="C") {
+						mode = "C"
+						index += 1
+					} else if(token=="c") {
+						mode = "c"
+						index += 1
+					} else if(token=="L") {
+						out += " L"
+						out2 += " L"
+						mode = null
+						index += 1
+					}
+				}
+				console.log(out)
+				console.log(out2)
+			}
+		</script>
+	</body>
+</html>
+
+
