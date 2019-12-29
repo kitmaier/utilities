@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SVG builder utility</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body id='body'>
+		<h1>SVG builder utility</h1>
+		<svg id="svgId" width="600" height="600" xmlns="http://www.w3.org/2000/svg" onclick="svgClick(event)" onmousedown="svgMouseEvent(event)" onmouseup="svgMouseEvent(event)" onmouseover="svgMouseEvent(event)" onmouseout="svgMouseEvent(event)" onmousemove="svgMouseEvent(event)">
+			Sorry, your browser does not support inline SVG.
+		</svg>
+		<script>
+			setupGridlines()
+			function setupGridlines() {
+				var svg = document.getElementById("svgId")
+				var groupElement = document.createElementNS("http://www.w3.org/2000/svg","g")
+				groupElement.setAttribute("id","gridlinesGroupId")
+				svg.appendChild(groupElement)
+				for(var k=0; k<=20; k++) {
+					var horizontalLineElement = document.createElementNS("http://www.w3.org/2000/svg","line")
+					horizontalLineElement.setAttribute("x1","0")
+					horizontalLineElement.setAttribute("y1",k*3+"0")
+					horizontalLineElement.setAttribute("x2","600")
+					horizontalLineElement.setAttribute("y2",k*3+"0")
+					horizontalLineElement.setAttribute("stroke","black")
+					groupElement.appendChild(horizontalLineElement)
+					var verticalLineElement = document.createElementNS("http://www.w3.org/2000/svg","line")
+					verticalLineElement.setAttribute("x1",k*3+"0")
+					verticalLineElement.setAttribute("y1","0")
+					verticalLineElement.setAttribute("x2",k*3+"0")
+					verticalLineElement.setAttribute("y2","600")
+					verticalLineElement.setAttribute("stroke","black")
+					groupElement.appendChild(verticalLineElement)
+				}
+			}
+			function hideGridlines() {
+				document.getElementById("gridlinesGroupId").style.visibility = "hidden"
+			}
+			function showGridlines() {
+				document.getElementById("gridlinesGroupId").style.visibility = "visible"
+			}
+			
+			var mode = "drawCurve"
+			var submode = 1
+			var curveBuilder = null
+			// TODO: for search efficiency turn these from lists to more intelligent data structures
+			var selectableCurves = []
+			var selection = null
+			function svgClick(event) {
+				var x = event.offsetX
+				var y = event.offsetY
+				if(mode=="drawCurve") {
+					if(curveBuilder==null) {
+						curveBuilder = Factory.newCurveBuilder()
+					}
+					var curve = curveBuilder.addPoint(x,y)
+					if(curve!=null) {
+						selectableCurves.push(curve)
+						curveBuilder = null
+					}
+					if(submode==7) {
+						mode = "select"
+						submode = 0
+					} else {
+						submode += 1
+					}
+				} else if(mode=="select") {
+					if(submode==0) {
+						for(var k=0; k<selectableCurves.length; k++) {
+							var tmpSelection = selectableCurves[k].selectAt(x,y)
+							if(tmpSelection!=null) {
+								selection = tmpSelection
+								submode = 1
+								break
+							}
+						}
+					} else {
+						selection.moveTo(x,y)
+						selection = null
+						submode = 0
+					}
+				}
+			}
+			function svgMouseEvent(event) {
+				if(event.type=="mousemove"&&mode=="select"&&submode==1) {
+					var x = event.offsetX
+					var y = event.offsetY
+					selection.moveTo(x,y)
+				}
+			}
+			
+			
+			function SelectedCurve(x,y,dots) {
+				// TODO: is there a risk of aggregated rounding error causing drift between elements that are supposed to remain coincident?
+				// TODO: when more than one dot is selected, they can be moved off the viewing area, and might not be able to be selected any more
+				this.moveTo = function(newX,newY) {
+					var dX = newX-x
+					var dY = newY-y
+					for(var k=0; k<dots.length; k++) {
+						dots[k].translate(dX,dY)
+					}
+					x = newX
+					y = newY
+				}
+			}
+			function CurveBuilder() {
+				var dotList = []
+				var curve = null
+				this.addPoint = function(x,y) {
+					var dot = Factory.newCircledDot(x,y)
+					dotList.push(dot)
+					if(dotList.length==4) {
+						var dot0 = dotList[0]
+						var dot1 = dotList[1]
+						var dot2 = dotList[2]
+						var dot3 = dotList[3]
+						curve = Factory.newCurve(dot0,dot1,dot2,dot3)
+					}
+					if(dotList.length==7) {
+						var dot1 = dotList[4]
+						var dot2 = dotList[5]
+						var dot3 = dotList[6]
+						dotList = []
+						//curve.extendCurve(dot1,dot2,dot3)
+						return curve
+					}
+					return null
+				}
+			}
+			function Curve(dot0,dot1,dot2,dot3) {
+				var dots = [dot0,dot1,dot2,dot3]
+				var curve = Factory.newCurveSVG(
+					dot0.getX(),dot0.getY(),
+					dot1.getX(),dot1.getY(),
+					dot2.getX(),dot2.getY(),
+					dot3.getX(),dot3.getY()
+				)
+				for(var k=0; k<dots.length; k++) {
+					dots[k].attachTo(this)
+				}
+				Factory.newLine(dot0,dot1)
+				Factory.newLine(dot2,dot3)
+				this.redraw = function() {
+					curve.resetCoordinates(dots)
+				}
+				this.selectAt = function(x,y) {
+					for(var k=0; k<dots.length; k++) {
+						// TODO: these conditions should be owned by the dots themselves
+						if(Math.abs(dots[k].getX()-x)+Math.abs(dots[k].getY()-y)<=4) {
+							var selectedDots = [dots[k]]
+							if(k%3==0) {
+								if(k+1<dots.length) {
+									selectedDots.push(dots[k+1])
+								}
+								if(k>0) {
+									selectedDots.push(dots[k-1])
+								}
+							}
+							return Factory.newSelectedCurve(x,y,selectedDots)
+						}
+					}
+					return null
+				}
+				this.extendCurve = function(dot1,dot2,dot3) {
+					//dots.push(dot1)
+					//dots.push(dot2)
+					//dots.push(dot3)
+					//dot1.attachTo(this)
+					//dot2.attachTo(this)
+					//dot3.attachTo(this)
+					//var len = dots.length
+					//new Line(dots[len-4],dots[len-3])
+					//new Line(dots[len-2],dots[len-1])
+					//this.redraw()
+				}
+			}
+			function CurveSVG(x0,y0,x1,y1,x2,y2,x3,y3) {
+				// TODO: having these values exposed only by functions makes them invisible to the console, which slows down troubleshooting - maybe it would be possible to expose them as variables but in a read-only way
+				// TODO: the same coordinates are duplicated in a bunch of classes, it would be better to determine who is responsible for them and just keep them there
+				var element = Factory.document().createElementNS("http://www.w3.org/2000/svg","path")
+					element.setAttribute("d","M "+x0+" "+y0+" C " +x1+" "+y1+", "+x2+" "+y2+", "+x3+" "+y3)
+					element.setAttribute("class","curve")
+					element.setAttribute("stroke","black")
+					element.setAttribute("fill","transparent")
+					Factory.document().getElementById("svgId").appendChild(element)
+				this.resetCoordinates = function (dots) {
+					var dStr = "M "+dots[0].getX()+" "+dots[0].getY()
+					var k = 1
+					while(k+2<dots.length) {
+						dStr += " C "+dots[k].getX()+" "+dots[k].getY()
+								+", "+dots[k+1].getX()+" "+dots[k+1].getY()
+								+", "+dots[k+2].getX()+" "+dots[k+2].getY()
+						k += 3
+					}
+					element.setAttribute("d",dStr)
+				}
+				this.dispose = function() {
+					element.parentNode.removeChild(element)
+					element = null
+					this.resetCoordinates = null
+				}
+			}
+			function Line(dot1,dot2) {
+				var line = Factory.newLineSVG(
+					dot1.getX(),dot1.getY(),
+					dot2.getX(),dot2.getY()
+				)
+				this.redraw = function() {
+					line.setP1(dot1.getX(),dot1.getY())
+					line.setP2(dot2.getX(),dot2.getY())
+				}
+				dot1.attachTo(this)
+				dot2.attachTo(this)
+			}
+			function LineSVG(x1,y1,x2,y2) {
+				var element = Factory.document().createElementNS("http://www.w3.org/2000/svg","line")
+					element.setAttribute("x1",x1)
+					element.setAttribute("y1",y1)
+					element.setAttribute("x2",x2)
+					element.setAttribute("y2",y2)
+					element.setAttribute("stroke","black")
+					Factory.document().getElementById("svgId").appendChild(element)
+				this.setP1 = function(x,y) {
+					x1 = x
+					y1 = y
+					element.setAttribute("x1",x)
+					element.setAttribute("y1",y)
+				}
+				this.setP2 = function(x,y) {
+					x2 = x
+					y2 = y
+					element.setAttribute("x2",x)
+					element.setAttribute("y2",y)
+				}
+			}
+			function CircledDot(x,y) {
+				var dot = Factory.newDot(x,y)
+				var circle = Factory.newCircleSVG(x,y,3,"transparent")
+				this.getX = dot.getX
+				this.getY = dot.getY
+				this.translate = function(dx,dy) {
+					circle.translate(dx,dy)
+					dot.translate(dx,dy)
+				}
+				this.attachTo = dot.attachTo
+				this.dispose = function() {
+					circle.dispose()
+					dot.dispose()
+					circle = null
+					dot = null
+					this.getX = null
+					this.getY = null
+					this.translate = null
+					this.attachTo = null
+					// TODO: mark this instance unusable somehow?
+				}
+				this.toString = function() {
+					return "("+this.getX()+","+this.getY()+")"
+				}
+			}
+			function Dot(x,y) {
+				var circle = Factory.newCircleSVG(x,y,1,"black")
+				this.getX = function() { return x }
+				this.getY = function() { return y }
+				var curves = []
+				this.attachTo = function(curve) {
+					curves.push(curve)
+				}
+				this.translate = function(dx,dy) {
+					x += dx
+					y += dy
+					circle.translate(dx,dy)
+					for(var k=0; k<curves.length; k++) {
+						// TODO: move this responsibility up into the curve itself
+						curves[k].redraw()
+					}
+				}
+				this.dispose = function() {
+					circle.dispose()
+					circle = null
+					curves = null
+					this.getX = null
+					this.getY = null
+					this.attachTo = null
+					this.translate = null
+					// TODO: mark this instance unusable somehow?
+				}
+			}
+			// TODO: can you add an element (eg svg circle) to two non-overlapping parents in the DOM through JavaScript?
+			function CircleSVG(cx,cy,r,fill) {
+				var element = Factory.document().createElementNS("http://www.w3.org/2000/svg","circle")
+					element.setAttribute("cx",cx)
+					element.setAttribute("cy",cy)
+					element.setAttribute("r",r)
+					element.setAttribute("stroke","black")
+					element.setAttribute("fill",fill)
+					Factory.document().getElementById("svgId").appendChild(element)
+				this.translate = function(dx,dy) {
+					cx += dx
+					cy += dy
+					element.setAttribute("cx",cx)
+					element.setAttribute("cy",cy)
+				}
+				this.dispose = function() {
+					element.parentNode.removeChild(element)
+					element = null
+					this.getX = null
+					this.getY = null
+					this.translate = null
+					// TODO: mark this instance unusable somehow?
+				}
+			}
+			
+			
+			
+			
+			// *** Test cases ***
+			
+			function Factory() {}
+			Factory.document = function() {
+				if(Factory.mockDocument!==undefined) {
+					return Factory.mockDocument()
+				}
+				return document
+			}
+			// generator regex from function name and arguments: (.+) (.*) -> \t\t\tFactory.new\1 = function\(\2\) {\r\n\t\t\t\tif\(Factory.mock\1!==undefined\) {\r\n\t\t\t\t\treturn Factory.mock\1\(\2\)\r\n\t\t\t\t}\r\n\t\t\t\treturn new \1\(\2\)\r\n\t\t\t}
+			Factory.newCircleSVG = function(cx,cy,r,fill) {
+				if(Factory.mockCircleSVG!==undefined) {
+					return Factory.mockCircleSVG(cx,cy,r,fill)
+				}
+				return new CircleSVG(cx,cy,r,fill)
+			}
+			Factory.newLineSVG = function(x1,y1,x2,y2) {
+				if(Factory.mockLineSVG!==undefined) {
+					return Factory.mockLineSVG(x1,y1,x2,y2)
+				}
+				return new LineSVG(x1,y1,x2,y2)
+			}
+			Factory.newCurveSVG = function(x0,y0,x1,y1,x2,y2,x3,y3) {
+				if(Factory.mockCurveSVG!==undefined) {
+					return Factory.mockCurveSVG(x0,y0,x1,y1,x2,y2,x3,y3)
+				}
+				return new CurveSVG(x0,y0,x1,y1,x2,y2,x3,y3)
+			}
+			Factory.newDot = function(x,y) {
+				if(Factory.mockDot!==undefined) {
+					return Factory.mockDot(x,y)
+				}
+				return new Dot(x,y)
+			}
+			Factory.newCircledDot = function(x,y) {
+				if(Factory.mockCircledDot!==undefined) {
+					return Factory.mockCircledDot(x,y)
+				}
+				return new CircledDot(x,y)
+			}
+			Factory.newLine = function(dot1,dot2) {
+				if(Factory.mockLine!==undefined) {
+					return Factory.mockLine(dot1,dot2)
+				}
+				return new Line(dot1,dot2)
+			}
+			Factory.newCurve = function(dot0,dot1,dot2,dot3) {
+				if(Factory.mockCurve!==undefined) {
+					return Factory.mockCurve(dot0,dot1,dot2,dot3)
+				}
+				return new Curve(dot0,dot1,dot2,dot3)
+			}
+			Factory.newSelectedCurve = function(x,y,dots) {
+				if(Factory.mockSelectedCurve!==undefined) {
+					return Factory.mockSelectedCurve(x,y,dots)
+				}
+				return new SelectedCurve(x,y,dots)
+			}
+			Factory.newCurveBuilder = function() {
+				if(Factory.mockCurveBuilder!==undefined) {
+					return Factory.mockCurveBuilder()
+				}
+				return new CurveBuilder()
+			}
+			
+			function assertEquals(op1,op2) {
+				if(op1!==op2) {
+					console.log("objects are not identical:",op1,op2)
+					throw "Assertion failed: ["+op1+"] not equal to ["+op2+"]"
+				}
+			}
+			
+			function runTests() {
+				var params = new URLSearchParams(window.location.search);
+				return params!=null && params.has('test') && params.get('test')=='runtests';
+			}
+			if(runTests()) {
+				console.log("Running tests")
+				var testCases = []
+				testCases.push(["new CurveSVG - real document", function() {
+					var curve = new CurveSVG(10,10,20,10,20,20,30,20)
+					var expected = "M 10 10 C 20 10, 20 20, 30 20"
+					var result = document.getElementsByClassName("curve")[0].getAttribute("d")
+					assertEquals(expected,result)
+					curve.dispose()
+					var expected = 0
+					var result = document.getElementsByClassName("curve").length
+					assertEquals(expected,result)
+				}])
+				testCases.push(["new CurveSVG - mock document", function() {
+					var attributes = {}
+					var mockElement = {
+						"setAttribute": function(a,b) {
+							attributes[a] = b
+						}
+					}
+					var appendedChild = null
+					Factory.mockDocument = function() {
+						return {
+							"createElementNS": function() {
+								return mockElement
+							},
+							"getElementById": function() {
+								return {
+									"appendChild": function(a) {
+										appendedChild = a
+									}
+								}
+							}
+						}
+					}
+					var curve = new CurveSVG(10,10,20,10,20,20,30,20)
+					assertEquals(appendedChild,mockElement)
+					assertEquals(attributes["d"],"M 10 10 C 20 10, 20 20, 30 20")
+				}])
+				testCases.push(["new Curve", function() {
+					// TODO: clean up this test scenario and break it into multiple test cases
+					Factory.mockCircleSVG = function(cx,cy,r,fill) {
+						return {
+							"translate": function(dx,dy) {}
+						}
+					}
+					Factory.mockLineSVG = function(x1,y1,x2,y2) {
+						return {
+							"setP1": function(x,y) {},
+							"setP2": function(x,y) {}
+						}
+					}
+					Factory.mockCurveSVG = function(a,b,c,d,e,f,g,h) {
+						return {
+							"resetCoordinates": function() {}
+						}
+					}
+					var dot0 = new CircledDot(100,100)
+					var dot1 = new CircledDot(100,200)
+					var dot2 = new CircledDot(200,300)
+					var dot3 = new CircledDot(300,300)
+					var curve = new Curve(dot0,dot1,dot2,dot3)
+					var selectedCurve = curve.selectAt(100,100)
+					selectedCurve.moveTo(150,150)
+					var selectedCurve2 = curve.selectAt(200,300)
+					selectedCurve2.moveTo(300,400)
+					var selectedCurve3 = curve.selectAt(0,0)
+				}])
+				for(var k=0; k<testCases.length; k++) {
+					console.log("Running Test: "+testCases[k][0])
+					testCases[k][1]()
+					resetMocks()
+					console.log("Test Passed: "+testCases[k][0])
+				}
+			}
+			// TODO: it would be great if this could be enumerated automatically instead of having to be updated whenever a new class is created
+			function resetMocks() {
+				Factory.mockDocument = undefined
+				Factory.mockCircleSVG = undefined
+				Factory.mockLineSVG = undefined
+				Factory.mockCurveSVG = undefined
+				Factory.mockDot = undefined
+				Factory.mockCircledDot = undefined
+				Factory.mockLine = undefined
+				Factory.mockCurve = undefined
+				Factory.mockSelectedCurve = undefined
+				Factory.mockCurveBuilder = undefined
+			}
+			
+			
+			
+			
+			// *** throwaway utilities ***
+			
+			//updateElementPath()
+			function updateElementPath() {
+				var points = [
+					{"point":[90,90],"left-control":null,"right-control":[-10,0]},// thumb
+					{"point":[80,110],"left-control":[2,-10],"right-control":[-2,10]},
+					{"point":[73,100],"left-control":[-1,20],"right-control":null},
+					{"point":[75,35],"left-control":null,"right-control":[0,-10]},// index finger
+					{"point":[65,35],"left-control":[0,-10],"right-control":null},// index finger
+					{"point":[59,80],"left-control":[3,0],"right-control":[-3,0]},
+					{"point":[55,28],"left-control":null,"right-control":[0,-10]},// middle finger
+					{"point":[45,28],"left-control":[0,-10],"right-control":null},// middle finger
+					{"point":[41,80],"left-control":[3,0],"right-control":[-3,0]},
+					{"point":[34,35],"left-control":null,"right-control":[0,-10]},// ring finger
+					{"point":[24,35],"left-control":[0,-10],"right-control":null},// ring finger
+					{"point":[24,83],"left-control":[2,-1],"right-control":[-2,1]},
+					{"point":[12,45],"left-control":null,"right-control":[-2,-8]},// pinky finger
+					{"point":[4,50],"left-control":[-2,-8],"right-control":null},// pinky finger
+					{"point":[15,95],"left-control":null,"right-control":[2,10]},
+					{"point":[30,160],"left-control":[-15,0],"right-control":[10,0]},
+					{"point":[45,158],"left-control":[-5,0],"right-control":[5,0]},
+					{"point":[60,160],"left-control":[-10,0],"right-control":[10,0]},
+					{"point":[90,120],"left-control":[-10,20],"right-control":[2,-7]},
+					{"point":[90,90],"left-control":[0,10],"right-control":null},// thumb
+				]
+				var dStr = generatePathString(points)
+				console.log(JSON.stringify(points))
+				console.log(dStr)
+				document.getElementById("elementPathId").setAttribute("d",dStr)
+			}
+			function generatePathString(points) {
+				/* Test Cases: 
+					Input: points = [{"point":[15,100],"left-control":null,"right-control":null},{"point":[30,160],"left-control":null,"right-control":null},{"point":[70,160],"left-control":null,"right-control":null},{"point":[90,120],"left-control":null,"right-control":null},{"point":[90,90],"left-control":null,"right-control":null},{"point":[70,90],"left-control":null,"right-control":null},{"point":[70,40],"left-control":null,"right-control":null},{"point":[50,20],"left-control":null,"right-control":null},{"point":[45,20],"left-control":null,"right-control":null},{"point":[40,70],"left-control":[3,0],"right-control":[-3,0]},{"point":[35,25],"left-control":null,"right-control":[0,-10]},{"point":[25,25],"left-control":[0,-10],"right-control":null},{"point":[25,70],"left-control":[2,-1],"right-control":[-2,1]},{"point":[15,35],"left-control":null,"right-control":[-2,-5]},{"point":[10,40],"left-control":[-1,-5],"right-control":null},{"point":[15,85],"left-control":null,"right-control":null}]
+					Output: dStr = "M 15 100 L 30 160 L 70 160 L 90 120 L 90 90 L 70 90 L 70 40 L 50 20 L 45 20 C 43 70, 43 70, 40 70 C 37 70, 37 70, 35 25 C 35 15, 25 15, 25 25 C 27 69, 27 69, 25 70 C 23 71, 23 71, 15 35 C 13 30, 9 35, 10 40 L 15 85 Z"
+				*/
+				var dStr = "M"
+				dStr += " "+points[0]["point"][0]+" "+points[0]["point"][1]
+				for(var k=1; k<points.length; k++) {
+					var lastPoint = points[k-1]["point"]
+					var firstControl = points[k-1]["right-control"]
+					var secondControl = points[k]["left-control"]
+					var point = points[k]["point"]
+					if(firstControl==null&&secondControl==null) {
+						dStr += " L "+point[0]+" "+point[1]
+					} else {
+						if(firstControl!=null) {
+							firstControl = [firstControl[0]+lastPoint[0],firstControl[1]+lastPoint[1]]
+						}
+						if(secondControl!=null) {
+							secondControl = [secondControl[0]+point[0],secondControl[1]+point[1]]
+						}
+						if(firstControl==null) {
+							firstControl = secondControl
+						}
+						if(secondControl==null) {
+							secondControl = firstControl
+						}
+						dStr += " C "+firstControl[0]+" "+firstControl[1]+", "+secondControl[0]+" "+secondControl[1]+", "+point[0]+" "+point[1]
+					}
+					
+				}
+				dStr += " Z"
+				return dStr
+			}
+			//convertFromInkScape()
+			function convertFromInkScape() {
+				var inkscapeString = "M 95.69307,93.465346 C 82.227723,86.534653 84.634882,118.51846 78.514851,116.43565 75.757217,115.49715 72.990099,106.38614 73,100 L 75,35 C 75,25 65,25 65,35 62,80 62,80 59,80 56,80 56,80 55,28 55,18 45,18 45,28 c -1,52 -1,52 -4,52 -3,0 -3,0 -7,-45 0,-10 -8.762376,-10 -8.762376,0 2,47 2.247525,47 0.247525,48 -2,1 -3.237625,-2.217822 -9.029704,-33.792079 -2,-8 -9.9999994,-3 -7.9999994,5 L 15,95 c 2,10 2.84423,62.59996 17.722772,64.50495 6.717721,0.86011 9.739308,-1.54769 14.73746,-1.73746 6.05075,-0.22973 9.910426,1.68979 15.26254,1.73746 5.737033,0.0511 12.981063,-2.96633 17.635041,-9.40792 12.174692,-18.36701 14.612051,-36.89648 15.335257,-56.631684 z"
+				var tokens = inkscapeString.split(" ")
+				console.log(tokens)
+				var out = ""
+				var out2 = ""
+				var index = 0
+				var lastPoint = null
+				var refPoint = null
+				var mode = null
+				while(index<tokens.length) {
+					var token = tokens[index]
+					if(token=="M") {
+						out += "M"
+						out2 += "M"
+						mode = null
+						index += 1
+					} else if(token=="Z"||token=="z") {
+						out += " Z"
+						out2 += " Z"
+						mode = null
+						index += 1
+					} else if(token.match(/[0-9]/g)!==null) {
+						if(mode==null) {
+							var subtokens = token.split(",")
+							var x = Math.round(parseFloat(subtokens[0]))
+							var y = Math.round(parseFloat(subtokens[1]))
+							out += " "+x+" "+y
+							out2 += " "+(200-x)+" "+y
+							lastPoint = [x,y]
+							index += 1
+						} else if(mode=="C") {
+							out += " C"
+							out2 += " C"
+							for(var k=0; k<3; k++) {
+								var subtokens = tokens[index+k].split(",")
+								var x = Math.round(parseFloat(subtokens[0]))
+								var y = Math.round(parseFloat(subtokens[1]))
+								if(k==2) {
+									out += " "+x+" "+y
+									out2 += " "+(200-x)+" "+y
+								} else {
+									out += " "+x+" "+y+","
+									out2 += " "+(200-x)+" "+y+","
+								}
+								lastPoint = [x,y]
+							}
+							index += 3
+						} else if(mode=="c") {
+							out += " C"
+							out2 += " C"
+							refPoint = lastPoint
+							console.log(refPoint)
+							for(var k=0; k<3; k++) {
+								var subtokens = tokens[index+k].split(",")
+								var x = Math.round(parseFloat(subtokens[0]))+refPoint[0]
+								var y = Math.round(parseFloat(subtokens[1]))+refPoint[1]
+								if(k==2) {
+									out += " "+x+" "+y
+									out2 += " "+(200-x)+" "+y
+								} else {
+									out += " "+x+" "+y+","
+									out2 += " "+(200-x)+" "+y+","
+								}
+								lastPoint = [x,y]
+							}
+							index += 3
+						}
+					} else if(token=="C") {
+						mode = "C"
+						index += 1
+					} else if(token=="c") {
+						mode = "c"
+						index += 1
+					} else if(token=="L") {
+						out += " L"
+						out2 += " L"
+						mode = null
+						index += 1
+					}
+				}
+				console.log(out)
+				console.log(out2)
+			}
+		</script>
+	</body>
+</html>
+
+
