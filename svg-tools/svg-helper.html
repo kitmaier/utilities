@@ -53,12 +53,11 @@
 					if(curveBuilder==null) {
 						curveBuilder = Factory.newCurveBuilder()
 					}
-					var curve = curveBuilder.addPoint(x,y)
-					if(curve!=null) {
+					curveBuilder.addPoint(x,y)
+					if(submode==12) {
+						var curve = curveBuilder.stop()
 						selectableCurves.push(curve)
 						curveBuilder = null
-					}
-					if(submode==7) {
 						mode = "select"
 						submode = 0
 					} else {
@@ -90,7 +89,7 @@
 			}
 			
 			
-			function SelectedCurve(x,y,dots) {
+			function SelectedCurve(x,y,curve,dots) {
 				// TODO: is there a risk of aggregated rounding error causing drift between elements that are supposed to remain coincident?
 				// TODO: when more than one dot is selected, they can be moved off the viewing area, and might not be able to be selected any more
 				this.moveTo = function(newX,newY) {
@@ -99,6 +98,7 @@
 					for(var k=0; k<dots.length; k++) {
 						dots[k].translate(dX,dY)
 					}
+					curve.redraw()
 					x = newX
 					y = newY
 				}
@@ -109,22 +109,27 @@
 				this.addPoint = function(x,y) {
 					var dot = Factory.newCircledDot(x,y)
 					dotList.push(dot)
-					if(dotList.length==4) {
+					if(curve==null&&dotList.length==4) {
 						var dot0 = dotList[0]
 						var dot1 = dotList[1]
 						var dot2 = dotList[2]
 						var dot3 = dotList[3]
-						curve = Factory.newCurve(dot0,dot1,dot2,dot3)
-					}
-					if(dotList.length==7) {
-						var dot1 = dotList[4]
-						var dot2 = dotList[5]
-						var dot3 = dotList[6]
 						dotList = []
-						//curve.extendCurve(dot1,dot2,dot3)
-						return curve
+						curve = Factory.newCurve(dot0,dot1,dot2,dot3)
+					} else if(curve!=null&&dotList.length==3) {
+						var dot1 = dotList[0]
+						var dot2 = dotList[1]
+						var dot3 = dotList[2]
+						dotList = []
+						curve.extendCurve(dot1,dot2,dot3)
 					}
 					return null
+				}
+				this.stop = function() {
+					for(var k=0; k<dotList.length; k++) {
+						dotList[k].dispose()
+					}
+					return curve
 				}
 			}
 			function Curve(dot0,dot1,dot2,dot3) {
@@ -135,13 +140,14 @@
 					dot2.getX(),dot2.getY(),
 					dot3.getX(),dot3.getY()
 				)
-				for(var k=0; k<dots.length; k++) {
-					dots[k].attachTo(this)
-				}
-				Factory.newLine(dot0,dot1)
-				Factory.newLine(dot2,dot3)
+				var line1 = Factory.newLine(dot0,dot1)
+				var line2 = Factory.newLine(dot2,dot3)
+				var lines = [line1,line2]
 				this.redraw = function() {
 					curve.resetCoordinates(dots)
+					for(var k=0; k<lines.length; k++) {
+						lines[k].redraw()
+					}
 				}
 				this.selectAt = function(x,y) {
 					for(var k=0; k<dots.length; k++) {
@@ -156,22 +162,19 @@
 									selectedDots.push(dots[k-1])
 								}
 							}
-							return Factory.newSelectedCurve(x,y,selectedDots)
+							return Factory.newSelectedCurve(x,y,this,selectedDots)
 						}
 					}
 					return null
 				}
 				this.extendCurve = function(dot1,dot2,dot3) {
-					//dots.push(dot1)
-					//dots.push(dot2)
-					//dots.push(dot3)
-					//dot1.attachTo(this)
-					//dot2.attachTo(this)
-					//dot3.attachTo(this)
-					//var len = dots.length
-					//new Line(dots[len-4],dots[len-3])
-					//new Line(dots[len-2],dots[len-1])
-					//this.redraw()
+					dots.push(dot1)
+					dots.push(dot2)
+					dots.push(dot3)
+					var len = dots.length
+					lines.push(new Line(dots[len-4],dots[len-3]))
+					lines.push(new Line(dots[len-2],dots[len-1]))
+					this.redraw()
 				}
 			}
 			function CurveSVG(x0,y0,x1,y1,x2,y2,x3,y3) {
@@ -200,6 +203,7 @@
 					this.resetCoordinates = null
 				}
 			}
+			// TODO: could the Line and LineSVG interface be replaced with more CurveSVG elements?
 			function Line(dot1,dot2) {
 				var line = Factory.newLineSVG(
 					dot1.getX(),dot1.getY(),
@@ -209,8 +213,6 @@
 					line.setP1(dot1.getX(),dot1.getY())
 					line.setP2(dot2.getX(),dot2.getY())
 				}
-				dot1.attachTo(this)
-				dot2.attachTo(this)
 			}
 			function LineSVG(x1,y1,x2,y2) {
 				var element = Factory.document().createElementNS("http://www.w3.org/2000/svg","line")
@@ -233,6 +235,7 @@
 					element.setAttribute("y2",y)
 				}
 			}
+			// TODO: CircledDot is really just a detail of rendering, and not relevant to the domain logic - Dot object should have an instance of a Style object that handles this work
 			function CircledDot(x,y) {
 				var dot = Factory.newDot(x,y)
 				var circle = Factory.newCircleSVG(x,y,3,"transparent")
@@ -242,7 +245,6 @@
 					circle.translate(dx,dy)
 					dot.translate(dx,dy)
 				}
-				this.attachTo = dot.attachTo
 				this.dispose = function() {
 					circle.dispose()
 					dot.dispose()
@@ -251,7 +253,6 @@
 					this.getX = null
 					this.getY = null
 					this.translate = null
-					this.attachTo = null
 					// TODO: mark this instance unusable somehow?
 				}
 				this.toString = function() {
@@ -262,26 +263,16 @@
 				var circle = Factory.newCircleSVG(x,y,1,"black")
 				this.getX = function() { return x }
 				this.getY = function() { return y }
-				var curves = []
-				this.attachTo = function(curve) {
-					curves.push(curve)
-				}
 				this.translate = function(dx,dy) {
 					x += dx
 					y += dy
 					circle.translate(dx,dy)
-					for(var k=0; k<curves.length; k++) {
-						// TODO: move this responsibility up into the curve itself
-						curves[k].redraw()
-					}
 				}
 				this.dispose = function() {
 					circle.dispose()
 					circle = null
-					curves = null
 					this.getX = null
 					this.getY = null
-					this.attachTo = null
 					this.translate = null
 					// TODO: mark this instance unusable somehow?
 				}
@@ -366,11 +357,11 @@
 				}
 				return new Curve(dot0,dot1,dot2,dot3)
 			}
-			Factory.newSelectedCurve = function(x,y,dots) {
+			Factory.newSelectedCurve = function(x,y,curve,dots) {
 				if(Factory.mockSelectedCurve!==undefined) {
-					return Factory.mockSelectedCurve(x,y,dots)
+					return Factory.mockSelectedCurve(x,y,curve,dots)
 				}
-				return new SelectedCurve(x,y,dots)
+				return new SelectedCurve(x,y,curve,dots)
 			}
 			Factory.newCurveBuilder = function() {
 				if(Factory.mockCurveBuilder!==undefined) {
@@ -429,22 +420,36 @@
 					assertEquals(appendedChild,mockElement)
 					assertEquals(attributes["d"],"M 10 10 C 20 10, 20 20, 30 20")
 				}])
-				testCases.push(["new Curve", function() {
-					// TODO: clean up this test scenario and break it into multiple test cases
+				testCases.push(["move control points on curve", function() {
+					// TODO: the names of the functions that push coordinates out to SVG elements should be standardized
+					var circleInfo = {}
 					Factory.mockCircleSVG = function(cx,cy,r,fill) {
 						return {
-							"translate": function(dx,dy) {}
+							"translate": function(dx,dy) {
+								var key = cx+","+cy+","+r+","+fill
+								circleInfo[key] += ";"+dx+","+dy
+							}
 						}
 					}
+					var lineInfo = {}
 					Factory.mockLineSVG = function(x1,y1,x2,y2) {
 						return {
-							"setP1": function(x,y) {},
-							"setP2": function(x,y) {}
+							"setP1": function(x,y) {
+								var key = x1+","+y1+","+x2+","+y2+":setP1"
+								lineInfo[key] = x+","+y
+							},
+							"setP2": function(x,y) {
+								var key = x1+","+y1+","+x2+","+y2+":setP2"
+								lineInfo[key] = x+","+y
+							}
 						}
 					}
-					Factory.mockCurveSVG = function(a,b,c,d,e,f,g,h) {
+					var curveCoordinates = null
+					Factory.mockCurveSVG = function(x0,y0,x1,y1,x2,y2,x3,y3) {
 						return {
-							"resetCoordinates": function() {}
+							"resetCoordinates": function(dots) {
+								curveCoordinates = dots.toString()
+							}
 						}
 					}
 					var dot0 = new CircledDot(100,100)
@@ -455,8 +460,98 @@
 					var selectedCurve = curve.selectAt(100,100)
 					selectedCurve.moveTo(150,150)
 					var selectedCurve2 = curve.selectAt(200,300)
-					selectedCurve2.moveTo(300,400)
-					var selectedCurve3 = curve.selectAt(0,0)
+					selectedCurve2.moveTo(400,300)
+					assertEquals(curveCoordinates,"(150,150),(150,250),(400,300),(300,300)")
+					assertEquals(lineInfo["100,100,100,200:setP1"],"150,150")
+					assertEquals(lineInfo["100,100,100,200:setP2"],"150,250")
+					assertEquals(lineInfo["200,300,300,300:setP1"],"400,300")
+					assertEquals(lineInfo["200,300,300,300:setP2"],"300,300")
+					assertEquals(circleInfo["100,100,3,transparent"],"undefined;50,50")
+					assertEquals(circleInfo["100,200,3,transparent"],"undefined;50,50")
+					assertEquals(circleInfo["200,300,3,transparent"],"undefined;200,0")
+					assertEquals(circleInfo["100,100,1,black"],"undefined;50,50")
+					assertEquals(circleInfo["100,200,1,black"],"undefined;50,50")
+					assertEquals(circleInfo["200,300,1,black"],"undefined;200,0")
+				}])
+				testCases.push(["extend curve", function() {
+					Factory.mockCircleSVG = function(cx,cy,r,fill) {
+						return {
+							"translate": function(dx,dy) {}
+						}
+					}
+					var lineInfo = {}
+					Factory.mockLineSVG = function(x1,y1,x2,y2) {
+						var key = x1+","+y1+","+x2+","+y2
+						lineInfo[key] = "true"
+						return {
+							"setP1": function(x,y) {},
+							"setP2": function(x,y) {}
+						}
+					}
+					var curveCoordinates = null
+					Factory.mockCurveSVG = function(x0,y0,x1,y1,x2,y2,x3,y3) {
+						return {
+							"resetCoordinates": function(dots) {
+								curveCoordinates = dots.toString()
+							}
+						}
+					}
+					var dot0 = new CircledDot(100,100)
+					var dot1 = new CircledDot(100,200)
+					var dot2 = new CircledDot(200,300)
+					var dot3 = new CircledDot(300,300)
+					var curve = new Curve(dot0,dot1,dot2,dot3)
+					var dot4 = new CircledDot(400,300)
+					var dot5 = new CircledDot(500,200)
+					var dot6 = new CircledDot(500,100)
+					curve.extendCurve(dot4,dot5,dot6)
+					assertEquals(curveCoordinates,"(100,100),(100,200),(200,300),(300,300),(400,300),(500,200),(500,100)")
+					assertEquals(lineInfo["100,100,100,200"],"true")
+					assertEquals(lineInfo["200,300,300,300"],"true")
+					assertEquals(lineInfo["300,300,400,300"],"true")
+					assertEquals(lineInfo["500,200,500,100"],"true")
+				}])
+				testCases.push(["extend curve move lines", function() {
+					Factory.mockCircleSVG = function(cx,cy,r,fill) {
+						return {
+							"translate": function(dx,dy) {}
+						}
+					}
+					var lineInfo = {}
+					Factory.mockLineSVG = function(x1,y1,x2,y2) {
+						return {
+							"setP1": function(x,y) {
+								var key = x1+","+y1+","+x2+","+y2+":setP1"
+								lineInfo[key] = x+","+y
+							},
+							"setP2": function(x,y) {
+								var key = x1+","+y1+","+x2+","+y2+":setP2"
+								lineInfo[key] = x+","+y
+							}
+						}
+					}
+					var curveCoordinates = null
+					Factory.mockCurveSVG = function(x0,y0,x1,y1,x2,y2,x3,y3) {
+						return {
+							"resetCoordinates": function(dots) {
+								curveCoordinates = dots.toString()
+							}
+						}
+					}
+					var dot0 = new CircledDot(100,100)
+					var dot1 = new CircledDot(100,200)
+					var dot2 = new CircledDot(200,300)
+					var dot3 = new CircledDot(300,300)
+					var curve = new Curve(dot0,dot1,dot2,dot3)
+					var dot4 = new CircledDot(400,300)
+					var dot5 = new CircledDot(500,200)
+					var dot6 = new CircledDot(500,100)
+					curve.extendCurve(dot4,dot5,dot6)
+					var selection = curve.selectAt(500,100)
+					selection.moveTo(600,100)
+					assertEquals(curveCoordinates,"(100,100),(100,200),(200,300),(300,300),(400,300),(600,200),(600,100)")
+					assertEquals(lineInfo["500,200,500,100:setP1"],"600,200")
+					assertEquals(lineInfo["500,200,500,100:setP2"],"600,100")
 				}])
 				for(var k=0; k<testCases.length; k++) {
 					console.log("Running Test: "+testCases[k][0])
