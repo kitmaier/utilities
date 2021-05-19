@@ -1,0 +1,78 @@
+# A Whole New World - Mario Vehrerer arrangement - part 2
+
+L	0	0	4	2B
+L	0	0	4	3F#
+L	0	0	4	3B
+L	0	4	4	3C#
+L	0	4	4	3A
+L	0	4	4	4C#
+
+R	0	0	4	4A
+R	0	0	4	5F#
+R	0	4	4	4G
+R	0	4	4	5E
+
+L	1	0	3	2G
+L	1	0	3	3G
+L	1	3	5	2F#
+L	1	3	5	3F#
+
+R	1	0	2	4G
+R	1	0	2	5E
+R	1	2	1	4F#
+R	1	2	1	5D#
+R	1	3	2	4A
+R	1	3	2	5F#
+R	1	5	2	4G
+R	1	5	2	5E
+R	1	7	1	4E
+R	1	7	1	5C#
+
+L	2	0	1	1B
+L	2	1	1	2F#
+L	2	2	1	2B
+L	2	3	1	3D
+L	2	4	1	1A
+L	2	5	1	2E
+L	2	6	1	2A
+L	2	7	1	3C#
+
+R	2	0	2	4G
+R	2	0	2	5E
+R	2	2	2	4F#
+R	2	2	2	5D
+R	2	4	2	4E
+R	2	4	2	5C#
+R	2	6	2	4F#
+R	2	6	2	5D
+
+L	3	0	1	1G
+L	3	1	1	2D
+L	3	2	1	2G
+L	3	3	1	2A
+L	3	4	1	2B
+L	3	5	1	3D
+L	3	6	2	3G
+
+R	3	0	2	4D
+R	3	0	2	4B
+R	3	2	1	4E
+R	3	2	1	5C#
+R	3	3	3	4G
+R	3	3	3	5E
+R	3	6	1	4F#
+R	3	6	1	5D
+# extend past end of measure
+R	3	7	3	4D
+R	3	7	3	4B
+
+L	4	0	1	2D
+L	4	1	1	2A
+L	4	2	1	3D
+L	4	3	1	3A
+L	4	4	1	4F#
+L	4	5	1	3G
+L	4	6	1	4E
+L	4	7	1	3F#
+
+

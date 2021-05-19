@@ -1,0 +1,181 @@
+# Step down through chords in C major by thirds
+# Efficient voice leading exercise
+# https://global.oup.com/us/companion.websites/9780195336672/examples/chapter1/figure_1313/
+#
+# Generator script:
+#chords = [
+# ['4C','4E','4A','4C','5E','5A'],
+# ['4C','4E','4G','4C','5E','5G'],
+# ['3B','4E','4G','3B','5E','5G'],
+# ['3B','4D','4G','3B','5D','5G'],
+# ['3B','4D','4F','3B','5D','5F'],
+# ['3A','4D','4F','3A','5D','5F'],
+# ['3A','4C','4F','3A','5C','5F'],
+# ['3A','4C','4E','3A','5C','5E'],
+# ['3G','4C','4E','3G','5C','5E']
+#]
+#
+#for measure in [0,1,2,3,4,5,6,7]:
+# for (step,beat,hold) in [(0,0,4),(1,4,2),(2,6,2)]:
+#  chord_num = measure+1-(step%2)
+#  chord = chords[chord_num]
+#  for note in chord:
+#   print('R',measure,beat,hold,note)
+#
+#for note in chords[8]:
+# print('R',8,0,8,note)
+
+
+R	0	0	4	4C
+R	0	0	4	4E
+R	0	0	4	4G
+R	0	0	4	4C
+R	0	0	4	5E
+R	0	0	4	5G
+R	0	4	2	4C
+R	0	4	2	4E
+R	0	4	2	4A
+R	0	4	2	4C
+R	0	4	2	5E
+R	0	4	2	5A
+R	0	6	2	4C
+R	0	6	2	4E
+R	0	6	2	4G
+R	0	6	2	4C
+R	0	6	2	5E
+R	0	6	2	5G
+R	1	0	4	3B
+R	1	0	4	4E
+R	1	0	4	4G
+R	1	0	4	3B
+R	1	0	4	5E
+R	1	0	4	5G
+R	1	4	2	4C
+R	1	4	2	4E
+R	1	4	2	4G
+R	1	4	2	4C
+R	1	4	2	5E
+R	1	4	2	5G
+R	1	6	2	3B
+R	1	6	2	4E
+R	1	6	2	4G
+R	1	6	2	3B
+R	1	6	2	5E
+R	1	6	2	5G
+R	2	0	4	3B
+R	2	0	4	4D
+R	2	0	4	4G
+R	2	0	4	3B
+R	2	0	4	5D
+R	2	0	4	5G
+R	2	4	2	3B
+R	2	4	2	4E
+R	2	4	2	4G
+R	2	4	2	3B
+R	2	4	2	5E
+R	2	4	2	5G
+R	2	6	2	3B
+R	2	6	2	4D
+R	2	6	2	4G
+R	2	6	2	3B
+R	2	6	2	5D
+R	2	6	2	5G
+R	3	0	4	3B
+R	3	0	4	4D
+R	3	0	4	4F
+R	3	0	4	3B
+R	3	0	4	5D
+R	3	0	4	5F
+R	3	4	2	3B
+R	3	4	2	4D
+R	3	4	2	4G
+R	3	4	2	3B
+R	3	4	2	5D
+R	3	4	2	5G
+R	3	6	2	3B
+R	3	6	2	4D
+R	3	6	2	4F
+R	3	6	2	3B
+R	3	6	2	5D
+R	3	6	2	5F
+R	4	0	4	3A
+R	4	0	4	4D
+R	4	0	4	4F
+R	4	0	4	3A
+R	4	0	4	5D
+R	4	0	4	5F
+R	4	4	2	3B
+R	4	4	2	4D
+R	4	4	2	4F
+R	4	4	2	3B
+R	4	4	2	5D
+R	4	4	2	5F
+R	4	6	2	3A
+R	4	6	2	4D
+R	4	6	2	4F
+R	4	6	2	3A
+R	4	6	2	5D
+R	4	6	2	5F
+R	5	0	4	3A
+R	5	0	4	4C
+R	5	0	4	4F
+R	5	0	4	3A
+R	5	0	4	5C
+R	5	0	4	5F
+R	5	4	2	3A
+R	5	4	2	4D
+R	5	4	2	4F
+R	5	4	2	3A
+R	5	4	2	5D
+R	5	4	2	5F
+R	5	6	2	3A
+R	5	6	2	4C
+R	5	6	2	4F
+R	5	6	2	3A
+R	5	6	2	5C
+R	5	6	2	5F
+R	6	0	4	3A
+R	6	0	4	4C
+R	6	0	4	4E
+R	6	0	4	3A
+R	6	0	4	5C
+R	6	0	4	5E
+R	6	4	2	3A
+R	6	4	2	4C
+R	6	4	2	4F
+R	6	4	2	3A
+R	6	4	2	5C
+R	6	4	2	5F
+R	6	6	2	3A
+R	6	6	2	4C
+R	6	6	2	4E
+R	6	6	2	3A
+R	6	6	2	5C
+R	6	6	2	5E
+R	7	0	4	3G
+R	7	0	4	4C
+R	7	0	4	4E
+R	7	0	4	3G
+R	7	0	4	5C
+R	7	0	4	5E
+R	7	4	2	3A
+R	7	4	2	4C
+R	7	4	2	4E
+R	7	4	2	3A
+R	7	4	2	5C
+R	7	4	2	5E
+R	7	6	2	3G
+R	7	6	2	4C
+R	7	6	2	4E
+R	7	6	2	3G
+R	7	6	2	5C
+R	7	6	2	5E
+R	8	0	8	3G
+R	8	0	8	4C
+R	8	0	8	4E
+R	8	0	8	3G
+R	8	0	8	5C
+R	8	0	8	5E
+
+
+

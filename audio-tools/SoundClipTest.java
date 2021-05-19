@@ -2,6 +2,7 @@ import java.io.*;
 import java.net.URL;
 import javax.sound.sampled.*;
 import javax.swing.*;
+import java.util.*;
 
 // https://www3.ntu.edu.sg/home/ehchua/programming/java/J8c_PlayingSound.html
 // https://stackoverflow.com/questions/7782721/java-raw-audio-output/7782749#7782749
@@ -9,6 +10,7 @@ import javax.swing.*;
 // To play sound using Clip, the process need to be alive.
 // Hence, we use a Swing application.
 public class SoundClipTest extends JFrame {
+	static Random rand = new Random();
 	public static void main(String[] args) throws Exception {
 		new SoundClipTest();
 	}
@@ -28,24 +30,39 @@ public class SoundClipTest extends JFrame {
 		clip.open(audioIn);
 		clip.start();
 	}
-	public static AudioInputStream createAudioInputStream() {
+	public static AudioInputStream createAudioInputStream() throws Exception {
 		float sampleRate = 8000;
 		int totalFrames = 10*(int)sampleRate;
 		// TODO: oddly, the sound does not loop well for less than around 5 or so, wavelengths
 		// TODO: should end on a whole-number multiple of the wavelength to allow looping
-		byte[] buf = new byte[totalFrames];
+		byte[] buf = new byte[2*totalFrames];
 		AudioFormat af = new AudioFormat(
 			sampleRate,
-			8,  // sample size in bits
+			16,  // sample size in bits
 			1,  // channels
 			true,  // signed
 			true  // bigendian
 		);
-		int maxVol = 127;
-		for(int i=0; i<totalFrames; i++){
-			double time = i/sampleRate;
-			buf[i]=getByteValue(time);
+		BufferedWriter out = new BufferedWriter(new FileWriter(new File("sound_clip_test_out.txt")));
+		for(int i=0; i<2*totalFrames; i+=2){
+			double time = i/(2.0*sampleRate);
+			double[] envelope = {0,0.9,0.9,0};
+			double[] envelopeTimes = {0,0.1,9.9,10};
+			double envelopeMultiplier = 0;
+			for(int k=0; k<envelope.length-1; k++) {
+				if(time>=envelopeTimes[k]&&time<=envelopeTimes[k+1]) {
+					double a = envelope[k];
+					double b = envelope[k+1];
+					double c = (time-envelopeTimes[k])/(envelopeTimes[k+1]-envelopeTimes[k]);
+					envelopeMultiplier = b*c+a*(1-c);
+				}
+			}
+			int x = (int)(envelopeMultiplier*getValue(time));
+			out.write(i+"\t"+time+"\t"+envelopeMultiplier+"\t"+x+"\n");
+			buf[i] = (byte)(x/256);
+			buf[i+1] = (byte)(x%256);
 		}
+		out.close();
 		try {
 			byte[] b = buf;
 			AudioInputStream ais = new AudioInputStream(
@@ -59,8 +76,8 @@ public class SoundClipTest extends JFrame {
 		return null;
 	}
 	/** Provides the byte value for this point in the sinusoidal wave. */
-	private static byte getByteValue(double time) {
-		int maxVol = 127;
+	private static double getValue(double time) {
+		int maxVol = 127*256;
 		//double[] harmonics = {1};
 		//double[] harmonics = {1,1.2599,1.4983};
 		//double[] harmonics = {1,1.02,1.25,1.27,1.5,1.52,1.85,1.87};
@@ -111,9 +128,12 @@ public class SoundClipTest extends JFrame {
 		//double fundamental = 98;
 		//double[] fseries = {5541, 8343, 4425, 2205, 992, 351, 84, 112, 127, 145, 192, 315, 360, 281, 856, 252, 426, 388, 119, 76, 111, 79, 185, 442, 286, 120, 232, 226, 573, 236, 323, 153, 116, 30, 13, 73, 126, 486, 455, 293, 319, 271, 934, 1072, 1221, 351, 1138, 897, 325, 1238, 1966, 2157, 1087, 1648, 712, 1808, 4196, 1797, 2935, 820, 2446, 1770, 1431, 572, 1394, 1125, 900, 112, 760, 912, 725, 525, 233, 66, 24, 1, 24, 19, 21}; // zz
 		//double dvalue = generateFromFourierSeries(time,fundamental,fseries);
-		double dvalue = generateFromFormantList(time,100,"ah");
-		byte bvalue = (new Integer((int)Math.round(dvalue*maxVol))).byteValue();
-		return bvalue;
+		double dvalue1 = generateFromFormantList(time,260,"ah");
+		double dvalue2 = generateFromFormantList(time,260,"ah");
+		double dvalue = 0.5*(dvalue1+dvalue2);
+		//double gauss = 0;//Math.max(-1,Math.min(1,rand.nextGaussian()/3));
+		//dvalue = dvalue*0.9+gauss*0.1;
+		return dvalue*maxVol;
 	}
 	public static double generateFromFormantList(double time, double fundamental, String vowelName) {
 		double referenceFundamental = 150;
@@ -139,21 +159,33 @@ public class SoundClipTest extends JFrame {
 			double[] tmp = {15, 151, 6, 2, 0, 0, 1, 1, 1, 1, 6, 5, 2, 1, 4, 6, 1, 2, 5};
 			formantSeries = tmp;
 		} else if(vowelName=="ah") {
-			referenceFundamental = 183;
-			double[] tmp = {558, 97, 419, 629, 432, 360, 526, 225, 213, 120, 68, 68, 64, 27, 78, 56, 112, 65, 26, 21};
+			referenceFundamental = fundamental;
+			//double[] tmp = {2000,4000,400,400,100,400,300,10,100,5,2,5,2}; // piano c4 from sample
+			double[] tmp = {4000,4000,400,400,40,40,40};
 			formantSeries = tmp;
 		}
-		double[] fourierSeries = new double[(int)(formantSeries.length*referenceFundamental/fundamental)];
-		for(int k=0; k<fourierSeries.length; k++) {
-			// TODO: this should not really be zero-indexed
-			fourierSeries[k] = formantSeries[(int)(k*fundamental/referenceFundamental)];
-			//System.out.println(k+","+fourierSeries[k]+","+fundamental*(k+1));
-		}
+		//double[] fourierSeries = new double[(int)(formantSeries.length*referenceFundamental/fundamental)];
+		//for(int k=0; k<fourierSeries.length; k++) {
+		//	// TODO: this should not really be zero-indexed
+		//	fourierSeries[k] = formantSeries[(int)(k*fundamental/referenceFundamental)];
+		//	//System.out.println(k+","+fourierSeries[k]+","+fundamental*(k+1));
+		//}
+		
+		fundamental = 260; // C4
+		formantSeries = new double[]{4000,4000,400,400,40,40,40};
+		//fundamental = 260; // C4
+		//formantSeries = new double[]{6, 121, 4, 2, 4, 2, 1};
+		//fundamental = 130; // C3
+		//formantSeries = new double[]{10,10,10,10,10,10,10,0,1,1,1,1,1,1};
+		//fundamental = 524; // C5
+		//formantSeries = new double[]{1497,977,771,63,48,14,10,2};
+		//fundamental = 250;
+		//formantSeries = new double[]{1};
 		double dvalue = 0;
 		double norm = 0;
-		for(int k=0; k<fourierSeries.length; k++) {
-			dvalue += fourierSeries[k]*Math.cos(fundamental*(k+1)*time*2*Math.PI);
-			norm += fourierSeries[k];
+		for(int k=0; k<formantSeries.length; k++) {
+			dvalue += formantSeries[k]*Math.cos(fundamental*(k+1)*time*2*Math.PI);
+			norm += formantSeries[k];
 		}
 		dvalue = dvalue/norm;
 		return dvalue;

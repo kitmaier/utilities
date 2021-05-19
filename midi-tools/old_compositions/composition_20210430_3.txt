@@ -1,0 +1,27 @@
+# Noodling randomly on a simplified minor pentatonic
+# Cm - 1,3,4,5 - C,Eb,F,G
+
+R	0	0	4	4G
+R	0	4	2	4F
+R	0	6	2	4F
+R	1	0	4	4G
+R	1	4	2	4Eb
+R	1	6	2	4C
+R	2	0	4	4Eb
+R	2	4	2	4F
+R	2	6	2	4Eb
+R	3	0	4	4Eb
+R	3	4	2	4G
+R	3	6	2	4G
+R	4	0	4	4C
+R	4	4	2	4G
+R	4	6	2	4C
+R	5	0	4	4C
+R	5	4	2	4G
+R	5	6	2	4C
+R	6	0	4	4F
+R	6	4	2	4Eb
+R	6	6	2	4G
+R	7	0	8	4C
+
+

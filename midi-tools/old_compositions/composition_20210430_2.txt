@@ -1,0 +1,27 @@
+# Noodling on bluesy variation of major pentatonic
+# C - 1,2,3b,3,5 - C,D,Eb,E,G
+
+R	0	0	4	4G
+R	0	4	2	4E
+R	0	6	2	4Eb
+R	1	0	4	4D
+R	1	4	2	4C
+R	1	6	2	4D
+R	2	0	4	4E
+R	2	4	2	4G
+R	2	6	2	4E
+R	3	0	4	4D
+R	3	4	2	4C
+R	3	6	2	4D
+R	4	0	4	4E
+R	4	4	2	4G
+R	4	6	2	4E
+R	5	0	4	4Eb
+R	5	4	2	4G
+R	5	6	2	4E
+R	6	0	4	4D
+R	6	4	2	4Eb
+R	6	6	2	4D
+R	7	0	8	4C
+
+

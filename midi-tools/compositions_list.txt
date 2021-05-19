@@ -1,0 +1,391 @@
+==> a_whole_new_world_mario_vehrerer_entire.txt <==
+# A Whole New World - Mario Vehrerer arrangement
+
+==> a_whole_new_world_mario_vehrerer_part1.txt <==
+# A Whole New World - Mario Vehrerer arrangement - part 1
+
+==> a_whole_new_world_mario_vehrerer_part1-2.txt <==
+# A Whole New World - Mario Vehrerer arrangement
+
+==> a_whole_new_world_mario_vehrerer_part2.txt <==
+# A Whole New World - Mario Vehrerer arrangement - part 2
+
+==> composition_20210415_1.txt <==
+# C major scale
+
+==> composition_20210415_2.txt <==
+# C minor scale
+
+==> composition_20210415_3.txt <==
+# C phrygian scale
+
+==> composition_20210415_4.txt <==
+# A minor blues scale: ACD(Eb)EG
+
+==> composition_20210415_5.txt <==
+# 12 bar blues (https://en.wikipedia.org/wiki/Twelve-bar_blues)
+# CEGA(Bb)
+# FACD(Eb)
+# GBDE(F)
+
+==> composition_20210415_6.txt <==
+# Why don't you do right (https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0093668)
+# Key of Em (F#)
+# Doubling each measure to get 16th notes
+# Instrument 0x45 (Oboe) (Corrected: English horn)
+# Right hand full volume, left hand 75% volume
+
+==> composition_20210415_7.txt <==
+# Why don't you do right (https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0093668)
+# Key of Em (F#)
+# Doubling each measure to get 16th notes
+# Instrument 0x45 (Oboe) (Corrected: English horn)
+# Right hand full volume, left hand 75% volume
+# Changed last chord to Em
+
+==> composition_20210416_1.txt <==
+# Chromatic scale
+
+==> composition_20210416_2.txt <==
+# Single note 4C
+
+==> composition_20210417_1.txt <==
+# Why don't you do right (https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0093668)
+# Key of Em (F#)
+# Doubling each measure to get 16th notes
+# Instrument 0x45 (Oboe) (Corrected: English horn)
+# Right hand full volume, left hand 75% volume
+# Changed last chord to Em
+# Fixed some mistakes and shifted accompaniment down an octave
+
+==> composition_20210418_1.txt <==
+# The girl from Ipanema (http://therealbook.info/pdfdoc/index/329/1)
+# Key of F major (Bb)
+# Instrument 0x45 (Oboe) (Corrected: English horn)
+# Would probably sound better with some kind of quiet percussion to make the beat clearer
+
+==> composition_20210419_1.txt <==
+# The girl from Ipanema (http://therealbook.info/pdfdoc/index/329/1)
+# Key of F major (Bb)
+# Instrument 0x45 (Oboe) (Corrected: English horn)
+# Would probably sound better with some kind of quiet percussion to make the beat clearer
+# Updated timing of accompaniment based on https://www.musicaneo.com/sheetmusic/sm-98013_vocal-instrumental_version.html
+
+==> composition_20210421_1.txt <==
+# The girl from Ipanema (http://therealbook.info/pdfdoc/index/329/1)
+# Key of F major (Bb)
+# Instrument 0x45 (Oboe) (Corrected: English horn)
+# Would probably sound better with some kind of quiet percussion to make the beat clearer
+# Updated timing of accompaniment based on https://www.musicaneo.com/sheetmusic/sm-98013_vocal-instrumental_version.html
+
+==> composition_20210421_2.txt <==
+# Ode to Joy (Easier) - intro
+# Synthesia built-in
+# Transposed into every key
+
+==> composition_20210422_1.txt <==
+# Percussion experiment track
+
+==> composition_20210422_2.txt <==
+# Percussion experiment track
+
+==> composition_20210422_3.txt <==
+# The girl from Ipanema (https://www.musicaneo.com/sheetmusic/sm-98013_vocal-instrumental_version.html)
+# Key of F major (Bb)
+# Left hand oboe, right hand violin  (Corrected: English horn, viola)
+# Added percussion
+
+==> composition_20210423_1.txt <==
+# Kryptonite - 3 Doors Down
+# Key of Bm?? (B C# D E F# G A)
+# https://www.virtualsheetmusic.com/score/HL-31739.html
+# https://www.e-chords.com/chords/3-doors-down/kryptonite
+# https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0129110
+# Need to program in 2/3 shuffle/swing beat
+
+==> composition_20210424_1.txt <==
+# 12 bar blues (https://en.wikipedia.org/wiki/Twelve-bar_blues)
+# CEGA(Bb)
+# FACD(Eb)
+# GBDE(F)
+
+==> composition_20210424_2.txt <==
+# 12 bar blues (https://en.wikipedia.org/wiki/Twelve-bar_blues)
+# CEGA(Bb)
+# FACD(Eb)
+# GBDE(F)
+# Fake shuffled rhythm with 3 measures of 8 half-beats per section
+
+==> composition_20210424_3.txt <==
+# 12 bar blues (https://en.wikipedia.org/wiki/Twelve-bar_blues)
+# CEGA(Bb)
+# FACD(Eb)
+# GBDE(F)
+# Fake shuffled rhythm with 3 measures of 8 half-beats per section
+
+==> composition_20210430_1.txt <==
+# Continuous triplet arpeggio on the left hand
+# Chord progression i-i-iv-iv-i-i-v-vi-i in Cm
+# Right hand only notes 1,3,4,5
+
+==> composition_20210430_2.txt <==
+# Noodling on bluesy variation of major pentatonic
+# C - 1,2,3b,3,5 - C,D,Eb,E,G
+
+==> composition_20210430_3.txt <==
+# Noodling randomly on a simplified minor pentatonic
+# Cm - 1,3,4,5 - C,Eb,F,G
+
+==> composition_20210430_4.txt <==
+# Noodling randomly on a simplified minor pentatonic
+# Cm - 1,3,4,5 - C,Eb,F,G
+# Generated in Excel: =INDEX($A:$A,RANDBETWEEN(1,COUNTA($A:$A)),1)
+
+==> composition_20210430_5.txt <==
+# Noodling randomly on a simplified minor pentatonic
+# Cm - 1,3,4,5 - C,Eb,F,G
+# Generated in Excel: =INDEX($A:$A,RANDBETWEEN(1,COUNTA($A:$A)),1)
+
+==> composition_20210502_1.txt <==
+# Noodling randomly on a simplified major pentatonic
+# C - 1,2,3,5 - C,D,E,G
+# Generated in Excel: =INDEX($A:$A,RANDBETWEEN(1,COUNTA($A:$A)),1)
+
+==> composition_20210502_2.txt <==
+# Noodling randomly on a simplified major pentatonic
+# C - 1,2,3,5 - C,D,E,G
+# Generated in Excel: =INDEX($A:$A,RANDBETWEEN(1,COUNTA($A:$A)),1)
+
+==> composition_20210502_3.txt <==
+# Noodling randomly on a simplified pentatonic
+# C - 1,2,5,6 - C,D,G,A / Am - 1,3,4,7
+# Generated in Excel: =INDEX($A:$A,RANDBETWEEN(1,COUNTA($A:$A)),1)
+
+==> composition_20210502_4.txt <==
+# Noodling randomly on a major pentatonic
+# C - 1,2,3,5,6 - C,D,E,G,A
+# Generated in Excel: =INDEX($A:$A,RANDBETWEEN(1,COUNTA($A:$A)),1)
+
+==> composition_20210502_5.txt <==
+# Noodling randomly on a minor pentatonic
+# Cm - 1,2,3,5,6 - C,D,Eb,G,A
+# Generated in Excel: =INDEX($A:$A,RANDBETWEEN(1,COUNTA($A:$A)),1)
+
+==> composition_20210502_6.txt <==
+# Noodling randomly on a minor pentatonic
+# Am - 3A,4C,4D,4E,4G,4A,5C,5D,5E,5G,5A
+# Generated in Excel: =INDEX($A:$A,RANDBETWEEN(1,COUNTA($A:$A)),1)
+
+==> composition_20210502_7.txt <==
+# Noodling randomly on a simplified minor pentatonic
+# Am - 3A,4C,4D,4E,4A,5C,5D,5E
+# Generated in Excel: =INDEX($A:$A,RANDBETWEEN(1,COUNTA($A:$A)),1)
+
+==> composition_20210502_8.txt <==
+# Noodling randomly on a simplified major pentatonic
+# C - 4C,4D,4E,4G,5C,5D,5E,5G
+# Generated in Excel: =INDEX($A:$A,RANDBETWEEN(1,COUNTA($A:$A)),1)
+
+==> composition_20210502_9.txt <==
+# Noodling randomly on a simplified major pentatonic
+# C - 3C,3D,3E,3G,4C,4D,4E,4G,5C,5D,5E,5G
+# Generated in Excel: =INDEX($A:$A,RANDBETWEEN(1,COUNTA($A:$A)),1)
+
+==> composition_20210503_1.txt <==
+# Step down through chords in C major by thirds
+# Efficient voice leading exercise
+# https://global.oup.com/us/companion.websites/9780195336672/examples/chapter1/figure_1313/
+# Generator script:
+
+==> composition_20210503_2.txt <==
+# Rotate between major/minor chords by semitone steps
+# https://global.oup.com/us/companion.websites/9780195336672/examples/chapter3/figure_3102a/
+# Generator script:
+
+==> composition_20210503_3.txt <==
+# Rotate between major/minor chords by semitone steps
+# https://global.oup.com/us/companion.websites/9780195336672/examples/chapter3/figure_3102a/
+# Generator script:
+
+==> composition_20210504_1.txt <==
+# Parallel descending voices using C,F,G
+# https://global.oup.com/us/companion.websites/9780195336672/examples/chapter1/figure_133/
+# Generator script:
+
+==> composition_20210504_2.txt <==
+# Parallel descending voices using C,F,G
+# https://global.oup.com/us/companion.websites/9780195336672/examples/chapter1/figure_133/
+# Generator script:
+
+==> composition_20210504_3.txt <==
+# Step down through chords in C major by thirds
+# Efficient voice leading exercise
+# https://global.oup.com/us/companion.websites/9780195336672/examples/chapter1/figure_1313/
+# Fixed typo in 5th note of chords
+# Generator script:
+
+==> composition_20210504_4.txt <==
+# Randomly walking chords C,F,G with close voice leading
+# Generator script:
+
+==> composition_20210504_5.txt <==
+# Parallel descending voices in minor using Am,Dm,Em
+# Generator script:
+
+==> composition_20210504_6.txt <==
+# Randomly walking chords in minor using Am,Dm,Em with close voice leading
+# Generator script:
+
+==> composition_20210504_7.txt <==
+# Parallel descending voices based on chords from Why Don't You Do Right (Em7,C7,B7)
+# Em7 - E,G,B,D
+# C7 - C,E,G,Bb
+# B7 - B,D#,F#,A
+# Generator script:
+
+==> composition_20210504_8.txt <==
+# Randomly walking chords from Why Don't You Do Right (Em7,C7,B7)
+# Em7 - E,G,B,D
+# C7 - C,E,G,Bb
+# B7 - B,D#,F#,A
+# Generator script:
+
+==> composition_20210506_1.txt <==
+# The Geometry of Music - page 198 fig 6.2.2 - medieval two voice harmony
+# Scale: C,D,E,F,G,A,B/Bb
+# Allowed intervals: unison/octave, fourth/fifth
+# Allowed steps: +1/+1, +1/+0, -1/+2, etc
+# TODO: distinct voices so that unison sounds interesting, shift voices back into the same octave
+# TODO: don't limit to one octave, coordinate voices generally staying close togeter
+# TODO: fill in the imperfect harmonies with reduced probability (third/sixth)
+# TODO: implement "stretchy wire" gently pulling wandering melody back to the middle of the range
+# Generator script:
+
+==> composition_20210507_1.txt <==
+# Example chord progression from Adam Neely video How To Walk A Jazz Bass Line
+# https://www.youtube.com/watch?v=ruTfC5v9Z2Y
+# Key of Bb - Bb, C, D, Eb, F, G, A
+# Cm7, F7, Dm7, G7(b9), Cm7, F7(b9), Bbmaj7, Bbmaj7
+# Bbmaj7 - Bb, D, F, A
+# Cm7 - C, Eb, G, Bb
+# Dm7 - D, F, A, C
+# F7(b9) - F, A, C, Eb, Gb
+# G7(b9) - G, B, D, F, Ab
+
+==> composition_20210507_2.txt <==
+# Example chord progression from Adam Neely video How To Walk A Jazz Bass Line
+# https://www.youtube.com/watch?v=ruTfC5v9Z2Y
+# Key of Bb - Bb, C, D, Eb, F, G, A
+# Cm7, F7, Dm7, G7(b9), Cm7, F7(b9), Bbmaj7, Bbmaj7
+# Bbmaj7 - Bb, D, F, A
+# Cm7 - C, Eb, G, Bb
+# Dm7 - D, F, A, C
+# F7(b9) - F, A, C, Eb, Gb
+# G7(b9) - G, B, D, F, Ab
+
+==> composition_20210508_1.txt <==
+# Example chord progression from Adam Neely video How To Walk A Jazz Bass Line
+# https://www.youtube.com/watch?v=ruTfC5v9Z2Y
+# Key of Bb - Bb, C, D, Eb, F, G, A
+# Cm7, F7, Dm7, G7(b9), Cm7, F7(b9), Bbmaj7, Bbmaj7
+# Bbmaj7 - Bb, D, F, A
+# Cm7 - C, Eb, G, Bb
+# Dm7 - D, F, A, C
+# F7(b9) - F, A, C, Eb, Gb
+# G7(b9) - G, B, D, F, Ab
+
+==> composition_20210508_2.txt <==
+# Example chord progression from Adam Neely video How To Walk A Jazz Bass Line
+# https://www.youtube.com/watch?v=ruTfC5v9Z2Y
+# Key of Bb - Bb, C, D, Eb, F, G, A
+# Cm7, F7, Dm7, G7(b9), Cm7, F7(b9), Bbmaj7, Bbmaj7
+# Bbmaj7 - Bb, D, F, A
+# Cm7 - C, Eb, G, Bb
+# Dm7 - D, F, A, C
+# F7(b9) - F, A, C, Eb, Gb
+# G7(b9) - G, B, D, F, Ab
+
+==> composition_20210508_3.txt <==
+# Intro to The Irish Ballad by Tom Lehrer
+#! time_signature: 6/8
+# Key: D minor - D, E, F, G, A, Bb, C
+
+==> composition_20210509_1.txt <==
+# The Irish Ballad by Tom Lehrer
+#! time_signature: 6/8
+# Key: D minor - D, E, F, G, A, Bb, C
+# Chord progression: i-iv-i-VII-i-I
+
+==> composition_20210510_1.txt <==
+# The Vatican Rag by Tom Lehrer (Intro and first verse)
+#! tempo: fast
+# Key: C major
+# Chord progression: ???
+# Should be a lot of sixteenth notes, but left them out because they're still hard to represent here
+
+==> composition_20210512_1.txt <==
+# Randomized melody using four selected notes (E G A B) of E minor
+# Played in triplets, with each triplet repeated
+# Each set of triplets different from the prior set in only one note
+# Generator script:
+
+==> composition_20210512_2.txt <==
+# Randomized melody using four selected notes (E G A B) of E minor
+# Played in triplets, with each triplet repeated
+# Each set of triplets different from the prior set in only one note
+# Two voices in different octaves
+# Generator script:
+
+==> composition_20210512_3.txt <==
+# Randomized melody using four selected notes (E G A B) of E minor
+# Played in triplets, with each triplet repeated
+# Each set of triplets different from the prior set in only one note and by only one step in pitch
+# Two voices in different octaves
+# Generator script:
+
+==> composition_20210515_1.txt <==
+# Randomized melody using E minor pentatonic scale (E G A B D)
+# Going by series of steps in random direction with random length
+# Generator script:
+
+==> composition_20210515_2.txt <==
+# Randomized melody using E minor pentatonic scale (E G A B D)
+# Walking to a randomly selected 1 or 5 tone in the key
+# Generator script:
+
+==> composition_20210515_3.txt <==
+# Randomized melody using E minor pentatonic scale (E G A B D)
+# Walking to a randomly selected 1 or 5 tone in the key
+# With a slight bias towards shorter walks
+# Generator script:
+
+==> composition_20210515_4.txt <==
+# Randomized melody using E minor pentatonic scale (E G A B D)
+# Walking from and to a randomly selected E or B
+# Generator script:
+
+==> composition_20210515_5.txt <==
+# Randomized melody using G major pentatonic scale (G A B D E)
+# Walking from and to a randomly selected G or D
+# Generator script:
+
+==> composition_20210515_6.txt <==
+# Randomized melody using E minor blues scale (E G A Bb B D)
+# Walking from and to a randomly selected E or B
+# Generator script:
+
+==> composition_20210515_7.txt <==
+# Randomized melody using C major scale
+# Walking from and to a randomly selected C or G
+# Generator script:
+
+==> composition_20210515_8.txt <==
+# Randomized melody using C minor scale
+# Walking from and to a randomly selected C or G
+# Generator script:
+
+==> composition_20210515_9.txt <==
+# Randomized melody using A minor scale and A minor triad
+# Walking from and to a randomly selected A or E
+# Generator script:
+

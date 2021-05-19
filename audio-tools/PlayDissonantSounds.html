@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>capture microphone audio into buffer</title>
+	</head>
+	<body>
+		<p><button onclick="playAudio()">Play Sound</button></p>
+	</body>
+	<script type="text/javascript">
+		// TODO: provide slider and text input to control pitch
+		// TODO: provide interactive visual display to control formant shape
+		// TODO: take audio input, analyze spectrum, store formant shape, play back generated sound
+		function playAudio(vowel) {
+			playOscillator(vowel);
+		}
+		function playOscillator(vowel) {
+			var audioContext = new AudioContext();
+			var frequencies = [0,1]
+			var real = new Float32Array(frequencies.length);
+			var imag = new Float32Array(frequencies.length);
+			for(var k=0; k<frequencies.length; k++) {
+				real[k] += frequencies[k];
+			}
+			var wave = audioContext.createPeriodicWave(real, imag, {disableNormalization: false});
+			freqList = [250,500,500,500,500]
+			//freqList = [200,400,600,800,212,424,636,848];
+			//freqList = [200,400,600,800,300,600,900,1200];
+			//freqList = [200,400,600,800,252,504,756,1008];
+			//freqList = [200,259];
+			//freqList = [200, 212, 250, 300];
+			//freqList = [261,522];
+			//freqList = [200,200,200,200,200,400,400,400,400,400,600,600,600,600,800,800,800,1000,1000,1000,1200,1200,1200,1400,1400,1600,1600,1800,2000,2200,2400];
+			//freqList = [800,1200.25];
+			//freqList = [179,237,328,497,533,643,738,842,980,1078,1179,1237,1328,1497,1533,1643,1738,1842,1980,2078]
+			for(var k=0; k<freqList.length; k++) {
+				freqVal = freqList[k];
+				osc = audioContext.createOscillator();
+				osc.setPeriodicWave(wave);
+				osc.frequency.setValueAtTime(freqVal, audioContext.currentTime)
+				osc.connect(audioContext.destination);
+				osc.start();
+				osc.stop(4);
+			}
+		}
+	</script>
+</html>

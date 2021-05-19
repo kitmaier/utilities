@@ -1,0 +1,246 @@
+# The Geometry of Music - page 198 fig 6.2.2 - medieval two voice harmony
+# Scale: C,D,E,F,G,A,B/Bb
+# Allowed intervals: unison/octave, fourth/fifth
+# Allowed steps: +1/+1, +1/+0, -1/+2, etc
+# TODO: distinct voices so that unison sounds interesting, shift voices back into the same octave
+# TODO: don't limit to one octave, coordinate voices generally staying close togeter
+# TODO: fill in the imperfect harmonies with reduced probability (third/sixth)
+# TODO: implement "stretchy wire" gently pulling wandering melody back to the middle of the range
+#
+# Generator script:
+#link_strings = ['CC DD','DD EE','EE FF',
+# 'FF GG','GG AA','AA XX','BB CC','BE CF',
+# 'CF DG','DG AE','AE XF','XF CG','CG DA',
+# 'DA BE','XF CF','CF CG','CG DG','DG DA',
+# 'DA AE','AE BE','CC BE','BE DD','DD CF',
+# 'CF EE','EE DG','DG FF','FF AE','AE GG',
+# 'GG XF','XF AA','AA CG','CG XX','CG BB',
+# 'XX DA','BB DA','DA CC','BE CG','CF DA',
+# 'AE CF','XF DG','DG BE','CG AE','DA XF']
+#links = {}
+#def forge(a,b):
+# targets = links.get(a,[])
+# targets.append(b)
+# links[a] = targets
+#
+#for link_string in link_strings:
+# forge(link_string[0:2],link_string[3:5])
+# forge(link_string[3:5],link_string[0:2])
+#
+#import random
+#state = 'CC'
+#for step in range(100):
+# voice1 = state[0:1]
+# voice2 = state[1:2]
+# if voice1=='X':
+#  voice1 = 'Bb'
+# if voice2=='X':
+#  voice2 = 'Bb'
+# print('L',0,4*step,4,'3'+voice1)
+# print('R',0,4*step,4,'4'+voice2)
+# targets = links[state]
+# index = random.randint(0,len(targets)-1)
+# state = targets[index]
+
+
+
+L	0	0	4	3C
+R	0	0	4	4C
+L	0	4	4	3B
+R	0	4	4	4B
+L	0	8	4	3C
+R	0	8	4	4G
+L	0	12	4	3A
+R	0	12	4	4A
+L	0	16	4	3G
+R	0	16	4	4G
+L	0	20	4	3A
+R	0	20	4	4A
+L	0	24	4	3Bb
+R	0	24	4	4Bb
+L	0	28	4	3C
+R	0	28	4	4G
+L	0	32	4	3C
+R	0	32	4	4F
+L	0	36	4	3Bb
+R	0	36	4	4F
+L	0	40	4	3C
+R	0	40	4	4G
+L	0	44	4	3D
+R	0	44	4	4G
+L	0	48	4	3D
+R	0	48	4	4A
+L	0	52	4	3C
+R	0	52	4	4F
+L	0	56	4	3A
+R	0	56	4	4E
+L	0	60	4	3C
+R	0	60	4	4G
+L	0	64	4	3D
+R	0	64	4	4A
+L	0	68	4	3C
+R	0	68	4	4F
+L	0	72	4	3B
+R	0	72	4	4E
+L	0	76	4	3D
+R	0	76	4	4D
+L	0	80	4	3C
+R	0	80	4	4C
+L	0	84	4	3B
+R	0	84	4	4E
+L	0	88	4	3C
+R	0	88	4	4F
+L	0	92	4	3D
+R	0	92	4	4G
+L	0	96	4	3A
+R	0	96	4	4E
+L	0	100	4	3B
+R	0	100	4	4E
+L	0	104	4	3C
+R	0	104	4	4F
+L	0	108	4	3D
+R	0	108	4	4G
+L	0	112	4	3D
+R	0	112	4	4A
+L	0	116	4	3A
+R	0	116	4	4E
+L	0	120	4	3D
+R	0	120	4	4G
+L	0	124	4	3F
+R	0	124	4	4F
+L	0	128	4	3D
+R	0	128	4	4G
+L	0	132	4	3B
+R	0	132	4	4E
+L	0	136	4	3A
+R	0	136	4	4E
+L	0	140	4	3D
+R	0	140	4	4A
+L	0	144	4	3Bb
+R	0	144	4	4F
+L	0	148	4	3A
+R	0	148	4	4E
+L	0	152	4	3F
+R	0	152	4	4F
+L	0	156	4	3G
+R	0	156	4	4G
+L	0	160	4	3A
+R	0	160	4	4A
+L	0	164	4	3Bb
+R	0	164	4	4Bb
+L	0	168	4	3A
+R	0	168	4	4A
+L	0	172	4	3C
+R	0	172	4	4G
+L	0	176	4	3Bb
+R	0	176	4	4Bb
+L	0	180	4	3A
+R	0	180	4	4A
+L	0	184	4	3C
+R	0	184	4	4G
+L	0	188	4	3A
+R	0	188	4	4A
+L	0	192	4	3Bb
+R	0	192	4	4F
+L	0	196	4	3D
+R	0	196	4	4A
+L	0	200	4	3C
+R	0	200	4	4C
+L	0	204	4	3B
+R	0	204	4	4E
+L	0	208	4	3D
+R	0	208	4	4G
+L	0	212	4	3E
+R	0	212	4	4E
+L	0	216	4	3F
+R	0	216	4	4F
+L	0	220	4	3D
+R	0	220	4	4G
+L	0	224	4	3B
+R	0	224	4	4E
+L	0	228	4	3C
+R	0	228	4	4F
+L	0	232	4	3D
+R	0	232	4	4A
+L	0	236	4	3Bb
+R	0	236	4	4F
+L	0	240	4	3G
+R	0	240	4	4G
+L	0	244	4	3A
+R	0	244	4	4A
+L	0	248	4	3Bb
+R	0	248	4	4F
+L	0	252	4	3C
+R	0	252	4	4G
+L	0	256	4	3D
+R	0	256	4	4G
+L	0	260	4	3E
+R	0	260	4	4E
+L	0	264	4	3D
+R	0	264	4	4D
+L	0	268	4	3C
+R	0	268	4	4F
+L	0	272	4	3B
+R	0	272	4	4E
+L	0	276	4	3C
+R	0	276	4	4G
+L	0	280	4	3Bb
+R	0	280	4	4F
+L	0	284	4	3A
+R	0	284	4	4A
+L	0	288	4	3C
+R	0	288	4	4G
+L	0	292	4	3A
+R	0	292	4	4E
+L	0	296	4	3C
+R	0	296	4	4F
+L	0	300	4	3A
+R	0	300	4	4E
+L	0	304	4	3D
+R	0	304	4	4G
+L	0	308	4	3Bb
+R	0	308	4	4F
+L	0	312	4	3D
+R	0	312	4	4G
+L	0	316	4	3F
+R	0	316	4	4F
+L	0	320	4	3A
+R	0	320	4	4E
+L	0	324	4	3G
+R	0	324	4	4G
+L	0	328	4	3F
+R	0	328	4	4F
+L	0	332	4	3E
+R	0	332	4	4E
+L	0	336	4	3D
+R	0	336	4	4G
+L	0	340	4	3B
+R	0	340	4	4E
+L	0	344	4	3C
+R	0	344	4	4F
+L	0	348	4	3A
+R	0	348	4	4E
+L	0	352	4	3C
+R	0	352	4	4G
+L	0	356	4	3B
+R	0	356	4	4E
+L	0	360	4	3C
+R	0	360	4	4C
+L	0	364	4	3D
+R	0	364	4	4A
+L	0	368	4	3B
+R	0	368	4	4E
+L	0	372	4	3D
+R	0	372	4	4A
+L	0	376	4	3C
+R	0	376	4	4G
+L	0	380	4	3C
+R	0	380	4	4F
+L	0	384	4	3C
+R	0	384	4	4G
+L	0	388	4	3Bb
+R	0	388	4	4Bb
+L	0	392	4	3C
+R	0	392	4	4G
+L	0	396	4	3A
+R	0	396	4	4E

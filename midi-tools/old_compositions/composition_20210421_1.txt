@@ -1,0 +1,278 @@
+# The girl from Ipanema (http://therealbook.info/pdfdoc/index/329/1)
+# Key of F major (Bb)
+# Instrument 0x45 (Oboe) (Corrected: English horn)
+# Would probably sound better with some kind of quiet percussion to make the beat clearer
+# Updated timing of accompaniment based on https://www.musicaneo.com/sheetmusic/sm-98013_vocal-instrumental_version.html
+
+R	0	0	3	4G
+R	0	3	1	4E
+R	0	4	1	4E
+R	0	5	2	4D
+R	0	7	3	4G
+
+R	1	2	1	4E
+R	1	3	2	4E
+R	1	5	1	4E
+R	1	6	1	4D
+R	1	7	3	4G
+
+R	2	2	2	4E
+R	2	4	2	4E
+R	2	6	1	4D
+R	2	7	2	4G
+
+R	3	1	1	4G
+R	3	2	1	4E
+R	3	3	2	4E
+R	3	5	1	4E
+R	3	6	1	4D
+R	3	7	2	4F
+
+R	4	1	2	4D
+R	4	3	2	4D
+R	4	5	1	4D
+R	4	6	1	4C
+R	4	7	2	4E
+
+R	5	1	2	4C
+R	5	3	2	4C
+R	5	5	1	4C
+R	5	6	2	4Bb
+
+R	6	2	10	4C
+
+R	8	0	3	4G
+R	8	3	1	4E
+R	8	4	1	4E
+R	8	5	2	4D
+R	8	7	3	4G
+
+R	9	2	1	4E
+R	9	3	2	4E
+R	9	5	1	4E
+R	9	6	1	4D
+R	9	7	3	4G
+
+R	10	2	2	4E
+R	10	4	2	4E
+R	10	6	1	4D
+R	10	7	2	4G
+
+R	11	1	1	4G
+R	11	2	1	4E
+R	11	3	2	4E
+R	11	5	1	4E
+R	11	6	1	4D
+R	11	7	2	4F
+
+R	12	1	2	4D
+R	12	3	2	4D
+R	12	5	1	4D
+R	12	6	1	4C
+R	12	7	2	4E
+
+R	13	1	2	4C
+R	13	3	2	4C
+R	13	5	1	4C
+R	13	6	2	4Bb
+
+R	14	2	14	4C
+
+
+
+
+
+
+# Fmaj7
+L	0	0	4	2F
+L	0	0	4	2A
+L	0	0	4	3C
+L	0	0	4	3E
+L	0	4	3	2F
+L	0	4	3	2A
+L	0	4	3	3C
+L	0	4	3	3E
+L	0	7	4	2F
+L	0	7	4	2A
+L	0	7	4	3C
+L	0	7	4	3E
+L	0	11	4	2F
+L	0	11	4	2A
+L	0	11	4	3C
+L	0	11	4	3E
+# G7
+L	2	-1	5	2G
+L	2	-1	5	2B
+L	2	-1	5	3D
+L	2	-1	5	3F
+L	2	4	3	2G
+L	2	4	3	2B
+L	2	4	3	3D
+L	2	4	3	3F
+L	2	7	4	2G
+L	2	7	4	2B
+L	2	7	4	3D
+L	2	7	4	3F
+L	2	11	4	2G
+L	2	11	4	2B
+L	2	11	4	3D
+L	2	11	4	3F
+# G-7
+L	4	-1	4	2G
+L	4	-1	4	2Bb
+L	4	-1	4	3D
+L	4	-1	4	3F
+L	4	3	4	2G
+L	4	3	4	2Bb
+L	4	3	4	3D
+L	4	3	4	3F
+# Gb7
+L	5	-1	4	2Gb
+L	5	-1	4	2Bb
+L	5	-1	4	3Db
+L	5	-1	4	3E
+L	5	3	5	2Gb
+L	5	3	5	2Bb
+L	5	3	5	3Db
+L	5	3	5	3E
+
+# Fmaj7
+L	6	0	2	2F
+L	6	0	2	2A
+L	6	0	2	3C
+L	6	0	2	3E
+L	6	2	3	2F
+L	6	2	3	2A
+L	6	2	3	3C
+L	6	2	3	3E
+L	6	5	2	2F
+L	6	5	2	2A
+L	6	5	2	3C
+L	6	5	2	3E
+L	6	7	1	2F
+L	6	7	1	2A
+L	6	7	1	3C
+L	6	7	1	3E
+# Gb7
+L	7	0	2	2Gb
+L	7	0	2	2Bb
+L	7	0	2	3Db
+L	7	0	2	3E
+L	7	2	1	2Gb
+L	7	2	1	2Bb
+L	7	2	1	3Db
+L	7	2	1	3E
+L	7	3	2	2Gb
+L	7	3	2	2Bb
+L	7	3	2	3Db
+L	7	3	2	3E
+L	7	5	1	2Gb
+L	7	5	1	2Bb
+L	7	5	1	3Db
+L	7	5	1	3E
+L	7	6	2	2Gb
+L	7	6	2	2Bb
+L	7	6	2	3Db
+L	7	6	2	3E
+
+# Fmaj7
+L	8	0	4	2F
+L	8	0	4	2A
+L	8	0	4	3C
+L	8	0	4	3E
+L	8	4	3	2F
+L	8	4	3	2A
+L	8	4	3	3C
+L	8	4	3	3E
+L	8	7	4	2F
+L	8	7	4	2A
+L	8	7	4	3C
+L	8	7	4	3E
+L	8	11	4	2F
+L	8	11	4	2A
+L	8	11	4	3C
+L	8	11	4	3E
+# G7
+L	10	-1	5	2G
+L	10	-1	5	2B
+L	10	-1	5	3D
+L	10	-1	5	3F
+L	10	4	3	2G
+L	10	4	3	2B
+L	10	4	3	3D
+L	10	4	3	3F
+L	10	7	4	2G
+L	10	7	4	2B
+L	10	7	4	3D
+L	10	7	4	3F
+L	10	11	4	2G
+L	10	11	4	2B
+L	10	11	4	3D
+L	10	11	4	3F
+# G-7
+L	12	-1	4	2G
+L	12	-1	4	2Bb
+L	12	-1	4	3D
+L	12	-1	4	3F
+L	12	3	4	2G
+L	12	3	4	2Bb
+L	12	3	4	3D
+L	12	3	4	3F
+# Gb7
+L	13	-1	4	2Gb
+L	13	-1	4	2Bb
+L	13	-1	4	3Db
+L	13	-1	4	3E
+L	13	3	5	2Gb
+L	13	3	5	2Bb
+L	13	3	5	3Db
+L	13	3	5	3E
+
+# Fmaj7
+L	14	0	2	2F
+L	14	0	2	2A
+L	14	0	2	3C
+L	14	0	2	3E
+L	14	2	3	2F
+L	14	2	3	2A
+L	14	2	3	3C
+L	14	2	3	3E
+L	14	5	2	2F
+L	14	5	2	2A
+L	14	5	2	3C
+L	14	5	2	3E
+L	14	7	1	2F
+L	14	7	1	2A
+L	14	7	1	3C
+L	14	7	1	3E
+# Fmaj7
+L	15	0	2	2F
+L	15	0	2	2A
+L	15	0	2	3C
+L	15	0	2	3E
+L	15	2	1	2F
+L	15	2	1	2A
+L	15	2	1	3C
+L	15	2	1	3E
+L	15	3	2	2F
+L	15	3	2	2A
+L	15	3	2	3C
+L	15	3	2	3E
+L	15	5	1	2F
+L	15	5	1	2A
+L	15	5	1	3C
+L	15	5	1	3E
+L	15	6	2	2F
+L	15	6	2	2A
+L	15	6	2	3C
+L	15	6	2	3E
+
+
+
+
+
+
+
+
+
+

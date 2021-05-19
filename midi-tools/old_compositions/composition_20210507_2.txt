@@ -1,0 +1,557 @@
+# Example chord progression from Adam Neely video How To Walk A Jazz Bass Line
+# https://www.youtube.com/watch?v=ruTfC5v9Z2Y
+# Key of Bb - Bb, C, D, Eb, F, G, A
+# Cm7, F7, Dm7, G7(b9), Cm7, F7(b9), Bbmaj7, Bbmaj7
+# Bbmaj7 - Bb, D, F, A
+# Cm7 - C, Eb, G, Bb
+# Dm7 - D, F, A, C
+# F7(b9) - F, A, C, Eb, Gb
+# G7(b9) - G, B, D, F, Ab
+
+
+# Generator script:
+#left_chords = [
+# ['4C','4Eb','4G','4Bb'],
+# ['4C','4Eb','4F','4A'],
+# ['4C','4D','4F','4A'],
+# ['3B','4D','4F','4Ab'],
+# ['4C','4Eb','4G','4Bb'],
+# ['4C','4Eb','4Gb','4A'],
+# ['3Bb','4D','4F','4A'],
+# ['3Bb','4D','4F','4A'],
+# ['4C','4Eb','4G','4Bb'],
+# ['4C','4Eb','4F','4A'],
+# ['4C','4D','4F','4A'],
+# ['3B','4D','4F','4Ab'],
+# ['4C','4Eb','4G','4Bb'],
+# ['4C','4Eb','4Gb','4A'],
+# ['3Bb','4D','4F','4A'],
+# ['3Bb','4D','4F','4A']
+#]
+#right_melody = [
+# ['5C','5Eb','5G','5Bb'],
+# ['5C','5Eb','5F','5A'],
+# ['5C','5D','5F','5A'],
+# ['4B','5D','5F','5Ab'],
+# ['5C','5Eb','5G','5Bb'],
+# ['5C','5Eb','5Gb','5A'],
+# ['4Bb','5D','5F','5A'],
+# ['4Bb','5D','5F','5A'],
+# ['5C','5Eb','5G','5Bb'],
+# ['5C','5Eb','5F','5A'],
+# ['5C','5D','5F','5A'],
+# ['4B','5D','5F','5Ab'],
+# ['5C','5Eb','5G','5Bb'],
+# ['5C','5Eb','5Gb','5A'],
+# ['4Bb','5D','5F','5A'],
+# ['4Bb','5D','5F','5A']
+#]
+#for chord_num in range(16):
+# for rep in [0,1,2]:
+#  measure = chord_num*3+rep
+#  chord = left_chords[chord_num]
+#  for note in chord:
+#   print('L',measure,0,8,note)
+#  for (beat,duration,note_num) in [(0,1,0),(1,1,1),(2,2,2),(4,1,3),(5,1,2),(6,2,1)]:
+#   melody_note = right_melody[chord_num][note_num]
+#   print('R',measure,beat,duration,melody_note)
+#
+#for note in left_chords[15]:
+# print('L',48,0,8,note)
+#
+#for note in right_melody[15]:
+# print('R',48,0,8,note)
+
+
+
+L	0	0	8	4C
+L	0	0	8	4Eb
+L	0	0	8	4G
+L	0	0	8	4Bb
+R	0	0	1	5C
+R	0	1	1	5Eb
+R	0	2	2	5G
+R	0	4	1	5Bb
+R	0	5	1	5G
+R	0	6	2	5Eb
+L	1	0	8	4C
+L	1	0	8	4Eb
+L	1	0	8	4G
+L	1	0	8	4Bb
+R	1	0	1	5C
+R	1	1	1	5Eb
+R	1	2	2	5G
+R	1	4	1	5Bb
+R	1	5	1	5G
+R	1	6	2	5Eb
+L	2	0	8	4C
+L	2	0	8	4Eb
+L	2	0	8	4G
+L	2	0	8	4Bb
+R	2	0	1	5C
+R	2	1	1	5Eb
+R	2	2	2	5G
+R	2	4	1	5Bb
+R	2	5	1	5G
+R	2	6	2	5Eb
+L	3	0	8	4C
+L	3	0	8	4Eb
+L	3	0	8	4F
+L	3	0	8	4A
+R	3	0	1	5C
+R	3	1	1	5Eb
+R	3	2	2	5F
+R	3	4	1	5A
+R	3	5	1	5F
+R	3	6	2	5Eb
+L	4	0	8	4C
+L	4	0	8	4Eb
+L	4	0	8	4F
+L	4	0	8	4A
+R	4	0	1	5C
+R	4	1	1	5Eb
+R	4	2	2	5F
+R	4	4	1	5A
+R	4	5	1	5F
+R	4	6	2	5Eb
+L	5	0	8	4C
+L	5	0	8	4Eb
+L	5	0	8	4F
+L	5	0	8	4A
+R	5	0	1	5C
+R	5	1	1	5Eb
+R	5	2	2	5F
+R	5	4	1	5A
+R	5	5	1	5F
+R	5	6	2	5Eb
+L	6	0	8	4C
+L	6	0	8	4D
+L	6	0	8	4F
+L	6	0	8	4A
+R	6	0	1	5C
+R	6	1	1	5D
+R	6	2	2	5F
+R	6	4	1	5A
+R	6	5	1	5F
+R	6	6	2	5D
+L	7	0	8	4C
+L	7	0	8	4D
+L	7	0	8	4F
+L	7	0	8	4A
+R	7	0	1	5C
+R	7	1	1	5D
+R	7	2	2	5F
+R	7	4	1	5A
+R	7	5	1	5F
+R	7	6	2	5D
+L	8	0	8	4C
+L	8	0	8	4D
+L	8	0	8	4F
+L	8	0	8	4A
+R	8	0	1	5C
+R	8	1	1	5D
+R	8	2	2	5F
+R	8	4	1	5A
+R	8	5	1	5F
+R	8	6	2	5D
+L	9	0	8	3B
+L	9	0	8	4D
+L	9	0	8	4F
+L	9	0	8	4Ab
+R	9	0	1	4B
+R	9	1	1	5D
+R	9	2	2	5F
+R	9	4	1	5Ab
+R	9	5	1	5F
+R	9	6	2	5D
+L	10	0	8	3B
+L	10	0	8	4D
+L	10	0	8	4F
+L	10	0	8	4Ab
+R	10	0	1	4B
+R	10	1	1	5D
+R	10	2	2	5F
+R	10	4	1	5Ab
+R	10	5	1	5F
+R	10	6	2	5D
+L	11	0	8	3B
+L	11	0	8	4D
+L	11	0	8	4F
+L	11	0	8	4Ab
+R	11	0	1	4B
+R	11	1	1	5D
+R	11	2	2	5F
+R	11	4	1	5Ab
+R	11	5	1	5F
+R	11	6	2	5D
+L	12	0	8	4C
+L	12	0	8	4Eb
+L	12	0	8	4G
+L	12	0	8	4Bb
+R	12	0	1	5C
+R	12	1	1	5Eb
+R	12	2	2	5G
+R	12	4	1	5Bb
+R	12	5	1	5G
+R	12	6	2	5Eb
+L	13	0	8	4C
+L	13	0	8	4Eb
+L	13	0	8	4G
+L	13	0	8	4Bb
+R	13	0	1	5C
+R	13	1	1	5Eb
+R	13	2	2	5G
+R	13	4	1	5Bb
+R	13	5	1	5G
+R	13	6	2	5Eb
+L	14	0	8	4C
+L	14	0	8	4Eb
+L	14	0	8	4G
+L	14	0	8	4Bb
+R	14	0	1	5C
+R	14	1	1	5Eb
+R	14	2	2	5G
+R	14	4	1	5Bb
+R	14	5	1	5G
+R	14	6	2	5Eb
+L	15	0	8	4C
+L	15	0	8	4Eb
+L	15	0	8	4Gb
+L	15	0	8	4A
+R	15	0	1	5C
+R	15	1	1	5Eb
+R	15	2	2	5Gb
+R	15	4	1	5A
+R	15	5	1	5Gb
+R	15	6	2	5Eb
+L	16	0	8	4C
+L	16	0	8	4Eb
+L	16	0	8	4Gb
+L	16	0	8	4A
+R	16	0	1	5C
+R	16	1	1	5Eb
+R	16	2	2	5Gb
+R	16	4	1	5A
+R	16	5	1	5Gb
+R	16	6	2	5Eb
+L	17	0	8	4C
+L	17	0	8	4Eb
+L	17	0	8	4Gb
+L	17	0	8	4A
+R	17	0	1	5C
+R	17	1	1	5Eb
+R	17	2	2	5Gb
+R	17	4	1	5A
+R	17	5	1	5Gb
+R	17	6	2	5Eb
+L	18	0	8	3Bb
+L	18	0	8	4D
+L	18	0	8	4F
+L	18	0	8	4A
+R	18	0	1	4Bb
+R	18	1	1	5D
+R	18	2	2	5F
+R	18	4	1	5A
+R	18	5	1	5F
+R	18	6	2	5D
+L	19	0	8	3Bb
+L	19	0	8	4D
+L	19	0	8	4F
+L	19	0	8	4A
+R	19	0	1	4Bb
+R	19	1	1	5D
+R	19	2	2	5F
+R	19	4	1	5A
+R	19	5	1	5F
+R	19	6	2	5D
+L	20	0	8	3Bb
+L	20	0	8	4D
+L	20	0	8	4F
+L	20	0	8	4A
+R	20	0	1	4Bb
+R	20	1	1	5D
+R	20	2	2	5F
+R	20	4	1	5A
+R	20	5	1	5F
+R	20	6	2	5D
+L	21	0	8	3Bb
+L	21	0	8	4D
+L	21	0	8	4F
+L	21	0	8	4A
+R	21	0	1	4Bb
+R	21	1	1	5D
+R	21	2	2	5F
+R	21	4	1	5A
+R	21	5	1	5F
+R	21	6	2	5D
+L	22	0	8	3Bb
+L	22	0	8	4D
+L	22	0	8	4F
+L	22	0	8	4A
+R	22	0	1	4Bb
+R	22	1	1	5D
+R	22	2	2	5F
+R	22	4	1	5A
+R	22	5	1	5F
+R	22	6	2	5D
+L	23	0	8	3Bb
+L	23	0	8	4D
+L	23	0	8	4F
+L	23	0	8	4A
+R	23	0	1	4Bb
+R	23	1	1	5D
+R	23	2	2	5F
+R	23	4	1	5A
+R	23	5	1	5F
+R	23	6	2	5D
+L	24	0	8	4C
+L	24	0	8	4Eb
+L	24	0	8	4G
+L	24	0	8	4Bb
+R	24	0	1	5C
+R	24	1	1	5Eb
+R	24	2	2	5G
+R	24	4	1	5Bb
+R	24	5	1	5G
+R	24	6	2	5Eb
+L	25	0	8	4C
+L	25	0	8	4Eb
+L	25	0	8	4G
+L	25	0	8	4Bb
+R	25	0	1	5C
+R	25	1	1	5Eb
+R	25	2	2	5G
+R	25	4	1	5Bb
+R	25	5	1	5G
+R	25	6	2	5Eb
+L	26	0	8	4C
+L	26	0	8	4Eb
+L	26	0	8	4G
+L	26	0	8	4Bb
+R	26	0	1	5C
+R	26	1	1	5Eb
+R	26	2	2	5G
+R	26	4	1	5Bb
+R	26	5	1	5G
+R	26	6	2	5Eb
+L	27	0	8	4C
+L	27	0	8	4Eb
+L	27	0	8	4F
+L	27	0	8	4A
+R	27	0	1	5C
+R	27	1	1	5Eb
+R	27	2	2	5F
+R	27	4	1	5A
+R	27	5	1	5F
+R	27	6	2	5Eb
+L	28	0	8	4C
+L	28	0	8	4Eb
+L	28	0	8	4F
+L	28	0	8	4A
+R	28	0	1	5C
+R	28	1	1	5Eb
+R	28	2	2	5F
+R	28	4	1	5A
+R	28	5	1	5F
+R	28	6	2	5Eb
+L	29	0	8	4C
+L	29	0	8	4Eb
+L	29	0	8	4F
+L	29	0	8	4A
+R	29	0	1	5C
+R	29	1	1	5Eb
+R	29	2	2	5F
+R	29	4	1	5A
+R	29	5	1	5F
+R	29	6	2	5Eb
+L	30	0	8	4C
+L	30	0	8	4D
+L	30	0	8	4F
+L	30	0	8	4A
+R	30	0	1	5C
+R	30	1	1	5D
+R	30	2	2	5F
+R	30	4	1	5A
+R	30	5	1	5F
+R	30	6	2	5D
+L	31	0	8	4C
+L	31	0	8	4D
+L	31	0	8	4F
+L	31	0	8	4A
+R	31	0	1	5C
+R	31	1	1	5D
+R	31	2	2	5F
+R	31	4	1	5A
+R	31	5	1	5F
+R	31	6	2	5D
+L	32	0	8	4C
+L	32	0	8	4D
+L	32	0	8	4F
+L	32	0	8	4A
+R	32	0	1	5C
+R	32	1	1	5D
+R	32	2	2	5F
+R	32	4	1	5A
+R	32	5	1	5F
+R	32	6	2	5D
+L	33	0	8	3B
+L	33	0	8	4D
+L	33	0	8	4F
+L	33	0	8	4Ab
+R	33	0	1	4B
+R	33	1	1	5D
+R	33	2	2	5F
+R	33	4	1	5Ab
+R	33	5	1	5F
+R	33	6	2	5D
+L	34	0	8	3B
+L	34	0	8	4D
+L	34	0	8	4F
+L	34	0	8	4Ab
+R	34	0	1	4B
+R	34	1	1	5D
+R	34	2	2	5F
+R	34	4	1	5Ab
+R	34	5	1	5F
+R	34	6	2	5D
+L	35	0	8	3B
+L	35	0	8	4D
+L	35	0	8	4F
+L	35	0	8	4Ab
+R	35	0	1	4B
+R	35	1	1	5D
+R	35	2	2	5F
+R	35	4	1	5Ab
+R	35	5	1	5F
+R	35	6	2	5D
+L	36	0	8	4C
+L	36	0	8	4Eb
+L	36	0	8	4G
+L	36	0	8	4Bb
+R	36	0	1	5C
+R	36	1	1	5Eb
+R	36	2	2	5G
+R	36	4	1	5Bb
+R	36	5	1	5G
+R	36	6	2	5Eb
+L	37	0	8	4C
+L	37	0	8	4Eb
+L	37	0	8	4G
+L	37	0	8	4Bb
+R	37	0	1	5C
+R	37	1	1	5Eb
+R	37	2	2	5G
+R	37	4	1	5Bb
+R	37	5	1	5G
+R	37	6	2	5Eb
+L	38	0	8	4C
+L	38	0	8	4Eb
+L	38	0	8	4G
+L	38	0	8	4Bb
+R	38	0	1	5C
+R	38	1	1	5Eb
+R	38	2	2	5G
+R	38	4	1	5Bb
+R	38	5	1	5G
+R	38	6	2	5Eb
+L	39	0	8	4C
+L	39	0	8	4Eb
+L	39	0	8	4Gb
+L	39	0	8	4A
+R	39	0	1	5C
+R	39	1	1	5Eb
+R	39	2	2	5Gb
+R	39	4	1	5A
+R	39	5	1	5Gb
+R	39	6	2	5Eb
+L	40	0	8	4C
+L	40	0	8	4Eb
+L	40	0	8	4Gb
+L	40	0	8	4A
+R	40	0	1	5C
+R	40	1	1	5Eb
+R	40	2	2	5Gb
+R	40	4	1	5A
+R	40	5	1	5Gb
+R	40	6	2	5Eb
+L	41	0	8	4C
+L	41	0	8	4Eb
+L	41	0	8	4Gb
+L	41	0	8	4A
+R	41	0	1	5C
+R	41	1	1	5Eb
+R	41	2	2	5Gb
+R	41	4	1	5A
+R	41	5	1	5Gb
+R	41	6	2	5Eb
+L	42	0	8	3Bb
+L	42	0	8	4D
+L	42	0	8	4F
+L	42	0	8	4A
+R	42	0	1	4Bb
+R	42	1	1	5D
+R	42	2	2	5F
+R	42	4	1	5A
+R	42	5	1	5F
+R	42	6	2	5D
+L	43	0	8	3Bb
+L	43	0	8	4D
+L	43	0	8	4F
+L	43	0	8	4A
+R	43	0	1	4Bb
+R	43	1	1	5D
+R	43	2	2	5F
+R	43	4	1	5A
+R	43	5	1	5F
+R	43	6	2	5D
+L	44	0	8	3Bb
+L	44	0	8	4D
+L	44	0	8	4F
+L	44	0	8	4A
+R	44	0	1	4Bb
+R	44	1	1	5D
+R	44	2	2	5F
+R	44	4	1	5A
+R	44	5	1	5F
+R	44	6	2	5D
+L	45	0	8	3Bb
+L	45	0	8	4D
+L	45	0	8	4F
+L	45	0	8	4A
+R	45	0	1	4Bb
+R	45	1	1	5D
+R	45	2	2	5F
+R	45	4	1	5A
+R	45	5	1	5F
+R	45	6	2	5D
+L	46	0	8	3Bb
+L	46	0	8	4D
+L	46	0	8	4F
+L	46	0	8	4A
+R	46	0	1	4Bb
+R	46	1	1	5D
+R	46	2	2	5F
+R	46	4	1	5A
+R	46	5	1	5F
+R	46	6	2	5D
+L	47	0	8	3Bb
+L	47	0	8	4D
+L	47	0	8	4F
+L	47	0	8	4A
+R	47	0	1	4Bb
+R	47	1	1	5D
+R	47	2	2	5F
+R	47	4	1	5A
+R	47	5	1	5F
+R	47	6	2	5D
+L	48	0	8	3Bb
+L	48	0	8	4D
+L	48	0	8	4F
+L	48	0	8	4A
+R	48	0	8	4Bb
+R	48	0	8	5D
+R	48	0	8	5F
+R	48	0	8	5A
+
+
+

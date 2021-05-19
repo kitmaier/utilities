@@ -1,2 +1,4 @@
 *.class
-data/*
+data/
+node_modules/
+hello-world.zip

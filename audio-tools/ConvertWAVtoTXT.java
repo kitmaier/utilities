@@ -11,7 +11,7 @@ public class ConvertWAVtoTXT {
 		if(args.length>0) {
 			convertWAVtoTXT(args[0]);
 		} else {
-			String[] fileList = {"aa","ah","aw","dj","ee","eh","eu","ff","hh","ih","ll","mm","nn","oh","oo","rr","sh","ss","uh","vv","whistle","ww","zz"};
+			String[] fileList = {"aa","ah","aw","dj","ee","eh","eu","ff","hh","ih","ll","mm","nn","oh","oo","rr","sh","ss","uh","vv","whistle","ww","zz","sample123","clean_piano"};
 			for(int k=0; k<fileList.length; k++) {
 				convertWAVtoTXT(fileList[k]);
 			}
@@ -21,6 +21,7 @@ public class ConvertWAVtoTXT {
 		String inFilename = "audio/"+filename+".wav";
 		String outFilename = "data/"+filename+".txt";
 		AudioInputStream ais = AudioSystem.getAudioInputStream(new File(inFilename));
+		System.out.println(filename+": "+ais.getFormat());
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		int read;
 		byte[] buff = new byte[1024];
@@ -30,10 +31,11 @@ public class ConvertWAVtoTXT {
 		out.flush();
 		byte[] audioBytes = out.toByteArray();
 		StringBuilder sb = new StringBuilder();
-		for(int k=1; k<audioBytes.length; k+=2) { 
+		for(int k=0; k<audioBytes.length; k+=2) {
 			byte bb = audioBytes[k];
 			bb = reverseEndian(bb);
-			sb.append(k+"\t"+audioBytes[k]+"\t"+bb+"\n");
+			int total = ((int)audioBytes[k+1])*256+(int)audioBytes[k];
+			sb.append(k+"\t"+audioBytes[k]+"\t"+audioBytes[k+1]+"\t"+total+"\n");
 		}
 		BufferedWriter writer = new BufferedWriter(new FileWriter(new File(outFilename)));
 		writer.write(sb.toString());

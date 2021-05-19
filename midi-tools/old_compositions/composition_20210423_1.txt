@@ -1,0 +1,109 @@
+# Kryptonite - 3 Doors Down
+# Key of Bm?? (B C# D E F# G A)
+# https://www.virtualsheetmusic.com/score/HL-31739.html
+# https://www.e-chords.com/chords/3-doors-down/kryptonite
+# https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0129110
+# Need to program in 2/3 shuffle/swing beat
+
+L	0	0	2	2B
+L	0	2	2	3F#
+L	0	4	2	3B
+L	0	6	4	4D
+L	1	2	2	3B
+L	1	4	2	3F#
+L	1	6	2	3G
+L	2	0	2	2G
+L	2	2	2	2B
+L	2	4	2	3D
+L	2	6	2	3G
+L	3	0	2	2A
+L	3	2	2	3E
+L	3	4	2	3A
+L	3	6	2	3B
+
+L	4	0	16	2B
+L	4	2	2	3F#
+L	4	4	2	3B
+L	4	6	4	4D
+L	5	2	2	3B
+L	5	4	2	3F#
+L	5	6	2	3G
+L	6	0	8	2G
+L	6	2	2	2B
+L	6	4	2	3D
+L	6	6	2	3G
+L	7	0	8	2A
+L	7	2	2	3E
+L	7	4	2	3A
+L	7	6	2	3B
+
+L	8	0	8	2B
+L	8	0	4	3B
+L	8	0	4	4D
+L	8	0	4	4F#
+L	8	2	4	3D
+L	8	4	2	4C#
+L	8	6	2	3F#
+L	8	6	4	4D
+L	9	0	8	2B
+L	9	2	2	3F#
+L	9	2	6	4C#
+L	9	4	2	3F#
+L	9	6	4	3G
+L	10	0	8	2G
+L	10	0	6	3B
+L	10	0	6	4D
+L	10	0	6	4G
+L	10	2	4	3D
+L	10	6	2	3D
+L	10	6	2	3G
+L	11	0	8	2A
+L	11	0	4	3A
+L	11	0	4	4C#
+L	11	0	4	4E
+L	11	2	4	3E
+L	11	4	2	3A
+L	11	6	2	3E
+L	11	6	2	4C#
+
+L	12	0	8	2B
+L	12	0	4	3B
+L	12	0	4	4D
+L	12	0	4	4F#
+L	12	2	4	3F#
+L	12	4	2	3B
+L	12	6	2	3F#
+L	12	6	4	4D
+L	13	0	8	2B
+L	13	2	2	3F#
+L	13	2	6	3B
+L	13	4	2	3F#
+L	13	6	4	3G
+L	14	0	8	2G
+L	14	0	4	3B
+L	14	0	4	4D
+L	14	0	4	4G
+L	14	2	4	3D
+L	14	4	2	3G
+L	14	6	2	3D
+L	14	6	2	3B
+L	15	0	8	2A
+L	15	0	2	3A
+L	15	0	2	4C
+L	15	2	4	3E
+L	15	2	2	4E
+L	15	4	2	3B
+L	15	6	2	3E
+L	15	6	2	3G
+
+L	16	0	16	2B
+L	16	0	16	3F#
+L	16	0	16	3B
+L	16	0	2	3E
+L	16	2	2	3C#
+L	16	4	2	3E
+L	16	6	2	3C#
+L	16	8	8	3D#
+
+
+

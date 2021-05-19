@@ -1,0 +1,196 @@
+# Rotate between major/minor chords by semitone steps
+# https://global.oup.com/us/companion.websites/9780195336672/examples/chapter3/figure_3102a/
+#
+# Generator script:
+#left_chords = [
+# ['4C','4E','4G'],
+# ['4C','4Eb','4G'],
+# ['4C','4Eb','4Ab'],
+# ['3B','4Eb','4Ab'],
+# ['3B','4E','4Ab'],
+# ['3B','4E','4G'],
+# ['4C','4E','4G']
+#]
+#right_melody = [
+# ['5C','5E','5G','5E'],
+# ['5C','5Eb','5G','5Eb'],
+# ['5C','5Eb','5Ab','5Eb'],
+# ['4B','5Eb','5Ab','5Eb'],
+# ['4B','5E','5Ab','5E'],
+# ['4B','5E','5G','5E'],
+# ['5C','5E','5G','5E']
+#]
+#for chord_num in [0,1,2,3,4,5,6]:
+# for rep in [0,1,2]:
+#  measure = chord_num*3+rep
+#  chord = left_chords[chord_num]
+#  for note in chord:
+#   print('L',measure,0,8,note)
+#  for step_num in [0,1,2,3]:
+#   melody_note = right_melody[chord_num][step_num]
+#   beat = step_num*2
+#   print('R',measure,beat,2,melody_note)
+#
+#for note in left_chords[0]:
+# print('L',21,0,8,note)
+#
+#for note in right_melody[0]:
+# print('R',21,0,8,note)
+
+
+L	0	0	8	4C
+L	0	0	8	4E
+L	0	0	8	4G
+R	0	0	2	5C
+R	0	2	2	5E
+R	0	4	2	5G
+R	0	6	2	5E
+L	1	0	8	4C
+L	1	0	8	4E
+L	1	0	8	4G
+R	1	0	2	5C
+R	1	2	2	5E
+R	1	4	2	5G
+R	1	6	2	5E
+L	2	0	8	4C
+L	2	0	8	4E
+L	2	0	8	4G
+R	2	0	2	5C
+R	2	2	2	5E
+R	2	4	2	5G
+R	2	6	2	5E
+L	3	0	8	4C
+L	3	0	8	4Eb
+L	3	0	8	4G
+R	3	0	2	5C
+R	3	2	2	5Eb
+R	3	4	2	5G
+R	3	6	2	5Eb
+L	4	0	8	4C
+L	4	0	8	4Eb
+L	4	0	8	4G
+R	4	0	2	5C
+R	4	2	2	5Eb
+R	4	4	2	5G
+R	4	6	2	5Eb
+L	5	0	8	4C
+L	5	0	8	4Eb
+L	5	0	8	4G
+R	5	0	2	5C
+R	5	2	2	5Eb
+R	5	4	2	5G
+R	5	6	2	5Eb
+L	6	0	8	4C
+L	6	0	8	4Eb
+L	6	0	8	4Ab
+R	6	0	2	5C
+R	6	2	2	5Eb
+R	6	4	2	5Ab
+R	6	6	2	5Eb
+L	7	0	8	4C
+L	7	0	8	4Eb
+L	7	0	8	4Ab
+R	7	0	2	5C
+R	7	2	2	5Eb
+R	7	4	2	5Ab
+R	7	6	2	5Eb
+L	8	0	8	4C
+L	8	0	8	4Eb
+L	8	0	8	4Ab
+R	8	0	2	5C
+R	8	2	2	5Eb
+R	8	4	2	5Ab
+R	8	6	2	5Eb
+L	9	0	8	3B
+L	9	0	8	4Eb
+L	9	0	8	4Ab
+R	9	0	2	4B
+R	9	2	2	5Eb
+R	9	4	2	5Ab
+R	9	6	2	5Eb
+L	10	0	8	3B
+L	10	0	8	4Eb
+L	10	0	8	4Ab
+R	10	0	2	4B
+R	10	2	2	5Eb
+R	10	4	2	5Ab
+R	10	6	2	5Eb
+L	11	0	8	3B
+L	11	0	8	4Eb
+L	11	0	8	4Ab
+R	11	0	2	4B
+R	11	2	2	5Eb
+R	11	4	2	5Ab
+R	11	6	2	5Eb
+L	12	0	8	3B
+L	12	0	8	4E
+L	12	0	8	4Ab
+R	12	0	2	4B
+R	12	2	2	5E
+R	12	4	2	5Ab
+R	12	6	2	5E
+L	13	0	8	3B
+L	13	0	8	4E
+L	13	0	8	4Ab
+R	13	0	2	4B
+R	13	2	2	5E
+R	13	4	2	5Ab
+R	13	6	2	5E
+L	14	0	8	3B
+L	14	0	8	4E
+L	14	0	8	4Ab
+R	14	0	2	4B
+R	14	2	2	5E
+R	14	4	2	5Ab
+R	14	6	2	5E
+L	15	0	8	3B
+L	15	0	8	4E
+L	15	0	8	4G
+R	15	0	2	4B
+R	15	2	2	5E
+R	15	4	2	5G
+R	15	6	2	5E
+L	16	0	8	3B
+L	16	0	8	4E
+L	16	0	8	4G
+R	16	0	2	4B
+R	16	2	2	5E
+R	16	4	2	5G
+R	16	6	2	5E
+L	17	0	8	3B
+L	17	0	8	4E
+L	17	0	8	4G
+R	17	0	2	4B
+R	17	2	2	5E
+R	17	4	2	5G
+R	17	6	2	5E
+L	18	0	8	4C
+L	18	0	8	4E
+L	18	0	8	4G
+R	18	0	2	5C
+R	18	2	2	5E
+R	18	4	2	5G
+R	18	6	2	5E
+L	19	0	8	4C
+L	19	0	8	4E
+L	19	0	8	4G
+R	19	0	2	5C
+R	19	2	2	5E
+R	19	4	2	5G
+R	19	6	2	5E
+L	20	0	8	4C
+L	20	0	8	4E
+L	20	0	8	4G
+R	20	0	2	5C
+R	20	2	2	5E
+R	20	4	2	5G
+R	20	6	2	5E
+L	21	0	8	4C
+L	21	0	8	4E
+L	21	0	8	4G
+R	21	0	8	5C
+R	21	0	8	5E
+R	21	0	8	5G
+R	21	0	8	5E
+
+
