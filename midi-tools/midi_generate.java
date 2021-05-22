@@ -15,7 +15,7 @@ import javax.sound.midi.*;
 public class midi_generate {
 	public static void main(String argv[]) throws Exception {
 		String[] fileList = {
-			"composition_20210521_3"
+			"composition_20210521_4"
 		};
 		for(String fileName : fileList) {
 			System.out.println(fileName);
@@ -93,10 +93,11 @@ public class midi_generate {
 					channel = 9;
 			}
 			int measure = Integer.parseInt(fields[1]);
-			int beat = Integer.parseInt(fields[2]);
+			int beat = Integer.parseInt(fields[2].replaceAll("_.*",""));
+			int microbeat = (fields[2].indexOf('_')==-1 ? 0 : Integer.parseInt(fields[2].replaceAll(".*_","")));
 			int duration = Integer.parseInt(fields[3]);
 			String note = fields[4];
-			makeNote(track, channel, measure, beat, duration, note, volume);
+			makeNote(track, channel, measure, beat, microbeat, duration, note, volume);
 		}
 
 		setTrackEnd(L);
@@ -124,10 +125,10 @@ public class midi_generate {
 	}
 	public static int timeSignature = 8;
 	public static int ticksPerBeat = 12;
-	public static void makeNote(Track t, int channel, int measure, int beat, int duration, String note, byte volume) throws Exception {
+	public static void makeNote(Track t, int channel, int measure, int beat, int microbeat, int duration, String note, byte volume) throws Exception {
 		// 8 beats per measure
 		// 2 beats per second
-		int start = (measure*timeSignature+beat)*ticksPerBeat;
+		int start = (measure*timeSignature+beat)*ticksPerBeat+microbeat;
 		int end = start+duration*ticksPerBeat;
 		maxEnd = Math.max((long)end,maxEnd);
 
