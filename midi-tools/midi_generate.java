@@ -67,6 +67,9 @@ public class midi_generate {
 					String instrumentName = line.replaceAll(".*[: ]","");
 					setInstrument(V,2,getInstrument(instrumentName));
 				}
+				if(line.contains("end_early_microbeat")) {
+					endEarlyMicrobeat = Integer.parseInt(line.replaceAll(".*[: ]",""));
+				}
 				continue;
 			}
 			String[] fields = line.split("\t");
@@ -125,11 +128,12 @@ public class midi_generate {
 	}
 	public static int timeSignature = 8;
 	public static int ticksPerBeat = 12;
+	public static int endEarlyMicrobeat = 0;
 	public static void makeNote(Track t, int channel, int measure, int beat, int microbeat, int duration, String note, byte volume) throws Exception {
 		// 8 beats per measure
 		// 2 beats per second
 		int start = (measure*timeSignature+beat)*ticksPerBeat+microbeat;
-		int end = start+duration*ticksPerBeat-4;
+		int end = start+duration*ticksPerBeat-endEarlyMicrobeat;
 		maxEnd = Math.max((long)end,maxEnd);
 
 		// octave number rolls over from B to C

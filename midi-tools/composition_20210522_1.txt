@@ -2,6 +2,7 @@
 # Most commmon major-key chord progressions following harmonic tradition
 # The Geometry of Music page 227 fig 7.1.1, page 230 fig 7.1.6
 #!time_signature: 6/8
+#!end_early_microbeat:4
 # / L_instrument:STRINGS__ORCHESTRAL_HARP
 #!L_instrument:PIANO__HARPSICHORD
 #
