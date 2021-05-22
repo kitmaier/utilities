@@ -30,7 +30,7 @@
 #  for idx,note in enumerate(chords[chord_num]):
 #   if beat%3==2:
 #    idx = len(chords[chord_num])-1-idx
-#   print('L',measure,str(beat)+'_'+str(idx),duration,note)
+#   print('L',measure,str(beat)+'_'+str(2*idx),duration,note)
 # if measure%4==3:
 #  chord_list = next_chord[chord_num]
 #  chord_num = chord_list[randint(0,len(chord_list)-1)]

@@ -15,7 +15,7 @@ import javax.sound.midi.*;
 public class midi_generate {
 	public static void main(String argv[]) throws Exception {
 		String[] fileList = {
-			"composition_20210522_1"
+			"composition_20210522_4"
 		};
 		for(String fileName : fileList) {
 			System.out.println(fileName);
@@ -69,6 +69,9 @@ public class midi_generate {
 				}
 				if(line.contains("end_early_microbeat")) {
 					endEarlyMicrobeat = Integer.parseInt(line.replaceAll(".*[: ]",""));
+				}
+				if(line.contains("microbeat_full_duration")) {
+					microbeatFullDuration = true;
 				}
 				continue;
 			}
@@ -129,12 +132,15 @@ public class midi_generate {
 	public static int timeSignature = 8;
 	public static int ticksPerBeat = 12;
 	public static int endEarlyMicrobeat = 0;
+	public static boolean microbeatFullDuration = false;
 	public static void makeNote(Track t, int channel, int measure, int beat, int microbeat, int duration, String note, byte volume) throws Exception {
 		// 8 beats per measure
 		// 2 beats per second
-		int start = (measure*timeSignature+beat)*ticksPerBeat+microbeat;
-		int end = start+duration*ticksPerBeat-endEarlyMicrobeat;
+		int startRef = (measure*timeSignature+beat)*ticksPerBeat;
+		int start = startRef+microbeat;
+		int end = (microbeatFullDuration?start:startRef)+duration*ticksPerBeat-endEarlyMicrobeat;
 		maxEnd = Math.max((long)end,maxEnd);
+		//System.out.println(measure+"\t"+beat+"\t"+microbeat+"\t"+duration+"\t"+start+"\t"+end);
 
 		// octave number rolls over from B to C
 		// middle C == 60 == "4C"
