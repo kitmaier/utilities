@@ -129,7 +129,7 @@ public class midi_generate {
 		// 8 beats per measure
 		// 2 beats per second
 		int start = (measure*timeSignature+beat)*ticksPerBeat+microbeat;
-		int end = start+duration*ticksPerBeat;
+		int end = start+duration*ticksPerBeat-4;
 		maxEnd = Math.max((long)end,maxEnd);
 
 		// octave number rolls over from B to C
