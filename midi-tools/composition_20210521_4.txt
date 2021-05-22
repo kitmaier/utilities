@@ -1,7 +1,7 @@
 # Trying out strumming
 #!time_signature:6/8
-#!L_instrument:PIANO__ACOUSTIC_GRAND_PIANO
-# / L_instrument:STRINGS__ORCHESTRAL_HARP
+# / L_instrument:PIANO__ACOUSTIC_GRAND_PIANO
+#!L_instrument:STRINGS__ORCHESTRAL_HARP
 
 
 L	0	0_0	2	3E
