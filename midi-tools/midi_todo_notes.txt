@@ -1,0 +1,84 @@
+
+major and minor allowed chord progressions following harmonic tradition
+page 227 fig 7.1.1
+page 229 fig 7.1.5
+
+
+
+
+
+
+canon / round generation (harmonize with lagged version of prior generated tones in sequence)
+
+5-voice harmonization of arbitrary melody like in adam neely's video
+alternatively, bass line under 4-voice harmony
+
+'pitch class' music, where each note is represented by all its octaves at decreasing volume from middle C
+
+3+1 schema following page 212 fig 6.4.1b
+
+page 106 fig 3.11.3 four-chord minor-third semitone voice leading
+
+
+
+instead of random walk (equal chance of +1/-1) try move random distance by steps in each direction
+
+
+page 247 fig 7.4.2 random walk through key space
+also page 251 fig 7.4.7
+
+any todo's leftover in composition files
+
+page 286 fig 8.5.3 chopin game dominant seventh chords descending by semitones
+variation - follow a nonoverlapping path through each corner of the cube before exiting at the bottom
+variation - lower a different note from the diminished chord so the root descends by thirds, fifths, etc
+variation - occasionally skip a step
+
+
+rotate through semitone-related four-voice dominant seventh chords
+page 291 fig 8.5.10
+
+droning 1-5 interval (possibly duplicated), melody of randomly generating in-scale notes, overall scale changing slowly (eg rotating between the 6 valid modes)
+
+droning all the notes of a scale at sufficient intervals to avoid dissonance, slowly changing scale by close voice leading (why not bend between notes as well)
+
+7-of-12 beat rhythm - page 335 fig 9.3.15
+
+
+i can't explain / turn the page - mixolydian / dorian - page 341 fig 9.3.22
+help - p346 fig 9.4.7
+
+
+definition of jazz harmony and harmonic progression - pages 353+
+root-position chords, "avoid" notes, ii-V-I, stack of thirds or fourths, descending fifths by semitone voice leading, repetition of the same chord progression
+bass guitar line, piano left hand specific chord shapes, right hand improvised
+
+
+exercises page 428 appendix f
+
+
+create software to visualize four-note chord space
+or at least draw a diagram
+
+
+simplify tom lehrer songs
+
+alternate between bass note and remaining notes of chord for arbitrary chord progression
+
+
+complex harmony and one-note supertonic or tonic melody
+
+that one rhythm from the video (bum, bah-bum, bum-bah)
+
+
+pseudo-irish-ballad example but with 4/4 beat, still swing, two eight-note K notes between two eigth-note C notes
+
+
+learn some metal songs (https://www.youtube.com/watch?v=_bR7WKWrQpk)
+
+
+japanese minor pentatonic scale (yo/in)
+https://en.wikipedia.org/wiki/Yo_scale
+https://en.wikipedia.org/wiki/In_scale
+https://en.wikipedia.org/wiki/Kimigayo
+
