@@ -15,7 +15,7 @@ import javax.sound.midi.*;
 public class midi_generate {
 	public static void main(String argv[]) throws Exception {
 		String[] fileList = {
-			"composition_20210522_4"
+			"composition_20210523_1"
 		};
 		for(String fileName : fileList) {
 			System.out.println(fileName);
@@ -43,6 +43,9 @@ public class midi_generate {
 		setInstrument(V,2,getInstrument("PIANO__ACOUSTIC_GRAND_PIANO"));
 		setInstrument(P,9,00); // percussion
 
+		int L_volume = 127;
+		int R_volume = 127;
+		int V_volume = 127;
 		Scanner scan = new Scanner(new File(fileName+".txt"));
 		while(scan.hasNext()) {
 			String line = scan.nextLine().trim();
@@ -73,6 +76,15 @@ public class midi_generate {
 				if(line.contains("microbeat_full_duration")) {
 					microbeatFullDuration = true;
 				}
+				if(line.contains("L_volume")) {
+					L_volume = Integer.parseInt(line.replaceAll(".*[: ]",""));
+				}
+				if(line.contains("R_volume")) {
+					R_volume = Integer.parseInt(line.replaceAll(".*[: ]",""));
+				}
+				if(line.contains("V_volume")) {
+					V_volume = Integer.parseInt(line.replaceAll(".*[: ]",""));
+				}
 				continue;
 			}
 			String[] fields = line.split("\t");
@@ -83,16 +95,17 @@ public class midi_generate {
 				case 'L': 
 					track = L;
 					channel = 0;
-					//volume = 80;
+					volume = (byte)L_volume;
 					break;
 				case 'R':
 					track = R;
 					channel = 1;
-					//volume = 60;
+					volume = (byte)R_volume;
 					break;
 				case 'V':
 					track = V;
 					channel = 2;
+					volume = (byte)V_volume;
 					break;
 				case 'P':
 					track = P;
