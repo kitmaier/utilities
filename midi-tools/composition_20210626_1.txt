@@ -1,0 +1,22 @@
+# Simple blues riff with microtonal notes
+#!R_instrument: STRINGS__ORCHESTRAL_HARP
+
+R	0	0	2	3E
+R	0	2	2	4E
+R	0	4	2	3E
+R	0	6	2	4E
+
+R	1	0	2	3B
+R	1	2	2	4E
+R	1	4	2	4G+50
+R	1	6	2	4E
+
+R	2	0	2	3E
+R	2	2	2	3B
+R	2	4	2	4E
+R	2	6	2	4D+50
+
+R	3	0	2	3B
+R	3	2	2	3G+50
+R	3	4	4	3E
+

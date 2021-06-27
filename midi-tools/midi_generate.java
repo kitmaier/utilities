@@ -15,7 +15,7 @@ import javax.sound.midi.*;
 public class midi_generate {
 	public static void main(String argv[]) throws Exception {
 		String[] fileList = {
-			"composition_20210624_2"
+			"composition_20210626_1"
 		};
 		for(String fileName : fileList) {
 			System.out.println(fileName);
@@ -158,17 +158,30 @@ public class midi_generate {
 		// octave number rolls over from B to C
 		// middle C == 60 == "4C"
 		int noteVal = 0;
+		int cents = 0;
 		if(channel==9) {
 			noteVal = Integer.parseInt(note);
 		} else {
 			prepareNoteVals();
 			int octave = Integer.parseInt(note.substring(0,1));
 			noteVal = (octave-4)*12+noteVals[note.charAt(1)];
-			if(note.length()==3) {
-				if(note.charAt(2)=='#') {
-					noteVal++;
+			if(note.length()>2) {
+				if(note.length()==3) {
+					// # for sharp, b for flat, nothing for natural
+					if(note.charAt(2)=='#') {
+						noteVal++;
+					} else {
+						noteVal--;
+					}
 				} else {
-					noteVal--;
+					// s for sharp, f for flat, number for cents
+					// or + for sharp, - for flat, number for cents
+					// https://tigoe.github.io/SoundExamples/midi-pitch-bend.html
+					// https://docs.oracle.com/javase/7/docs/api/javax/sound/midi/MidiChannel.html#setPitchBend(int)
+					cents = Integer.parseInt(note.substring(3));
+					if(note.charAt(2)=='f'||note.charAt(2)=='-') {
+						cents = -cents;
+					}
 				}
 			}
 		}
@@ -176,7 +189,7 @@ public class midi_generate {
 		MidiEvent me;
 		ShortMessage mm;
 		mm = new ShortMessage();
-		mm.setMessage(ShortMessage.NOTE_ON,channel,noteVal,volume); // volume at 75% of maximum (0x60)
+		mm.setMessage(ShortMessage.NOTE_ON,channel,noteVal,volume);
 		me = new MidiEvent(mm,(long)start);
 		t.add(me);
 
@@ -184,6 +197,22 @@ public class midi_generate {
 		mm.setMessage(ShortMessage.NOTE_OFF,channel,noteVal,0x00);
 		me = new MidiEvent(mm,(long)end);
 		t.add(me);
+
+		if(cents!=0) {
+			int val = ((cents*8192)/200)+8192;
+			val = Math.max(0,Math.min(16383,val));
+			int lsb = val&0x7F;
+			int msb = val/0x80;
+			mm = new ShortMessage();
+			mm.setMessage(ShortMessage.PITCH_BEND,channel,lsb,msb);
+			me = new MidiEvent(mm,(long)start);
+			t.add(me);
+			
+			mm = new ShortMessage();
+			mm.setMessage(ShortMessage.PITCH_BEND,channel,0x00,0x40);
+			me = new MidiEvent(mm,(long)end);
+			t.add(me);
+		}
 	}
 
 	public static void setupTrack(Track t) throws Exception {
