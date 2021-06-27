@@ -389,3 +389,154 @@
 # Walking from and to a randomly selected A or E
 # Generator script:
 
+==> composition_20210519_1.txt <==
+# Randomized melody in A minor with chord progression
+# Imitating simplified version of The Irish Ballad
+#!time_signature: 6/8
+# Strong beats chord tones, weak beats key tones, smallest steps available
+# Chord progression alternating between Am, G (i, VII) - could also be viewed as G mixolydian
+# Adjacency graphs are the same between the chords
+# Printing out to a file due to large output
+
+==> composition_20210519_2.txt <==
+# Randomly generate chord progression
+# Most commmon major-key chord progressions following harmonic tradition
+# The Geometry of Music page 227 fig 7.1.1, page 230 fig 7.1.6
+#!time_signature: 6/8
+# TODO: handle inversions (eg I6 chords)
+# TODO: handle finer granularity of transition probabilities
+# TODO: experiment with different transition probabilities
+# TODO: coordinate longer sequences instead of simple transition probabilities
+# TODO: what if each has a certain probability of repeating instead of repeating at fixed points
+# TODO: what if there is a tonic (2C/3C) drone under the whole thing?
+
+==> composition_20210519_3.txt <==
+# Randomized melody in A minor with randomized chord progression
+#!time_signature: 6/8
+# Strong beats chord tones, weak beats key tones, smallest steps available
+# Most commmon minor-key chord progressions following harmonic tradition
+# The Geometry of Music page 229 fig 7.1.5, page 230 fig 7.1.6
+# Can be simplified a bit because cc_adj list is the same for all the chords
+
+==> composition_20210520_1.txt <==
+# Randomized melody in C major with randomized chord progression
+#!time_signature: 6/8
+# Strong beats chord tones, weak beats key tones, smallest steps available
+# Most commmon major-key chord progressions following harmonic tradition
+# The Geometry of Music page 227 fig 7.1.1, page 230 fig 7.1.6
+# Can be simplified a bit because cc_adj list is the same for all the chords
+
+==> composition_20210520_2.txt <==
+# Randomized melody in C minor with randomized chord progression
+#!time_signature: 6/8
+# Strong beats chord tones, weak beats key tones, smallest steps available
+# Most commmon minor-key chord progressions following harmonic tradition
+# The Geometry of Music page 229 fig 7.1.5, page 230 fig 7.1.6
+# Can be simplified a bit because cc_adj list is the same for all the chords
+
+==> composition_20210520_3.txt <==
+# Randomized melody in C minor with randomized chord progression
+# Switching to 4/4 time, cheating slightly on kc transitions between chords
+
+==> composition_20210520_4.txt <==
+# Randomized melody in C minor with randomized chord progression
+# Switching to 4/4 time, cheating slightly on kc transitions between chords
+# Slighty fancier rhythm, repetition of final note in each measure
+
+==> composition_20210521_1.txt <==
+# Randomized melody with craig notes (Eb, E, G, A, Bb, B) and chord
+#!time_signature:6/8
+
+==> composition_20210521_2.txt <==
+# Randomized melody with craig notes (Eb, E, G, A, Bb, B) and chord
+#!time_signature:6/8
+
+==> composition_20210521_3.txt <==
+# Randomized melody with craig notes (Eb, E, G, A, Bb, B) and chord progression
+#!time_signature:6/8
+#!L_instrument:REED__ENGLISH_HORN
+#!R_instrument:STRINGS__VIOLA
+
+==> composition_20210521_4.txt <==
+# Trying out strumming
+#!time_signature:6/8
+
+==> composition_20210522_1.txt <==
+# Randomly generate chord progression with strumming
+# Most commmon major-key chord progressions following harmonic tradition
+# The Geometry of Music page 227 fig 7.1.1, page 230 fig 7.1.6
+#!time_signature: 6/8
+#!end_early_microbeat:4
+
+==> composition_20210522_2.txt <==
+# Randomly generate chord progression with strumming
+# Most commmon major-key chord progressions following harmonic tradition
+# The Geometry of Music page 227 fig 7.1.1, page 230 fig 7.1.6
+#!time_signature: 6/8
+#!end_early_microbeat:1
+
+==> composition_20210522_3.txt <==
+# Randomly generate chord progression with strumming
+# Most commmon major-key chord progressions following harmonic tradition
+# The Geometry of Music page 227 fig 7.1.1, page 230 fig 7.1.6
+#!time_signature: 6/8
+#!microbeat_full_duation
+
+==> composition_20210522_4.txt <==
+# Randomly generate chord progression with strumming
+# Trying to mimic guitar voicings on strings 2E,2A,3D,3G,3B,4E
+# Chords: 1)CEG, 2)DFA, 4)FAC, 5)GBD, 6)ACE, 7)BDF
+#!time_signature: 6/8
+#!microbeat_full_duation
+
+==> composition_20210523_1.txt <==
+# Randomly generate chord progression with strumming and simple melody
+# Trying to mimic guitar voicings on strings 2E,2A,3D,3G,3B,4E
+# Chords: 1)CEG, 2)DFA, 4)FAC, 5)GBD, 6)ACE, 7)BDF
+#!time_signature: 6/8
+#!microbeat_full_duation
+#!L_instrument:STRINGS__ORCHESTRAL_HARP
+#!R_instrument:REED__ENGLISH_HORN
+#!L_volume:127
+#!R_volume:100
+# TODO: try shifting the high part a couple microbeats late to line up with the strumming
+
+==> composition_20210523_2.txt <==
+# Randomly generate chord progression with strumming and simple melody
+# Trying to mimic guitar voicings on strings 2E,2A,3D,3G,3B,4E
+# Chords: 1)CEG, 2)DFA, 4)FAC, 5)GBD, 6)ACE, 7)BDF
+
+==> composition_20210524_1.txt <==
+# Randomly generate chord progression with strumming and simple melody
+# Trying to mimic guitar voicings on strings 2E,2A,3D,3G,3B,4E
+# Chords: 1)CEG, 2)DFA, 4)FAC, 5)GBD, 6)ACE, 7)BDF
+
+==> composition_20210525_1.txt <==
+# Randomized strummed chords and melody in C major
+
+==> composition_20210525_2.txt <==
+# Randomized melody cycling through parallel modes over tonic drone
+
+==> composition_20210525_3.txt <==
+# Randomized melody cycling through parallel modes over tonic drone
+
+==> composition_20210527_1.txt <==
+# Key changes on melody between parallel modes over 1/5/8 drone following harmonic pattern with preset order
+# Randomized melody cycling through parallel modes over tonic drone
+
+==> composition_20210527_2.txt <==
+# Key changes on melody between parallel modes over 1/5 drone following harmonic pattern with preset order
+# Randomized melody cycling through parallel modes over tonic drone
+
+==> composition_20210527_3.txt <==
+# Key changes on melody between parallel modes
+
+==> composition_20210527_4.txt <==
+# Key changes on melody between parallel modes
+# Arpeggios instead of random melody
+
+==> composition_20210527_5.txt <==
+# Manually creating three-voice canon in C major based on the lick
+
+
+

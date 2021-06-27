@@ -1,0 +1,251 @@
+# At Least It Was Here - theme song to Community
+# Key of D major (C# F#)
+#!tempo:fast
+# Lots of 1/16 and 1/32 granularity notes simplified to 1/8 notes
+#!L_instrument:STRINGS__ORCHESTRAL_HARP
+#!R_instrument:STRINGS__ORCHESTRAL_HARP
+
+R	0	4	1	4A
+R	0	5	1	4B
+R	0	6	1	4A
+
+L	1	0	2	2A
+L	1	0	2	3C#
+L	1	0	2	3E
+L	1	2	2	2A
+L	1	2	2	3C#
+L	1	2	2	3E
+L	1	4	2	2A
+L	1	4	2	3C#
+L	1	4	2	3E
+L	1	6	2	2A
+L	1	6	2	3C#
+L	1	6	2	3E
+R	1	0	2	5E
+R	1	4	1	4A
+R	1	5	1	4A
+R	1	6	1	4A
+
+L	2	0	2	3C#
+L	2	0	2	3E
+L	2	0	2	3F#
+L	2	0	2	3A
+L	2	2	2	3C#
+L	2	2	2	3E
+L	2	2	2	3F#
+L	2	2	2	3A
+L	2	4	2	3C#
+L	2	4	2	3E
+L	2	4	2	3F#
+L	2	4	2	3A
+L	2	6	2	3C#
+L	2	6	2	3E
+L	2	6	2	3F#
+L	2	6	2	3A
+R	2	0	2	5F#
+R	2	4	1	4A
+R	2	5	1	4B
+R	2	6	1	4A
+
+L	3	0	2	3C#
+L	3	0	2	3E
+L	3	0	2	3G
+L	3	0	2	3A
+L	3	0	2	3B
+L	3	2	2	3C#
+L	3	2	2	3E
+L	3	2	2	3G
+L	3	2	2	3A
+L	3	2	2	3B
+L	3	4	2	3C#
+L	3	4	2	3E
+L	3	4	2	3G
+L	3	4	2	3A
+L	3	4	2	3B
+L	3	6	2	3C#
+L	3	6	2	3E
+L	3	6	2	3G
+L	3	6	2	3A
+L	3	6	2	3B
+R	3	0	2	5G
+R	3	3	1	5G
+R	3	4	1	5G
+R	3	5	1	5A
+R	3	6	1	5G
+
+L	4	0	2	3C#
+L	4	0	2	3E
+L	4	0	2	3F#
+L	4	0	2	3A
+L	4	2	2	3C#
+L	4	2	2	3E
+L	4	2	2	3F#
+L	4	2	2	3A
+L	4	4	2	3C#
+L	4	4	2	3E
+L	4	4	2	3F#
+L	4	4	2	3A
+L	4	6	2	3C#
+L	4	6	2	3E
+L	4	6	2	3F#
+L	4	6	2	3A
+R	4	0	2	5F#
+R	4	4	1	5F#
+R	4	5	1	5F#
+R	4	6	1	5F#
+
+L	5	0	8	2A
+L	5	0	8	3C#
+L	5	0	8	3E
+R	5	0	1	5E
+R	5	1	1	5C#
+R	5	2	1	4A
+R	5	4	1	4A
+R	5	5	1	4B
+R	5	6	1	4A
+
+L	6	0	8	3C#
+L	6	0	8	3E
+L	6	0	8	3F#
+L	6	0	8	3A
+R	6	0	2	5F#
+R	6	4	1	4A
+R	6	5	1	4B
+R	6	6	1	4A
+
+L	7	0	8	3C#
+L	7	0	8	3E
+L	7	0	8	3G
+L	7	0	8	3A
+L	7	0	8	3B
+R	7	0	1	5G
+R	7	1	1	5G
+R	7	4	2	5G
+R	7	6	1	5F#
+
+R	8	0	1	5G
+R	8	1	1	5F#
+R	8	2	1	5A
+R	8	3	1	5E
+R	8	4	1	5C
+R	8	5	1	4A
+R	8	7	1	4A
+
+L	9	0	2	3D
+L	9	0	2	3F#
+L	9	0	2	3A
+L	9	2	2	3D
+L	9	2	2	3F#
+L	9	2	2	3A
+L	9	4	2	3D
+L	9	4	2	3F#
+L	9	4	2	3A
+L	9	6	2	3D
+L	9	6	2	3F#
+L	9	6	2	3A
+R	9	0	1	5F#
+R	9	1	2	5A
+R	9	3	2	5F#
+R	9	5	2	5E
+R	9	7	2	5F#
+
+L	10	0	2	3C#
+L	10	0	2	3E
+L	10	0	2	3A
+L	10	2	2	3C#
+L	10	2	2	3E
+L	10	2	2	3A
+L	10	4	2	3C#
+L	10	4	2	3E
+L	10	4	2	3A
+L	10	6	2	3D
+L	10	6	2	3F
+L	10	6	2	3A
+R	10	1	2	5E
+R	10	3	2	5C#
+R	10	5	2	4A
+R	10	7	9	5D
+
+L	11	0	1	3E
+L	11	0	1	3G#
+L	11	0	1	3B
+L	11	2	1	3E
+L	11	2	1	3G#
+L	11	2	1	3B
+L	11	4	1	3E
+L	11	4	1	3G#
+L	11	4	1	3B
+L	11	6	1	3E
+L	11	6	1	3G#
+L	11	6	1	3B
+
+L	12	0	1	3Eb
+L	12	0	1	3E
+L	12	0	1	3G#
+L	12	0	1	3B
+L	12	2	1	3Eb
+L	12	2	1	3E
+L	12	2	1	3G#
+L	12	2	1	3B
+L	12	4	1	3Eb
+L	12	4	1	3E
+L	12	4	1	3G#
+L	12	4	1	3B
+L	12	6	1	3Eb
+L	12	6	1	3E
+L	12	6	1	3G#
+L	12	6	1	3B
+
+L	13	0	2	3D
+L	13	0	2	3F#
+L	13	0	2	3A
+L	13	2	2	3D
+L	13	2	2	3F#
+L	13	2	2	3A
+L	13	4	2	3D
+L	13	4	2	3F#
+L	13	4	2	3A
+L	13	6	2	3D
+L	13	6	2	3F#
+L	13	6	2	3A
+R	13	0	1	5F#
+R	13	1	2	5A
+R	13	3	2	5F#
+R	13	5	2	5E
+R	13	7	2	5F#
+
+L	14	0	2	3C#
+L	14	0	2	3E
+L	14	0	2	3A
+L	14	2	2	3C#
+L	14	2	2	3E
+L	14	2	2	3A
+L	14	4	2	3C#
+L	14	4	2	3E
+L	14	4	2	3A
+L	14	6	2	3C#
+L	14	6	2	3E
+L	14	6	2	3A
+R	14	1	2	5E
+R	14	3	2	5C#
+R	14	5	2	4B
+R	14	7	1	4B
+
+L	15	0	2	3C#
+L	15	2	2	3C#
+L	15	4	1	3C#
+L	15	5	1	3C#
+L	15	6	1	3D
+L	15	7	1	3D
+R	15	0	2	4A
+
+L	16	0	8	2A
+L	16	0	8	3C#
+
+
+
+
+
+
+
+

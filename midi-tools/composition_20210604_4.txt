@@ -1,0 +1,221 @@
+# Craig loop - chords Em,Em/D,C7,B7 - arpeggiate E,G,A - beat=1+5x3
+# Corrected arpeggio notes
+# Added middle voice with main melody
+
+# Introduction
+
+# Four iterations of Em chord and E-G-A arpeggio
+L	0	0	4	3E
+L	0	0	4	3G
+L	0	0	4	3B
+R	0	1	1	5E
+R	0	2	1	5G
+R	0	3	1	5A
+L	0	4	4	3E
+L	0	4	4	3G
+L	0	4	4	3B
+R	0	5	1	5E
+R	0	6	1	5G
+R	0	7	1	5A
+L	1	0	4	3E
+L	1	0	4	3G
+L	1	0	4	3B
+R	1	1	1	5E
+R	1	2	1	5G
+R	1	3	1	5A
+L	1	4	4	3E
+L	1	4	4	3G
+L	1	4	4	3B
+R	1	5	1	5E
+R	1	6	1	5G
+R	1	7	1	5A
+
+# Chord progression first repetition
+
+# Em chord and 5x E-G-A arpeggio
+L	2	0	16	3E
+L	2	0	16	3G
+L	2	0	16	3B
+R	2	1	1	5E
+R	2	2	1	5G
+R	2	3	1	5A
+R	2	4	1	5E
+R	2	5	1	5G
+R	2	6	1	5A
+R	2	7	1	5E
+R	2	8	1	5G
+R	2	9	1	5A
+R	2	10	1	5E
+R	2	11	1	5G
+R	2	12	1	5A
+R	2	13	1	5E
+R	2	14	1	5G
+R	2	15	1	5A
+
+# Em/D chord and 5x E-G-A arpeggio
+L	4	0	16	3D
+L	4	0	16	3E
+L	4	0	16	3G
+L	4	0	16	3B
+R	4	1	1	5E
+R	4	2	1	5G
+R	4	3	1	5A
+R	4	4	1	5E
+R	4	5	1	5G
+R	4	6	1	5A
+R	4	7	1	5E
+R	4	8	1	5G
+R	4	9	1	5A
+R	4	10	1	5E
+R	4	11	1	5G
+R	4	12	1	5A
+R	4	13	1	5E
+R	4	14	1	5G
+R	4	15	1	5A
+
+# C7 chord and 5x E-G-A arpeggio
+L	6	0	16	3C
+L	6	0	16	3E
+L	6	0	16	3G
+L	6	0	16	3Bb
+R	6	1	1	5E
+R	6	2	1	5G
+R	6	3	1	5A
+R	6	4	1	5E
+R	6	5	1	5G
+R	6	6	1	5A
+R	6	7	1	5E
+R	6	8	1	5G
+R	6	9	1	5A
+R	6	10	1	5E
+R	6	11	1	5G
+R	6	12	1	5A
+R	6	13	1	5E
+R	6	14	1	5G
+R	6	15	1	5A
+
+# B7 chord and 5x E-G-A arpeggio
+L	8	0	16	2B
+L	8	0	16	3D#
+L	8	0	16	3F#
+L	8	0	16	3A
+R	8	1	1	5E
+R	8	2	1	5G
+R	8	3	1	5A
+R	8	4	1	5E
+R	8	5	1	5G
+R	8	6	1	5A
+R	8	7	1	5E
+R	8	8	1	5G
+R	8	9	1	5A
+R	8	10	1	5E
+R	8	11	1	5G
+R	8	12	1	5A
+R	8	13	1	5E
+R	8	14	1	5G
+R	8	15	1	5A
+
+# Chord progression second repetition
+
+# Em chord and 5x E-G-A arpeggio
+L	10	0	16	3E
+L	10	0	16	3G
+L	10	0	16	3B
+R	10	1	1	5E
+R	10	2	1	5G
+R	10	3	1	5A
+R	10	4	1	5E
+R	10	5	1	5G
+R	10	6	1	5A
+R	10	7	1	5E
+R	10	8	1	5G
+R	10	9	1	5A
+R	10	10	1	5E
+R	10	11	1	5G
+R	10	12	1	5A
+R	10	13	1	5E
+R	10	14	1	5G
+R	10	15	1	5A
+V	10	2	2	4E
+V	10	4	1	4G
+V	10	5	1	4A
+V	10	7	3	4B
+V	10	10	2	4A
+V	10	12	3	4G
+V	10	15	1	4E
+
+# Em/D chord and 5x E-G-A arpeggio
+L	12	0	16	3D
+L	12	0	16	3E
+L	12	0	16	3G
+L	12	0	16	3B
+R	12	1	1	5E
+R	12	2	1	5G
+R	12	3	1	5A
+R	12	4	1	5E
+R	12	5	1	5G
+R	12	6	1	5A
+R	12	7	1	5E
+R	12	8	1	5G
+R	12	9	1	5A
+R	12	10	1	5E
+R	12	11	1	5G
+R	12	12	1	5A
+R	12	13	1	5E
+R	12	14	1	5G
+R	12	15	1	5A
+V	12	0	1	4G
+V	12	1	15	4A
+
+# C7 chord and 5x E-G-A arpeggio
+L	14	0	16	3C
+L	14	0	16	3E
+L	14	0	16	3G
+L	14	0	16	3Bb
+R	14	1	1	5E
+R	14	2	1	5G
+R	14	3	1	5A
+R	14	4	1	5E
+R	14	5	1	5G
+R	14	6	1	5A
+R	14	7	1	5E
+R	14	8	1	5G
+R	14	9	1	5A
+R	14	10	1	5E
+R	14	11	1	5G
+R	14	12	1	5A
+R	14	13	1	5E
+R	14	14	1	5G
+R	14	15	1	5A
+V	14	2	2	4E
+V	14	4	1	4G
+V	14	5	1	4A
+V	14	7	3	4B
+V	14	10	2	4A
+V	14	12	3	4G
+V	14	15	1	4E
+
+# B7 chord and 5x E-G-A arpeggio
+L	16	0	16	2B
+L	16	0	16	3D#
+L	16	0	16	3F#
+L	16	0	16	3A
+R	16	1	1	5E
+R	16	2	1	5G
+R	16	3	1	5A
+R	16	4	1	5E
+R	16	5	1	5G
+R	16	6	1	5A
+R	16	7	1	5E
+R	16	8	1	5G
+R	16	9	1	5A
+R	16	10	1	5E
+R	16	11	1	5G
+R	16	12	1	5A
+R	16	13	1	5E
+R	16	14	1	5G
+R	16	15	1	5A
+V	16	0	1	4G
+V	16	1	15	4E
+
+

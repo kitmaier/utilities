@@ -1,0 +1,93 @@
+# Lord of the Dance melody in G (first verse)
+# https://www.8notes.com/digital_tradition/gif_dtrad/LORDANCE.gif
+
+R	0	6	2	4D
+R	1	0	2	4G
+R	1	2	1	4G
+R	1	3	1	4G
+R	1	4	1	4B
+R	1	5	1	4A
+R	1	6	1	4B
+R	1	7	1	5C
+R	2	0	2	5D
+R	2	2	1	5D
+R	2	3	1	5D
+R	2	4	2	4B
+R	2	6	1	4B
+R	2	7	1	4B
+R	3	0	2	4A
+R	3	2	1	4A
+R	3	3	1	4A
+R	3	4	2	4A
+R	3	6	1	4A
+R	3	7	1	4B
+R	4	0	1	5C
+R	4	1	1	4B
+R	4	2	1	4A
+R	4	3	1	4G
+R	4	4	2	4F#
+R	4	6	1	4D
+R	4	7	1	4D
+R	5	0	2	4G
+R	5	2	1	4G
+R	5	3	1	4G
+R	5	4	1	4B
+R	5	5	1	4A
+R	5	6	1	4B
+R	5	7	1	5C
+R	6	0	2	5D
+R	6	2	1	5D
+R	6	3	1	5D
+R	6	4	3	4B
+R	6	7	1	4B
+R	7	0	2	4A
+R	7	2	2	4A
+R	7	4	3	4B
+R	7	7	1	4A
+R	8	0	2	4G
+R	8	2	2	4G
+R	8	4	4	4G
+R	9	0	4	5D
+R	9	4	3	4B
+R	9	7	1	4A
+R	10	0	1	4B
+R	10	1	1	5C
+R	10	2	1	4B
+R	10	3	1	4A
+R	10	4	4	4G
+R	11	0	2	4B
+R	11	2	1	4B
+R	11	3	1	4B
+R	11	4	2	5D
+R	11	6	1	5C
+R	11	7	1	4B
+R	12	0	2	4A
+R	12	2	2	4A
+R	12	4	2	4A
+R	12	6	1	4D
+R	12	7	1	4D
+R	13	0	2	4G
+R	13	2	2	4G
+R	13	4	3	4G
+R	13	7	1	4A
+R	14	0	1	4B
+R	14	1	1	4A
+R	14	2	1	4B
+R	14	3	1	5C
+R	14	4	2	5D
+R	14	6	1	5C
+R	14	7	1	4B
+R	15	0	2	4A
+R	15	2	2	4A
+R	15	4	2	4B
+R	15	6	1	4B
+R	15	7	1	4A
+R	16	0	2	4G
+R	16	2	2	4G
+R	16	4	2	4G
+
+
+
+
+
+

@@ -1,17 +1,12 @@
 
-major and minor allowed chord progressions following harmonic tradition
-page 227 fig 7.1.1
-page 229 fig 7.1.5
-
-
-
-
-
-
 canon / round generation (harmonize with lagged version of prior generated tones in sequence)
 
 5-voice harmonization of arbitrary melody like in adam neely's video
 alternatively, bass line under 4-voice harmony
+https://www.youtube.com/watch?v=ruTfC5v9Z2Y
+https://www.youtube.com/watch?v=N3eoVsdDseU
+https://www.youtube.com/watch?v=woXce3P8swM
+
 
 'pitch class' music, where each note is represented by all its octaves at decreasing volume from middle C
 
@@ -81,4 +76,86 @@ japanese minor pentatonic scale (yo/in)
 https://en.wikipedia.org/wiki/Yo_scale
 https://en.wikipedia.org/wiki/In_scale
 https://en.wikipedia.org/wiki/Kimigayo
+
+
+
+would be good to transition to being able to generate midi files without passing through the text file stage
+would also be good to be able to break down and print out midi files as text
+would also be good to unify code to either java or python
+
+Try out the bohlen-pierce scale
+https://en.wikipedia.org/wiki/Bohlen%E2%80%93Pierce_scale
+https://www.youtube.com/watch?v=Ur6GOoSNGN0
+
+
+make something with axis chords, and plagal cascade, and major/minor rotations of each loop
+https://www.youtube.com/watch?v=LS5AQiheoLs
+https://www.youtube.com/watch?v=oOlDewpCfZQ
+
+
+Try out simple two-chord moods, work out associated scales and generate melodies for them
+https://www.youtube.com/watch?v=YSKAt3pmYBs
+(I maj) (II maj) = Protagonism 
+(I maj) (bV maj) = Outer Space
+(I maj) (bVI maj) = Fantastical
+(I maj) (III min) = Sandness/Loss
+(I maj) (IV min) = Romantic/Middle Eastern
+(I min) (IV maj) = Wonder/Transcendence
+(I min) (II maj) = Mystery or Dark Comedy
+(I min) (VII maj) = Dramatic Sound
+(I min) (bV maj) = Antagonism, danger (less character based)
+(I min) (bVI min) = Antagonism, evil (more character based)
+
+
+
+prelude bach cello suite no 1 g major
+
+
+
+invert notes/chords/scale through the neutral third, swapping the 1 and 5, different sound but similar function
+Major <-> Phrygian
+Minor <-> Mixolydian
+Lydian <-> Locrian
+Dorian <-> Dorian
+
+
+Try repeating the same arbitrary phrase but the last note is controlled to sound open and then resolved (eg 5 and then 1)
+
+
+
+Why does generating a 400hz tone plus a 601hz tone cause an audible beat?
+https://www.szynalski.com/tone-generator/
+https://en.wikipedia.org/wiki/Wikipedia:Reference_desk/Science#Audible_beat_phenomenon_for_frequencies_that_aren%27t_close_together
+
+Missing fundamental
+https://www.youtube.com/watch?v=t-iWKvh6Fbw
+
+
+musical dice game
+https://www.youtube.com/watch?v=hQlRNKwbGw8&t=628s
+
+What tune is this: ABC,B,A,ABCECBA
+
+
+Pink - get the party started - one chord
+
+Intonalist chords https://youtu.be/lz3WR-F_pnM?t=534
+How far apart do similar notes have to be, before they start adding to the audible macroharmony?
+
+
+
+Try out Dilla beats under jazz chord progressions
+https://www.youtube.com/watch?v=-fgw4jq1Fso
+
+
+
+Try out "fux species counterpoint" exercises from jacob gran, and automate generation based on rules
+https://www.youtube.com/watch?v=z08lTYclpps&list=PL6Towqbh0pdqwwHt3sWYwTj98qIqcqCrn
+
+
+12tone channel
+Learn about and try out chromatic mediant chords, lydian dominant scale, bartok axis theory, hexany cube, bebop scale, enigmatic scale, mystic scale, maqam scales
+
+how did pink floyd get that sound on dark side / breathe
+
 

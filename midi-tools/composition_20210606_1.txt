@@ -1,0 +1,99 @@
+# Randomly generate chord progression with strumming and key changes
+# Trying to mimic guitar voicings on strings 2E,2A,3D,3G,3B,4E
+# Cycling through circle of fifths
+#!time_signature: 6/8
+#!microbeat_full_duation
+#!L_instrument:PIANO__HARPSICHORD
+# / L_instrument:STRINGS__ORCHESTRAL_HARP
+# 
+##Generator script #1 (print chord progression):
+#import random
+#random.seed(5)
+#from random import randint
+#chord_names = {
+# 'C':['','C','Dm','Em','F','G','Am','Bdim'],
+# 'G':['','G','Am','Bm','C','D','Em','Gbdim'],
+# 'D':['','D','Em','Gbm','G','A','Bm','Dbdim'],
+# 'A':['','A','Bm','Dbm','D','E','Gbm','Abdim'],
+# 'E':['','E','Gbm','Abm','A','B','Dbm','Ebdim'],
+# 'B':['','B','Dbm','Ebm','E','Gb','Abm','Bbdim'],
+# 'Gb':['','Gb','Abm','Bbm','B','Db','Ebm','Fdim'],
+# 'Db':['','Db','Ebm','Fm','Gb','Ab','Bbm','Cdim'],
+# 'Ab':['','Ab','Bbm','Cm','Db','Eb','Fm','Gdim'],
+# 'Eb':['','Eb','Fm','Gm','Ab','Bb','Cm','Ddim'],
+# 'Bb':['','Bb','Cm','Dm','Eb','F','Gm','Adim'],
+# 'F':['','F','Gm','Am','Bb','C','Dm','Edim']
+#}
+#next_chord_num = {
+# 1:[2,2,4,4,5,5,5,5,5,6,7],
+# 2:[5,5,5,5,7],
+# 4:[1,1,1,1,1,2,2,5,5,7],
+# 5:[1,1,1,1,1,1,1,1,4,6],
+# 6:[1,2,2,2,2,2,4,4,5,5,7],
+# 7:[1,1,1,1,5]
+#}
+#circle_of_fifths = ['C','G','D','A','E','B','Gb','Db','Ab','Eb','Bb','F','C']
+#last_chord_num = 1
+#for key_num,key_name in enumerate(circle_of_fifths):
+# chord_num = 5 if last_chord_num==5 else 1
+# for section_num in range(20):
+#  print(key_num,key_name,section_num,chord_num,chord_names[key_name][chord_num])
+#  last_chord_num = chord_num
+#  chord_list = next_chord_num[chord_num]
+#  chord_num = chord_list[randint(0,len(chord_list)-1)]
+#
+#
+##Generator script #2 (print note names):
+#chords = {
+# 'A':['2E','2A','3E','3A','4C#','4E'],
+# 'Am':['2E','2A','3E','3A','4C','4E'],
+# 'Adim':['2Eb','2A','3Eb','3A','4C','4Eb'],
+# 'Ab':['2Eb','2Ab','3Eb','3Ab','4C','4Eb'],
+# 'Abm':['2Eb','2Ab','3Eb','3Ab','3B','4Eb'],
+# 'Abdim':['2D','2Ab','3D','3Ab','3B','4D'],
+# 'B':['2F#','2B','3D#','3B','4D#','4F#'],
+# 'Bm':['2F#','2B','3D','3B','4D','4F#'],
+# 'Bdim':['2F','2B','3D','3B','4D','4F'],
+# 'Bb':['2F','2Bb','3D','3Bb','4D','4F'],
+# 'Bbm':['2F','2Bb','3Db','3Bb','4Db','4F'],
+# 'Bbdim':['2Fb','2Bb','3Db','3Bb','4Db','4Fb'],
+# 'C':['2E','3C','3E','3G','4C','4E'],
+# 'Cm':['2Eb','3C','3Eb','3G','4C','4Eb'],
+# 'Cdim':['2Eb','3C','3Eb','3Gb','4C','4Eb'],
+# 'D':['2F#','2A','3D','3A','4D','4F#'],
+# 'Dm':['2F','2A','3D','3A','4D','4F'],
+# 'Ddim':['2F','2Ab','3D','3Ab','4D','4F'],
+# 'Db':['2F','2Ab','3Db','3Ab','4Db','4F'],
+# 'Dbm':['2Fb','2Ab','3Db','3Ab','4Db','4Fb'],
+# 'Dbdim':['2Fb','2G','3Db','3G','4Db','4Fb'],
+# 'E':['2E','2B','3E','3G#','3B','4E'],
+# 'Em':['2E','2B','3E','3G','3B','4E'],
+# 'Edim':['2E','2Bb','3E','3G','3Bb','4E'],
+# 'Eb':['2Eb','2Bb','3Eb','3G','3Bb','4Eb'],
+# 'Ebm':['2Eb','2Bb','3Eb','3Gb','3Bb','4Eb'],
+# 'Ebdim':['2Eb','2A','3Eb','3Gb','3A','4Eb'],
+# 'F':['2F','2A','3F','3A','4C','4F'],
+# 'Fm':['2F','2Ab','3F','3Ab','4C','4F'],
+# 'Fdim':['2F','2Ab','3F','3Ab','3B','4F'],
+# 'G':['2G','2B','3D','3G','3B','4G'],
+# 'Gm':['2G','2Bb','3D','3G','3Bb','4G'],
+# 'Gdim':['2G','2Bb','3Db','3G','3Bb','4G'],
+# 'Gb':['2Gb','2Bb','3Db','3Gb','3Bb','4Gb'],
+# 'Gbm':['2Gb','2A','3Db','3Gb','3A','4Gb'],
+# 'Gbdim':['2Gb','2A','3C','3Gb','3A','4Gb']
+#}
+#chord_list = ['C', 'Am', 'Dm', 'G', 'F', 'C', 'G', 'C', 'Bdim', 'C', 'F', 'C', 'G', 'C', 'F', 'Dm', 'Bdim', 'C', 'Am', 'Dm', 'G', 'C', 'Am', 'D', 'G', 'D', 'G', 'Am', 'D', 'Em', 'D', 'G', 'C', 'G', 'Am', 'D', 'G', 'C', 'G', 'C', 'D', 'A', 'D', 'A', 'D', 'G', 'D', 'A', 'D', 'Em', 'A', 'D', 'G', 'D', 'A', 'D', 'A', 'D', 'Bm', 'A', 'E', 'Gbm', 'Abdim', 'A', 'Bm', 'E', 'A', 'E', 'A', 'E', 'A', 'E', 'A', 'D', 'A', 'E', 'A', 'E', 'A', 'Bm', 'E', 'B', 'E', 'B', 'Dbm', 'E', 'B', 'E', 'A', 'Ebdim', 'E', 'Gbm', 'B', 'E', 'B', 'A', 'Gbm', 'Ebdim', 'E', 'B', 'Gb', 'Abm', 'Dbm', 'Gb', 'B', 'Gb', 'B', 'E', 'Dbm', 'Bbdim', 'Gb', 'B', 'E', 'Dbm', 'Gb', 'E', 'B', 'Gb', 'B', 'Gb', 'Db', 'Gb', 'Fdim', 'Gb', 'Db', 'Gb', 'B', 'Gb', 'Abm', 'Fdim', 'Db', 'Gb', 'Abm', 'Db', 'Ebm', 'Abm', 'Db', 'Gb', 'Fdim', 'Gb', 'Db', 'Ebm', 'Ab', 'Db', 'Ab', 'Db', 'Gb', 'Cdim', 'Db', 'Cdim', 'Db', 'Ebm', 'Ab', 'Db', 'Ab', 'Db', 'Ebm', 'Ab', 'Db', 'Gb', 'Ab', 'Fm', 'Bbm', 'Gdim', 'Ab', 'Eb', 'Ab', 'Eb', 'Ab', 'Eb', 'Ab', 'Eb', 'Ab', 'Bbm', 'Eb', 'Db', 'Ab', 'Gdim', 'Ab', 'Eb', 'Bb', 'Eb', 'Bb', 'Eb', 'Bb', 'Ab', 'Bb', 'Eb', 'Fm', 'Bb', 'Cm', 'Ddim', 'Eb', 'Bb', 'Eb', 'Bb', 'Eb', 'Bb', 'Eb', 'Bb', 'F', 'Bb', 'Gm', 'Bb', 'F', 'Eb', 'Bb', 'F', 'Bb', 'F', 'Bb', 'F', 'Bb', 'F', 'Bb', 'Adim', 'Bb', 'F', 'Bb', 'Eb', 'F', 'C', 'F', 'C', 'F', 'C', 'F', 'Bb', 'Gm', 'C', 'F', 'Gm', 'C', 'F', 'Dm', 'C', 'Bb', 'Gm', 'C', 'Dm', 'C', 'Bdim', 'C', 'Dm', 'G', 'C', 'Am', 'F', 'Bdim', 'C', 'F', 'C', 'Bdim', 'C', 'G', 'C', 'F', 'C', 'F', 'C']
+#file = open("C:\\Users\\8maie\\OneDrive\\Desktop\\github_projects\\utilities\\midi-tools\\python_out.txt", "w")
+#for chord_num,chord_name in enumerate(chord_list):
+# for rep in range(2):
+#  measure = chord_num*2+rep
+#  for (beat,duration) in [(0,2),(2,1),(3,2),(5,1)]:
+#   for idx,note in enumerate(chords[chord_name]):
+#    rc = file.write('L'+'\t'+str(measure)+'\t'+str(beat)+'_'+str(idx)+'\t'+str(duration)+'\t'+note+'\n')
+#
+#file.close()
+
+# Detailed notes removed to save space, can be regenerated from script #2
+
+
+

@@ -43,7 +43,7 @@
 #  for idx,note in enumerate(chords[chord_num]):
 #   print('L',measure,str(beat)+'_'+str(idx),duration,note)
 # for beat in range(6):
-#  print('R',measure,str(beat)+'_2',1,melody[chord_num][beat])
+#  print('R',measure,beat,1,melody[chord_num][beat])
 # if measure%4==3:
 #  chord_list = next_chord[chord_num]
 #  chord_num = chord_list[randint(0,len(chord_list)-1)]

@@ -1,0 +1,21 @@
+# Walking up C dorian, emphasizing whole-step-half-step sequences
+#!R_instrument:REED__ENGLISH_HORN
+
+R	0	0	1	4C
+R	0	1	1	4D
+R	0	2	3	4Eb
+R	0	5	3	4D
+R	0	8	4	4C
+R	0	12	1	4C
+R	0	13	1	4D
+R	0	14	1	4Eb
+R	0	15	1	4F
+R	0	16	4	4G
+R	0	20	1	4G
+R	0	21	1	4A
+R	0	22	3	4Bb
+R	0	25	3	4A
+R	0	28	4	4G
+
+
+

@@ -1,0 +1,144 @@
+# Explore whole-step-half-step sequences in the context of a fixed tonality
+#!R_instrument:STRINGS__ORCHESTRAL_HARP
+#
+##Generator script:
+#repeat = ['4C','4G','5C']
+#riffs = [
+# ['4C','4D','4Eb'],
+# ['4D','4E','4F'],
+# ['4E','4F#','4G'],
+# ['4F','4G','4Ab'],
+# ['4G','4A','4Bb'],
+# ['4A','4B','5C']
+#]
+#file = open("C:\\Users\\8maie\\OneDrive\\Desktop\\github_projects\\utilities\\midi-tools\\python_out.txt", "w")
+#for measure in range(20):
+# notes = repeat
+# if measure%3==2:
+#  notes = riffs[measure//3]
+# for (beat,duration,note) in [(0,1,0),(1,1,1),(2,2,2),(4,1,2),(5,1,1),(6,2,0)]:
+#  rc = file.write('R'+'\t'+str(measure)+'\t'+str(beat)+'\t'+str(duration)+'\t'+notes[note]+'\n')
+#
+#file.close()
+
+R	0	0	1	4C
+R	0	1	1	4G
+R	0	2	2	5C
+R	0	4	1	5C
+R	0	5	1	4G
+R	0	6	2	4C
+R	1	0	1	4C
+R	1	1	1	4G
+R	1	2	2	5C
+R	1	4	1	5C
+R	1	5	1	4G
+R	1	6	2	4C
+R	2	0	1	4C
+R	2	1	1	4D
+R	2	2	2	4Eb
+R	2	4	1	4Eb
+R	2	5	1	4D
+R	2	6	2	4C
+R	3	0	1	4C
+R	3	1	1	4G
+R	3	2	2	5C
+R	3	4	1	5C
+R	3	5	1	4G
+R	3	6	2	4C
+R	4	0	1	4C
+R	4	1	1	4G
+R	4	2	2	5C
+R	4	4	1	5C
+R	4	5	1	4G
+R	4	6	2	4C
+R	5	0	1	4D
+R	5	1	1	4E
+R	5	2	2	4F
+R	5	4	1	4F
+R	5	5	1	4E
+R	5	6	2	4D
+R	6	0	1	4C
+R	6	1	1	4G
+R	6	2	2	5C
+R	6	4	1	5C
+R	6	5	1	4G
+R	6	6	2	4C
+R	7	0	1	4C
+R	7	1	1	4G
+R	7	2	2	5C
+R	7	4	1	5C
+R	7	5	1	4G
+R	7	6	2	4C
+R	8	0	1	4E
+R	8	1	1	4F#
+R	8	2	2	4G
+R	8	4	1	4G
+R	8	5	1	4F#
+R	8	6	2	4E
+R	9	0	1	4C
+R	9	1	1	4G
+R	9	2	2	5C
+R	9	4	1	5C
+R	9	5	1	4G
+R	9	6	2	4C
+R	10	0	1	4C
+R	10	1	1	4G
+R	10	2	2	5C
+R	10	4	1	5C
+R	10	5	1	4G
+R	10	6	2	4C
+R	11	0	1	4F
+R	11	1	1	4G
+R	11	2	2	4Ab
+R	11	4	1	4Ab
+R	11	5	1	4G
+R	11	6	2	4F
+R	12	0	1	4C
+R	12	1	1	4G
+R	12	2	2	5C
+R	12	4	1	5C
+R	12	5	1	4G
+R	12	6	2	4C
+R	13	0	1	4C
+R	13	1	1	4G
+R	13	2	2	5C
+R	13	4	1	5C
+R	13	5	1	4G
+R	13	6	2	4C
+R	14	0	1	4G
+R	14	1	1	4A
+R	14	2	2	4Bb
+R	14	4	1	4Bb
+R	14	5	1	4A
+R	14	6	2	4G
+R	15	0	1	4C
+R	15	1	1	4G
+R	15	2	2	5C
+R	15	4	1	5C
+R	15	5	1	4G
+R	15	6	2	4C
+R	16	0	1	4C
+R	16	1	1	4G
+R	16	2	2	5C
+R	16	4	1	5C
+R	16	5	1	4G
+R	16	6	2	4C
+R	17	0	1	4A
+R	17	1	1	4B
+R	17	2	2	5C
+R	17	4	1	5C
+R	17	5	1	4B
+R	17	6	2	4A
+R	18	0	1	4C
+R	18	1	1	4G
+R	18	2	2	5C
+R	18	4	1	5C
+R	18	5	1	4G
+R	18	6	2	4C
+R	19	0	1	4C
+R	19	1	1	4G
+R	19	2	2	5C
+R	19	4	1	5C
+R	19	5	1	4G
+R	19	6	2	4C
+

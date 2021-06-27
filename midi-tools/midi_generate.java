@@ -15,7 +15,7 @@ import javax.sound.midi.*;
 public class midi_generate {
 	public static void main(String argv[]) throws Exception {
 		String[] fileList = {
-			"composition_20210523_1"
+			"composition_20210624_2"
 		};
 		for(String fileName : fileList) {
 			System.out.println(fileName);
