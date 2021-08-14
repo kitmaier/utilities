@@ -1,4 +1,6 @@
 # convert midi file to list of note values and times as raw hex
+# http://www.music.mcgill.ca/~ich/classes/mumt306/StandardMIDIfileformat.html
+# https://stackoverflow.com/questions/3964245/convert-file-to-hex-string-python
 
 filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Hit The Road, Jack - Ray Charles (70 BPM).mid'
 with open(filename,'rb') as f:
