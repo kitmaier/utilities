@@ -1,0 +1,11 @@
+# Sample blues riffs with microtonal notes and tonic drone
+#!R_instrument: STRINGS__ORCHESTRAL_HARP
+
+L	0	0	8	2C
+L	0	0	8	3C
+R	0	2	1	4C
+R	0	3	1	4G
+R	0	4	1	5C
+R	0	5	2	5E+50
+
+

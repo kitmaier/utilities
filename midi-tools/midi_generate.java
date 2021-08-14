@@ -15,7 +15,7 @@ import javax.sound.midi.*;
 public class midi_generate {
 	public static void main(String argv[]) throws Exception {
 		String[] fileList = {
-			"composition_20210626_1"
+			"composition_20210723_1"
 		};
 		for(String fileName : fileList) {
 			System.out.println(fileName);
@@ -57,6 +57,9 @@ public class midi_generate {
 				}
 				if(line.contains("tempo:")&&line.contains("fast")) {
 					ticksPerBeat = 8;
+				}
+				if(line.contains("tempo:")&&line.contains("slow")) {
+					ticksPerBeat = 16;
 				}
 				if(line.contains("L_instrument")) {
 					String instrumentName = line.replaceAll(".*[: ]","");

@@ -1,0 +1,81 @@
+# Linkin Park - In The End | EASY Piano Tutorial (PHianonize)
+# https://www.youtube.com/watch?v=JyqYmdMCD5g
+# Removed some 16th notes
+# Key of C major
+# Intro section only
+
+L	0	0	8	3D
+R	0	0	2	4D
+R	0	2	2	4A
+R	0	4	2	4A
+R	0	6	2	4F
+
+
+L	1	0	8	3C
+R	1	0	2	4E
+R	1	2	2	4E
+R	1	4	2	4E
+R	1	6	1	4E
+R	1	7	1	4F
+
+
+
+L	2	0	8	2Bb
+R	2	0	2	4D
+R	2	2	2	4A
+R	2	4	2	4A
+R	2	6	2	4F
+
+
+L	3	0	8	3C
+R	3	0	2	4E
+R	3	2	2	4E
+R	3	4	2	4E
+R	3	6	1	4E
+R	3	7	1	4F
+
+L	4	0	8	3D
+R	4	0	2	4D
+R	4	2	2	4A
+R	4	4	2	4A
+R	4	6	2	4F
+
+
+L	5	0	8	3C
+R	5	0	2	4E
+R	5	2	2	4E
+R	5	4	2	4E
+R	5	6	1	4E
+R	5	7	1	4F
+
+
+L	6	0	8	2Bb
+R	6	0	2	4D
+R	6	2	2	4A
+R	6	4	2	4A
+R	6	6	2	4F
+
+L	7	0	8	3C
+R	7	0	3	4E
+R	7	3	1	4A
+R	7	4	2	4A
+R	7	6	2	4Bb
+
+L	8	0	8	3D
+R	8	0	8	4A
+
+L	9	0	8	3C
+R	9	0	6	5A
+R	9	6	2	5F
+
+L	10	0	8	2Bb
+R	10	0	8	5E
+
+L	11	0	8	3C
+R	11	0	6	5D
+R	11	6	2	5F
+
+L	12	0	8	3D
+R	12	0	8	5E
+
+
