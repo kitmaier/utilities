@@ -38,12 +38,18 @@ else:
   print("expected content[0:8]=='00000b59'")
   exit()
 
+timenum = 0
+data = "UNK"
 while len(content)>0:
   # get time delta (variable length number field)
   delta = ""
+  deltanum = 0
   while len(delta)==0 or delta[-2] in '89abcdef':
-    delta = delta+content[0:2]
+    deltabyte = content[0:2]
     content = content[2:]
+    delta = delta+deltabyte
+    deltanum = deltanum*128+(int(deltabyte,16)&127)
+  timenum += deltanum
   # get first byte, condition on value, maybe get second byte to specify
   #   first check on first bit, if zero then skip straight to next step
   if content[0] in '89abcdef':
@@ -69,4 +75,4 @@ while len(content)>0:
     data = content[0:4]
     content = content[4:]
   if command in ['90']:
-    print(delta,"|",command,"|",data)
+    print(timenum,"|",data)
