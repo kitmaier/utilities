@@ -2,7 +2,8 @@
 # http://www.music.mcgill.ca/~ich/classes/mumt306/StandardMIDIfileformat.html
 # https://stackoverflow.com/questions/3964245/convert-file-to-hex-string-python
 
-filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Hit The Road, Jack - Ray Charles (70 BPM).mid'
+#filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Hit The Road, Jack - Ray Charles (70 BPM).mid'
+filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Hey, Soul Sister - Train (105 BPM).mid'
 with open(filename,'rb') as f:
   content = f.read().hex()
 
@@ -30,16 +31,18 @@ else:
   print("expected content[0:8]=='4d54726b'")
   exit()
 
-# Data length - 2905 bytes
-if content[0:8]=='00000b59':
-  print("found content[0:8]=='00000b59'")
-  content = content[8:]
-else:
-  print("expected content[0:8]=='00000b59'")
-  exit()
+# Data length
+print("data length: "+content[0:8])
+content = content[8:]
 
 timenum = 0
 data = "UNK"
+mintime = 100000000000000000
+maxtime = 0
+noteranges = []
+for k in range(200):
+  noteranges.append([])
+
 while len(content)>0:
   # get time delta (variable length number field)
   delta = ""
@@ -74,5 +77,46 @@ while len(content)>0:
   if command in ['90','b0']:
     data = content[0:4]
     content = content[4:]
-  if command in ['90']:
-    print(timenum,"|",data)
+  if command=='90':
+    #print(timenum,"|",int(data[0:2],16),"|",data[2:4])
+    mintime = min(mintime,timenum)
+    maxtime = max(maxtime,timenum)
+    notenum = int(data[0:2],16)
+    state = "STOP" if data[2:4]=='00' else "START"
+    noteranges[notenum].append([timenum,state])
+
+print(mintime,maxtime)
+for x in range(200):
+  print(x,noteranges[x])
+
+endtick = ((maxtime-mintime)+60)//120
+print(endtick)
+
+noteticks = []
+for k in range(200):
+  noteticks.append([])
+  if len(noteranges[k])==0:
+    continue
+  last = 0
+  for event in noteranges[k]:
+    next = ((event[0]-mintime)+60)//120
+    for x in range(next-last):
+      if event[1]=="START":
+        noteticks[k].append(0)
+      else:
+        noteticks[k].append(1)
+    last = next
+
+for x in range(200):
+  print(x,noteticks[x])
+
+for tick in range(endtick):
+  row = ""
+  for x in range(200):
+    if len(noteticks[x])-1<tick:
+      row = row+"0;"
+    else:
+      row = row+str(noteticks[x][tick])+";"
+  print(row)
+
+
