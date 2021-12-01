@@ -11,6 +11,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+/*
+Feature wish list:
+	Bending
+		An example of a synth bending from one pitch to another
+		Control over the speed and path of the bend
+		Is there more than one way for the bending to sound?
+		The ability to specify bending from one microtonal note to another, or to bend up or down by a given number of cents
+		Doppler effect?
+*/
+
 public class GenerateWAV {
 public static void main(String[] args) throws IOException {
 		final double sampleRate = 44100.0;
@@ -53,9 +63,56 @@ public static void main(String[] args) throws IOException {
 		int tick = (int)(time*ticksPerSecond);
 		double timeResidue = time-tick*1.0/ticksPerSecond;
 		//total += getFrereJacques(tick, timeResidue);
-		total += getChromaticIntervals(tick, timeResidue);
+		//total += getChromaticIntervals(tick, timeResidue);
 		//total += getIpanemaChordsStretchNote(tick, timeResidue);
+		//total += getIpanemaChordsGridNote(tick, timeResidue);
+		total += getBend(time);
 		return total;
+	}
+	public static double getBend(double time) {
+		// f(x) = a*exp(b*x)+c
+		// v(x) = sin(f(x))
+		// log(f'(x)) = log(a)+log(b)+b*x = p(x)
+		// p(t0)=p1, p(t1)=p1, p(t2)=p2, p(t3)=p2
+		// log(a)+log(b)+b*t1 = p1
+		// log(a)+log(b)+b*t2 = p2
+		// b = (p1-p2)/(t1-t2)
+		// a = exp(p1-log(b)-b*t1)
+		// g(x) = m*x+n
+		// log(g'(x)) = log(m) = p(x)
+		// p(0) = log(m) = p1
+		// m = exp(p1)
+		// g(0) = 0 => n = 0
+		// f(t1) = a*exp(b*t1)+c = g(t1) = m*t1
+		// c = m*t1 - a*exp(b*t1)
+		// h(x) = j*x+k
+		// log(h'(x)) = log(j) = p(x)
+		// p(t2) = log(j) = p2
+		// j = exp(p2)
+		// f(t2) = a*exp(b*t2)+c = h(t2) = j*t2+k
+		// k = a*exp(b*t2)+c-j*t2
+		double p1 = Math.log(400);
+		double p2 = Math.log(800);
+		double t1 = 4;
+		double t2 = 14;
+		double m = Math.exp(p1);
+		double b = (p1-p2)/(t1-t2);
+		double a = Math.exp(p1-Math.log(b)-b*t1);
+		double c = m*t1-a*Math.exp(b*t1);
+		double j = Math.exp(p2);
+		double k = a*Math.exp(b*t2)+c-j*t2;
+		double z = m*time;
+		if(time<=t1) {
+			// g(x)
+			z = m*time;
+		} else if(time<=t2) {
+			// f(x)
+			z = a*Math.exp(b*time)+c;
+		} else {
+			// h(x)
+			z = j*time+k;
+		}
+		return getFundamental(1, 1000000, z);
 	}
 	public static double getChromaticIntervals(int tick, double timeResidue) {
 		int note = 0;
@@ -63,8 +120,8 @@ public static void main(String[] args) throws IOException {
 		int[] noteList = getChromaticIntervals(tick);
 		for(int k=0; k<noteList.length; k++) {
 			//total += getEvenFundamental(noteList[k],1,timeResidue);
-			//total += getEvenNote(noteList[k],1,timeResidue);
-			total += getGridNote(noteList[k],1,timeResidue);
+			total += getEvenNote(noteList[k],1,timeResidue);
+			//total += getGridNote(noteList[k],1,timeResidue);
 		}
 		total *= 0.5;
 		return total;
@@ -132,8 +189,8 @@ public static void main(String[] args) throws IOException {
 		//total += getEvenFundamental(note,1,timeResidue);
 		//total += getEvenNote(note,1,timeResidue);
 		//total += getGridNote(note,1,timeResidue);
-		total += getStretchNote(note,1,timeResidue);
-		//total += getJustNote(note,1,timeResidue);
+		//total += getStretchNote(note,1,timeResidue);
+		total += getJustNote(note,1,timeResidue);
 		//total *= 0.5;
 		return total;
 	}
