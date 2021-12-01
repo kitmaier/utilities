@@ -70,47 +70,60 @@ public static void main(String[] args) throws IOException {
 		return total;
 	}
 	public static double getBend(double time) {
-		// f(x) = a*exp(b*x)+c
-		// v(x) = sin(f(x))
-		// log(f'(x)) = log(a)+log(b)+b*x = p(x)
-		// p(t0)=p1, p(t1)=p1, p(t2)=p2, p(t3)=p2
-		// log(a)+log(b)+b*t1 = p1
-		// log(a)+log(b)+b*t2 = p2
-		// b = (p1-p2)/(t1-t2)
-		// a = exp(p1-log(b)-b*t1)
-		// g(x) = m*x+n
-		// log(g'(x)) = log(m) = p(x)
-		// p(0) = log(m) = p1
-		// m = exp(p1)
-		// g(0) = 0 => n = 0
-		// f(t1) = a*exp(b*t1)+c = g(t1) = m*t1
-		// c = m*t1 - a*exp(b*t1)
-		// h(x) = j*x+k
-		// log(h'(x)) = log(j) = p(x)
-		// p(t2) = log(j) = p2
-		// j = exp(p2)
-		// f(t2) = a*exp(b*t2)+c = h(t2) = j*t2+k
-		// k = a*exp(b*t2)+c-j*t2
-		double p1 = Math.log(400);
-		double p2 = Math.log(800);
-		double t1 = 4;
-		double t2 = 14;
+		// In order to bend from one note to another, we need to keep track of several related variables
+		// The real time, the bent time, the pitch, the phase offset, and whether we are before/during/after the bend
+		// The actual waveform W(t) = cos(2*pi*Z(t)) where Z(t) is the bent time value times the initial frequency of vibration
+		// The perceived pitch, being the rate of oscillation of W(t), is the rate of change of Z(t) transposed from frequency space to pitch space, which is logarithmic
+		//   P(t) = ln(Z'(t))
+		// Z(t) is a piecewise function, with value F(t) during the bend, G(t) before it, and H(t) after it
+		//   Z(t) = {F(t) when t1 <= t <= t2; G(t) when 0 <= t <= t1; H(t) when t2 <= t}
+		// This function will need to be continuous and fairly smooth, to avoid discontinuities in W(t) and P(t)
+		//   F(t1) = G(t1), F(t2) = H(t2), F'(t1) = G'(t1), F'(t2) = H'(t2)
+		// G(t) and H(t) will both be linear functions, because a constant amount of bending amounts to a simple multiplier on the rate of flow of time
+		//   G(t) = m*t+n, H(t) = j*t+k
+		// Since we may as well begin at the origin, G(0) = 0 implies that n = 0
+		// We can select the initial and final pitches of the bend
+		//   p1 = P(t1) = ln(Z'(t1)), p2 = P(t2) = ln(Z'(t2))
+		// We can solve for the constants in G(t)
+		//   G'(t) = m
+		//   p1 = P(t1) = ln(G'(t1)) = ln(m)
+		//   m = exp(p1)
+		// In order for F(t) to represent a linear pitch bend, P(t) must be a linear function, making F'(t) and F(t) exponential
+		//   P(t) = ln(F'(t)) = linear
+		//   F'(t) = exponential
+		//   F(t) = a*exp(b*t)+c
+		//   F'(t) = a*b*exp(b*t)
+		//   P(t) = ln(a)+ln(b)+b*t
+		// Now we can solve for the constants in F(t)
+		//   ln(a)+ln(b)+b*t1 = p1
+		//   ln(a)+ln(b)+b*t2 = p2
+		//   b = (p1-p2)/(t1-t2)
+		//   a = exp(p1-ln(b)-b*t1)
+		//   F(t1) = a*exp(b*t1)+c = G(t1) = m*t1
+		//   c = m*t1-a*exp(b*t1)
+		// Now we can solve for the constants in H(t)
+		//   H'(t2) = j
+		//   p2 = P(t2) = ln(H'(t2)) = ln(j)
+		//   j = exp(p2)
+		//   F(t2) = a*exp(b*t2)+c = H(t2) = j*t2+k
+		//   k = a*exp(b*t2)+c-j*t2
+		double p1 = Math.log(400); // pitch representation for 400hz frequency
+		double p2 = Math.log(800); // pitch representation for 800hz frequency
+		double t1 = 4; // start bend after 4 seconds
+		double t2 = 14; // continue bend for 10 seconds
 		double m = Math.exp(p1);
 		double b = (p1-p2)/(t1-t2);
 		double a = Math.exp(p1-Math.log(b)-b*t1);
 		double c = m*t1-a*Math.exp(b*t1);
 		double j = Math.exp(p2);
 		double k = a*Math.exp(b*t2)+c-j*t2;
-		double z = m*time;
+		double z = m*time; // default value if something goes wrong
 		if(time<=t1) {
-			// g(x)
-			z = m*time;
+			z = m*time; // G(t)
 		} else if(time<=t2) {
-			// f(x)
-			z = a*Math.exp(b*time)+c;
+			z = a*Math.exp(b*time)+c; // F(t)
 		} else {
-			// h(x)
-			z = j*time+k;
+			z = j*time+k; // H(t)
 		}
 		return getFundamental(1, 1000000, z);
 	}
