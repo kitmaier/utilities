@@ -1,0 +1,146 @@
+# Random melody with pairs of consecutive notes from chord progression (1-2-5)
+#
+# Generator script:
+#import random
+#random.seed(202110293)
+#chords = {
+# '1':['3C','3E','3G','4C'],
+# '2':['3D','3F','3A'],
+# '5':['3D','3G','3B']
+#}
+#beat = 0
+#for cycle in range(10):
+# for chord_num in ['1','2','5']:
+#  for rep in range(4):
+#   chord = chords[chord_num]
+#   note = random.choice(chord)
+#   print('R,0,'+str(beat)+',2,'+note)
+#   beat += 2
+
+
+
+
+R	0	0	2	3C
+R	0	2	2	3C
+R	0	4	2	3E
+R	0	6	2	3G
+R	0	8	2	3A
+R	0	10	2	3D
+R	0	12	2	3D
+R	0	14	2	3A
+R	0	16	2	3D
+R	0	18	2	3B
+R	0	20	2	3D
+R	0	22	2	3G
+R	0	24	2	3C
+R	0	26	2	3C
+R	0	28	2	3G
+R	0	30	2	3G
+R	0	32	2	3F
+R	0	34	2	3F
+R	0	36	2	3A
+R	0	38	2	3D
+R	0	40	2	3G
+R	0	42	2	3B
+R	0	44	2	3B
+R	0	46	2	3G
+R	0	48	2	3C
+R	0	50	2	4C
+R	0	52	2	3C
+R	0	54	2	3E
+R	0	56	2	3D
+R	0	58	2	3D
+R	0	60	2	3D
+R	0	62	2	3A
+R	0	64	2	3D
+R	0	66	2	3B
+R	0	68	2	3D
+R	0	70	2	3G
+R	0	72	2	4C
+R	0	74	2	3E
+R	0	76	2	3G
+R	0	78	2	3C
+R	0	80	2	3D
+R	0	82	2	3D
+R	0	84	2	3F
+R	0	86	2	3A
+R	0	88	2	3B
+R	0	90	2	3D
+R	0	92	2	3D
+R	0	94	2	3B
+R	0	96	2	3E
+R	0	98	2	3G
+R	0	100	2	3G
+R	0	102	2	3G
+R	0	104	2	3D
+R	0	106	2	3F
+R	0	108	2	3F
+R	0	110	2	3F
+R	0	112	2	3D
+R	0	114	2	3D
+R	0	116	2	3D
+R	0	118	2	3G
+R	0	120	2	3C
+R	0	122	2	3E
+R	0	124	2	3G
+R	0	126	2	4C
+R	0	128	2	3D
+R	0	130	2	3A
+R	0	132	2	3F
+R	0	134	2	3F
+R	0	136	2	3G
+R	0	138	2	3B
+R	0	140	2	3D
+R	0	142	2	3G
+R	0	144	2	3G
+R	0	146	2	3E
+R	0	148	2	4C
+R	0	150	2	3C
+R	0	152	2	3D
+R	0	154	2	3F
+R	0	156	2	3D
+R	0	158	2	3A
+R	0	160	2	3B
+R	0	162	2	3G
+R	0	164	2	3G
+R	0	166	2	3B
+R	0	168	2	3E
+R	0	170	2	3C
+R	0	172	2	3C
+R	0	174	2	3C
+R	0	176	2	3F
+R	0	178	2	3F
+R	0	180	2	3A
+R	0	182	2	3A
+R	0	184	2	3D
+R	0	186	2	3B
+R	0	188	2	3G
+R	0	190	2	3G
+R	0	192	2	4C
+R	0	194	2	3C
+R	0	196	2	3E
+R	0	198	2	3E
+R	0	200	2	3A
+R	0	202	2	3F
+R	0	204	2	3D
+R	0	206	2	3A
+R	0	208	2	3B
+R	0	210	2	3D
+R	0	212	2	3B
+R	0	214	2	3D
+R	0	216	2	3E
+R	0	218	2	4C
+R	0	220	2	4C
+R	0	222	2	3G
+R	0	224	2	3F
+R	0	226	2	3F
+R	0	228	2	3F
+R	0	230	2	3F
+R	0	232	2	3D
+R	0	234	2	3B
+R	0	236	2	3B
+R	0	238	2	3G
+
+
+
+

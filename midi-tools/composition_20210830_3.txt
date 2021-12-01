@@ -1,0 +1,91 @@
+# 12 bar blues with short riffs
+
+# I (C-G)
+L	0	0	1	3C
+R	0	0	1	4G
+R	0	2	1	4E
+R	0	4	1	4C
+R	0	6	1	4E
+
+# I (C-G)
+L	1	0	1	3C
+R	1	0	1	4G
+R	1	2	1	4A
+R	1	4	1	4G
+R	1	5	1	4B
+R	1	6	1	4A
+
+# I (C-G)
+L	2	0	1	3C
+R	2	0	1	4G
+R	2	2	1	4E
+R	2	3	1	4F
+R	2	5	1	4G
+R	2	6	2	4E
+
+# I (C-G)
+L	3	0	2	3C
+R	3	0	2	4G
+R	3	2	4	4C
+R	3	6	2	4E
+
+# IV (F-C)
+L	4	0	2	3F
+R	4	0	2	4C
+R	4	2	4	4F
+R	4	6	2	4A
+
+# IV (F-C)
+L	5	0	1	3F
+R	5	0	1	4C
+R	5	2	1	4A
+R	5	3	1	4F
+R	5	5	1	4A
+R	5	6	2	4C
+
+# I (C-G)
+L	6	0	2	3C
+R	6	0	2	4G
+R	6	2	4	4E
+R	6	6	2	4G
+
+# I (C-G)
+L	7	0	1	3C
+R	7	0	1	4G
+R	7	2	1	4C
+R	7	4	1	4E
+R	7	5	1	4G
+R	7	6	1	4B
+
+# V (G-D)
+L	8	0	2	3G
+R	8	0	2	4D
+R	8	2	4	4B
+R	8	6	2	4G
+
+# IV (F-C)
+L	9	0	2	3F
+R	9	0	2	4C
+R	9	2	4	4C
+R	9	6	2	4A
+
+# I (C-G)
+L	10	0	1	3C
+R	10	0	1	4G
+R	10	1	1	4C
+R	10	2	1	4E
+R	10	3	3	4G
+
+# I (C-G)
+L	11	0	2	3C
+R	11	0	2	4G
+R	11	1	2	4E
+R	11	4	1	4C
+R	11	5	1	4C
+
+
+
+
+
+
+

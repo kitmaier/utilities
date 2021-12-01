@@ -1,0 +1,46 @@
+# Randomly generate four-chord loops with strumming
+# Trying to mimic guitar voicings on strings 2E,2A,3D,3G,3B,4E
+#!time_signature: 6/8
+#!microbeat_full_duation
+#!L_instrument:PIANO__HARPSICHORD
+# / L_instrument:STRINGS__ORCHESTRAL_HARP
+# 
+##Generator script #1 (print chord progression):
+#import random
+#random.seed(20211127)
+#from random import randint
+#chord_names = ['','G','Am','Bm','C','D','Em']
+#for cycle in range(10):
+# random_chord_1 = chord_names[randint(1,6)]
+# random_chord_2 = chord_names[randint(1,6)]
+# print(cycle,1,chord_names[1])
+# print(cycle,2,random_chord_1)
+# print(cycle,3,random_chord_2)
+# print(cycle,4,chord_names[4])
+# print(cycle,5,chord_names[1])
+# print(cycle,6,random_chord_1)
+# print(cycle,7,random_chord_2)
+# print(cycle,8,chord_names[5])
+#
+##Generator script #2 (print note names):
+#chords = {
+# 'Am':['2E','2A','3E','3A','4C','4E'],
+# 'Bm':['2F#','2B','3D','3B','4D','4F#'],
+# 'C':['2E','3C','3E','3G','4C','4E'],
+# 'D':['2F#','2A','3D','3A','4D','4F#'],
+# 'Em':['2E','2B','3E','3G','3B','4E'],
+# 'G':['2G','2B','3D','3G','3B','4G']
+#}
+#chord_list = ['G', 'Bm', 'G', 'C', 'G', 'Bm', 'G', 'D', 'G', 'D', 'G', 'C', 'G', 'D', 'G', 'D', 'G', 'D', 'Am', 'C', 'G', 'D', 'Am', 'D', 'G', 'D', 'C', 'C', 'G', 'D', 'C', 'D', 'G', 'C', 'Bm', 'C', 'G', 'C', 'Bm', 'D', 'G', 'D', 'Bm', 'C', 'G', 'D', 'Bm', 'D', 'G', 'Bm', 'Am', 'C', 'G', 'Bm', 'Am', 'D', 'G', 'G', 'Am', 'C', 'G', 'G', 'Am', 'D', 'G', 'Em', 'D', 'C', 'G', 'Em', 'D', 'D', 'G', 'G', 'Bm', 'C', 'G', 'G', 'Bm', 'D']
+#file = open("C:\\Users\\8maie\\OneDrive\\Desktop\\github_projects\\utilities\\midi-tools\\python_out.txt", "w")
+#for chord_num,chord_name in enumerate(chord_list):
+# for rep in range(2):
+#  measure = chord_num*2+rep
+#  for (beat,duration) in [(0,2),(2,1),(3,2),(5,1)]:
+#   for idx,note in enumerate(chords[chord_name]):
+#    rc = file.write('L'+'\t'+str(measure)+'\t'+str(beat)+'_'+str(idx)+'\t'+str(duration)+'\t'+note+'\n')
+#
+#file.close()
+
+# Detailed notes removed to save space, can be regenerated from script #2
+

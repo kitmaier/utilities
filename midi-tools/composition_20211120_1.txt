@@ -1,0 +1,82 @@
+# Chord progression C-Cm-Bdim-Bb-C-Cm-Bdim-Aaug-Bbdim-Am
+#!L_instrument:BRASS__TUBA
+
+# C - C E G
+L	0	0	4	3C
+L	0	0	4	3E
+L	0	0	4	3G
+L	0	4	4	3C
+L	0	4	4	3E
+L	0	4	4	3G
+
+# Cm - C Eb G
+L	1	0	4	3C
+L	1	0	4	3Eb
+L	1	0	4	3G
+L	1	4	4	3C
+L	1	4	4	3Eb
+L	1	4	4	3G
+
+# Bdim - B D F
+L	2	0	4	2B
+L	2	0	4	3D
+L	2	0	4	3F
+L	2	4	4	2B
+L	2	4	4	3D
+L	2	4	4	3F
+
+# Bb - Bb D F
+L	3	0	4	2Bb
+L	3	0	4	3D
+L	3	0	4	3F
+L	3	4	4	2Bb
+L	3	4	4	3D
+L	3	4	4	3F
+
+# C - C E G
+L	4	0	4	3C
+L	4	0	4	3E
+L	4	0	4	3G
+L	4	4	4	3C
+L	4	4	4	3E
+L	4	4	4	3G
+
+# Cm - C Eb G
+L	5	0	4	3C
+L	5	0	4	3Eb
+L	5	0	4	3G
+L	5	4	4	3C
+L	5	4	4	3Eb
+L	5	4	4	3G
+
+# Bdim - B D F
+L	6	0	4	2B
+L	6	0	4	3D
+L	6	0	4	3F
+L	6	4	4	2B
+L	6	4	4	3D
+L	6	4	4	3F
+
+# Aaug - A Db F
+L	7	0	4	2A
+L	7	0	4	3Db
+L	7	0	4	3F
+L	7	4	4	2A
+L	7	4	4	3Db
+L	7	4	4	3F
+
+# Bbdim - Bb Db E
+L	8	0	4	2Bb
+L	8	0	4	3Db
+L	8	0	4	3E
+L	8	4	4	2Bb
+L	8	4	4	3Db
+L	8	4	4	3E
+
+# Am - A C E
+L	9	0	8	2A
+L	9	0	8	3C
+L	9	0	8	3E
+
+
+

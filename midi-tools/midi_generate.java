@@ -15,7 +15,7 @@ import javax.sound.midi.*;
 public class midi_generate {
 	public static void main(String argv[]) throws Exception {
 		String[] fileList = {
-			"composition_20210723_1"
+			"composition_20211129_3"
 		};
 		for(String fileName : fileList) {
 			System.out.println(fileName);
@@ -54,6 +54,9 @@ public class midi_generate {
 				if(line.length()==1||line.charAt(1)!='!') continue;
 				if(line.contains("time_signature:")&&line.contains("6/8")) {
 					timeSignature = 6;
+				}
+				if(line.contains("tempo:")&&line.contains("double")) {
+					ticksPerBeat = 6;
 				}
 				if(line.contains("tempo:")&&line.contains("fast")) {
 					ticksPerBeat = 8;

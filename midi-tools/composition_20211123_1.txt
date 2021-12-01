@@ -1,0 +1,518 @@
+# Erana's Peace from Quest for Glory I with lowest notes removed
+# Written by Mark Seibert, arranged by Katja Savia
+# Key of Eb (Eb F G Ab Bb C D) or Cm (C D Eb F G Ab Bb)
+# Chords: Cm Bb F Fm Eb Gb Db ?? Cm Bb F Fm Eb Gb Db ?? Cm Bb F Fm Eb Gb Db ?? Eb Bb Db Ab Cm Bb Ab Eb Bb Db Ab Cm Bb Ab Csus?? (loop)
+#!tempo:double
+#!L_instrument:STRINGS__ORCHESTRAL_HARP
+#!R_instrument:STRINGS__ORCHESTRAL_HARP
+# Works well in Synthesia with right hand muted trumpet or ocarina
+
+# 1 - Cm (C Eb G)
+L	0	0	3	4C
+L	0	3	3	4Eb
+L	0	6	3	4G
+L	0	9	3	5C
+L	0	12	3	4G
+L	0	15	3	4Eb
+L	0	18	3	4C
+L	0	21	3	4Eb
+R	0	15	3	5C
+R	0	18	3	5D
+R	0	21	3	5Eb
+
+# 2 - Bb (Bb D F)
+L	3	0	3	3Bb
+L	3	3	3	4D
+L	3	6	3	4F
+L	3	9	3	4Bb
+L	3	12	3	4F
+L	3	15	3	4D
+L	3	18	3	3Bb
+L	3	21	3	4D
+R	3	0	9	5D
+R	3	9	11	4Bb
+R	3	20	2	5C
+R	3	22	2	4Bb
+
+# 3 - F (F A C)
+L	6	0	3	3A
+L	6	3	3	4C
+L	6	6	3	4F
+L	6	9	3	4A
+L	6	12	3	4F
+L	6	15	3	4C
+L	6	18	3	3A
+L	6	21	3	4C
+R	6	0	9	5C
+R	6	9	15	5F
+
+# 4 - Fm (F Ab C)
+L	9	0	3	3Ab
+L	9	3	3	4C
+L	9	6	3	4F
+L	9	9	3	4Ab
+L	9	12	3	4F
+L	9	15	3	4C
+L	9	18	3	3Ab
+L	9	21	3	4C
+R	9	12	4	5F
+R	9	16	4	5Eb
+R	9	20	4	5D
+
+# 5 - Eb (Eb Bb G)
+L	12	0	3	4Eb
+L	12	3	3	3Bb
+L	12	6	3	4Eb
+L	12	9	3	4G
+L	12	12	3	4Eb
+L	12	15	3	3Bb
+L	12	18	3	3G
+L	12	21	3	4Eb
+R	12	0	8	5Eb
+R	12	8	16	4Bb
+
+# 6 - Gb (Gb Bb Db)
+L	15	0	3	4Db
+L	15	3	3	3Bb
+L	15	6	3	4Db
+L	15	9	3	4Gb
+L	15	12	3	4Db
+L	15	15	3	3Bb
+L	15	18	3	3Gb
+L	15	21	3	4Db
+R	15	0	4	5Eb
+R	15	4	4	5Db
+R	15	8	4	5C
+R	15	12	12	5Db
+
+# 7 - Db (Db F Ab)
+L	18	0	3	4Db
+L	18	3	3	3Ab
+L	18	6	3	4Db
+L	18	9	3	4F
+L	18	12	3	4Db
+L	18	15	3	3Ab
+L	18	18	3	3F
+L	18	21	3	4Db
+R	18	0	8	5Db
+R	18	8	4	4Ab
+R	18	12	12	4Ab
+
+# 8 - ?? (C F G B)
+L	21	0	3	3G
+L	21	3	3	4C
+L	21	6	3	4F
+L	21	9	3	4C
+L	21	12	3	3B
+L	21	15	3	3G
+L	21	18	3	3B
+L	21	21	3	4F
+R	21	0	24	5C
+
+# 9 (1) - Cm (C Eb G)
+L	24	0	3	3C
+L	24	3	3	4C
+L	24	6	3	4Eb
+L	24	9	3	4G
+L	24	12	3	4Eb
+L	24	15	3	4G
+L	24	18	3	4C
+L	24	21	3	4Eb
+R	24	15	3	5C
+R	24	18	3	5D
+R	24	21	3	5Eb
+
+# 10 (1) - Bb (Bb D F)
+L	27	0	3	3Bb
+L	27	3	3	4D
+L	27	6	3	4F
+L	27	9	3	4Bb
+L	27	12	3	4F
+L	27	15	3	4D
+L	27	18	3	3Bb
+L	27	21	3	4F
+R	27	0	1	5D
+R	27	1	1	5Eb
+R	27	2	10	5D
+R	27	20	2	5C
+R	27	22	2	4Bb
+
+# 11 (1) - F (F A C)
+L	30	0	3	3A
+L	30	3	3	4C
+L	30	6	3	4F
+L	30	9	3	4A
+L	30	12	3	4F
+L	30	15	3	4C
+L	30	18	3	3A
+L	30	21	3	4F
+R	30	0	9	5C
+R	30	9	9	5F
+
+# 12 (1) - Fm (F Ab C)
+L	33	0	3	3Ab
+L	33	3	3	4C
+L	33	6	3	4F
+L	33	9	3	4Ab
+L	33	12	3	4F
+L	33	15	3	4C
+L	33	18	3	3Ab
+L	33	21	3	4F
+R	33	12	4	5F
+R	33	16	4	5F
+R	33	20	4	5F
+
+# 13 (1) - Eb (Eb G Bb)
+L	36	0	3	3G
+L	36	3	3	3Bb
+L	36	6	3	4Eb
+L	36	9	3	4G
+L	36	12	3	4Eb
+L	36	15	3	3Bb
+L	36	18	3	3G
+L	36	21	3	4Eb
+R	36	0	4	5F
+R	36	4	4	5Eb
+R	36	8	4	5D
+R	36	12	6	5Eb
+
+# 14 (1) - Gb (Gb Bb Db)
+L	39	0	3	3Gb
+L	39	3	3	3Bb
+L	39	6	3	4Db
+L	39	9	3	4Gb
+L	39	12	3	4Db
+L	39	15	3	3Bb
+L	39	18	3	3Gb
+L	39	21	3	4Db
+R	39	0	4	5Eb
+R	39	4	4	5Db
+R	39	8	4	5C
+R	39	12	3	5Db
+
+# 15 (1) - Db (Db F Ab)
+L	42	0	3	3F
+L	42	3	3	3Ab
+L	42	6	3	4Db
+L	42	9	3	3Ab
+L	42	12	3	4F
+L	42	15	3	4Db
+L	42	18	3	3F
+L	42	21	3	3Ab
+R	42	0	8	5Db
+R	42	8	4	4Ab
+R	42	12	8	4Ab
+R	42	20	4	4Bb
+
+# 16 (1) - ?? (C D F G B)
+L	45	0	3	3G
+L	45	3	3	4D
+L	45	6	3	4F
+L	45	9	3	4C
+L	45	12	3	3B
+L	45	15	3	3G
+L	45	18	3	4D
+L	45	21	3	4F
+R	45	0	12	5C
+
+# 9 (2) - Cm (C Eb G)
+L	48	0	3	3C
+L	48	3	3	4C
+L	48	6	3	4Eb
+L	48	9	3	4G
+L	48	12	3	4Eb
+L	48	15	3	4G
+L	48	18	3	4C
+L	48	21	3	4Eb
+R	48	15	3	5C
+R	48	18	3	5D
+R	48	21	3	5Eb
+
+# 10 (2) - Bb (Bb D F)
+L	51	0	3	3Bb
+L	51	3	3	4D
+L	51	6	3	4F
+L	51	9	3	4Bb
+L	51	12	3	4F
+L	51	15	3	4D
+L	51	18	3	3Bb
+L	51	21	3	4F
+R	51	0	1	5D
+R	51	1	1	5Eb
+R	51	2	10	5D
+R	51	20	2	5C
+R	51	22	2	4Bb
+
+# 11 (2) - F (F A C)
+L	54	0	3	3A
+L	54	3	3	4C
+L	54	6	3	4F
+L	54	9	3	4A
+L	54	12	3	4F
+L	54	15	3	4C
+L	54	18	3	3A
+L	54	21	3	4F
+R	54	0	9	5C
+R	54	9	9	5F
+
+# 12 (2) - Fm (F Ab C)
+L	57	0	3	3Ab
+L	57	3	3	4C
+L	57	6	3	4F
+L	57	9	3	4Ab
+L	57	12	3	4F
+L	57	15	3	4C
+L	57	18	3	3Ab
+L	57	21	3	4F
+R	57	12	4	5F
+R	57	16	4	5F
+R	57	20	4	5F
+
+# 13 (2) - Eb (Eb G Bb)
+L	60	0	3	3G
+L	60	3	3	3Bb
+L	60	6	3	4Eb
+L	60	9	3	4G
+L	60	12	3	4Eb
+L	60	15	3	3Bb
+L	60	18	3	3G
+L	60	21	3	4Eb
+R	60	0	4	5F
+R	60	4	4	5Eb
+R	60	8	4	5D
+R	60	12	6	5Eb
+
+# 14 (2) - Gb (Gb Bb Db)
+L	63	0	3	3Gb
+L	63	3	3	3Bb
+L	63	6	3	4Db
+L	63	9	3	4Gb
+L	63	12	3	4Db
+L	63	15	3	3Bb
+L	63	18	3	3Gb
+L	63	21	3	4Db
+R	63	0	4	5Eb
+R	63	4	4	5Db
+R	63	8	4	5C
+R	63	12	3	5Db
+
+# 15 (2) - Db (Db F Ab)
+L	66	0	3	3F
+L	66	3	3	3Ab
+L	66	6	3	4Db
+L	66	9	3	3Ab
+L	66	12	3	4F
+L	66	15	3	4Db
+L	66	18	3	3F
+L	66	21	3	3Ab
+R	66	0	8	5Db
+R	66	8	4	4Ab
+R	66	12	8	4Ab
+R	66	20	4	4Bb
+
+# 16 (2) - ?? (C D F G B)
+L	69	0	3	3G
+L	69	3	3	4D
+L	69	6	3	4F
+L	69	9	3	4C
+L	69	12	3	3B
+L	69	15	3	3G
+L	69	18	3	4D
+L	69	21	3	4F
+R	69	0	12	5C
+
+# 17 - Eb (Eb G Bb)
+L	72	0	3	3Eb
+L	72	3	3	3G
+L	72	6	3	3Bb
+L	72	9	3	4Eb
+L	72	12	3	3Bb
+L	72	15	3	3G
+L	72	18	3	3Eb
+L	72	21	3	3Bb
+R	72	12	4	5G
+R	72	16	4	5Ab
+R	72	20	4	5Bb
+
+# 18 - Bb (Bb D F)
+L	75	0	3	2Bb
+L	75	3	3	3F
+L	75	6	3	3Bb
+L	75	9	3	4D
+L	75	12	3	3Bb
+L	75	15	3	3F
+L	75	18	3	2Bb
+L	75	21	3	3F
+R	75	0	18	5F
+R	75	18	3	5F
+R	75	21	3	5G
+
+# 19 - Db (D# F Ab)
+L	78	0	3	3C#
+L	78	3	3	3F
+L	78	6	3	3Ab
+L	78	9	3	4C#
+L	78	12	3	3Ab
+L	78	15	3	3F
+L	78	18	3	3C#
+L	78	21	3	3Ab
+R	78	0	16	5Ab
+R	78	16	4	5G
+R	78	20	4	5F
+
+# 20 - Ab (Ab C Eb)
+L	81	0	3	2Ab
+L	81	3	3	3Eb
+L	81	6	3	3Ab
+L	81	9	3	4C
+L	81	12	3	3Ab
+L	81	15	3	3Eb
+L	81	18	3	2Ab
+L	81	21	3	3Ab
+R	81	0	12	5Eb
+
+# 21 - Cm (C Eb G)
+L	84	0	3	3C
+L	84	3	3	3G
+L	84	6	3	4C
+L	84	9	3	4Eb
+L	84	12	3	4C
+L	84	15	3	3G
+L	84	18	3	3C
+L	84	21	3	4C
+R	84	12	4	5G
+R	84	16	4	5F
+R	84	20	4	5Eb
+
+# 22 - Bb (Bb D F)
+L	87	0	3	2Bb
+L	87	3	3	3F
+L	87	6	3	3Bb
+L	87	9	3	4D
+L	87	12	3	3Bb
+L	87	15	3	3F
+L	87	18	3	2Bb
+L	87	21	3	3Bb
+R	87	0	12	5F
+R	87	12	4	5D
+R	87	16	4	5Eb
+R	87	20	4	5F
+
+# 23 - Ab (Ab C Eb)
+L	90	0	3	2Ab
+L	90	3	3	3Eb
+L	90	6	3	3Ab
+L	90	9	3	4Eb
+L	90	12	3	3Eb
+L	90	15	3	3Ab
+L	90	18	3	4C
+L	90	21	3	4Eb
+R	90	0	3	5Eb
+R	90	3	3	5D
+R	90	6	12	5C
+
+# 24 - Eb (Eb G Bb)
+L	93	0	3	3Eb
+L	93	3	3	3G
+L	93	6	3	3Bb
+L	93	9	3	4Eb
+L	93	12	3	3Bb
+L	93	15	3	3G
+L	93	18	3	3Eb
+L	93	21	3	3Bb
+R	93	12	4	5G
+R	93	16	4	5Ab
+R	93	20	4	5Bb
+
+# 25 - Bb (Bb D F)
+L	96	0	3	2Bb
+L	96	3	3	3F
+L	96	6	3	3Bb
+L	96	9	3	4D
+L	96	12	3	3F
+L	96	15	3	3Bb
+L	96	18	3	2Bb
+L	96	21	3	3F
+R	96	0	18	5F
+R	96	18	3	5F
+R	96	21	3	5G
+
+# 26 - Db (Db F Ab)
+L	99	0	3	3Db
+L	99	3	3	3F
+L	99	6	3	3Ab
+L	99	9	3	4Db
+L	99	12	3	3Ab
+L	99	15	3	3F
+L	99	18	3	3Db
+L	99	21	3	4Db
+R	99	0	16	5Ab
+R	99	16	4	5G
+R	99	20	4	5F
+
+# 27 - Ab?? (Ab Eb + D)
+L	102	0	3	2Ab
+L	102	3	3	3Eb
+L	102	6	3	3Ab
+L	102	9	3	3Eb
+L	102	12	3	2Ab
+L	102	15	3	3Eb
+L	102	18	3	4Eb
+L	102	21	3	4D
+R	102	0	24	5Eb
+
+# 28 - Cm (C Eb G)
+L	105	0	3	3C
+L	105	3	3	3G
+L	105	6	3	4C
+L	105	9	3	4Eb
+L	105	12	3	4C
+L	105	15	3	3G
+L	105	18	3	3C
+L	105	21	3	4C
+R	105	9	3	5G
+R	105	12	4	5G
+R	105	16	4	5F
+R	105	20	4	5Eb
+
+# 29 - Bb (Bb D F)
+L	108	0	3	2Bb
+L	108	3	3	3D
+L	108	6	3	3F
+L	108	9	3	3Bb
+L	108	12	3	3Bb
+L	108	15	3	3F
+L	108	18	3	2Bb
+L	108	21	3	3Bb
+R	108	0	12	5F
+R	108	12	4	5D
+R	108	16	4	5Eb
+R	108	20	4	5F
+
+# 30 - Ab (Ab C Eb)
+L	111	0	3	2Ab
+L	111	3	3	3Eb
+L	111	6	3	3Ab
+L	111	9	3	3Eb
+L	111	12	3	2Ab
+L	111	15	3	4C
+L	111	18	3	3Ab
+L	111	21	3	3Eb
+R	111	0	24	5Eb
+
+# 31 - Csus?? (C F G)
+L	114	0	3	3G
+L	114	3	3	4C
+L	114	6	3	3G
+L	114	9	3	4C
+L	114	12	3	4F
+L	114	15	3	3G
+L	114	18	3	4F
+L	114	21	3	4G
+
+# Should loop at the end
+# Should have some sustained background notes?
+
+
+
+

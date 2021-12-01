@@ -1,0 +1,285 @@
+# Generate random melody in the style of Addams Family theme with baseline
+# Source: https://www.youtube.com/watch?v=AY2yRSBXi6o
+#!L_instrument:BRASS__TROMBONE
+#!R_instrument:BRASS__TROMBONE
+#!tempo:double
+
+# Generator script:
+#from random import choice
+#scale = ['4E','4F','4G','4A','4B','5C','5D','5E']
+#chords = {
+# 'C':['4E','4G','5C','5E'],
+# 'D':['4F','4A','5D'],
+# 'G':['4G','4B','5D']
+#}
+#for verse_num in range(5):
+# starting_measure = verse_num*8
+# for (offset_measure, bass_note) in [(0,'C'),(1,'D'),(2,'G'),(3,'C'),(4,'C'),(5,'D'),(6,'G'),(7,'C')]:
+#  print('L,'+str(offset_measure+starting_measure)+',1,7,3'+bass_note)
+# for (offset_measure, bass_note) in [(0,'C'),(1,'D'),(2,'G'),(3,'C'),(4,'C'),(5,'D'),(6,'G'),(7,'C')]:
+#  print('L,'+str(offset_measure+starting_measure)+',1,7,3'+bass_note)
+# notes = []
+# for k in range(14):
+#  if k in [0,1,2,3,11,12,13]:
+#   chord = chords['C']
+#  elif k in [4,5,6]:
+#   chord = chords['D']
+#  else:
+#   chord = chords['G']
+#  if choice([0,1,1,1,1,1,1,1,1,1])==0:
+#   notes.append(choice(scale))
+#  else:
+#   notes.append(choice(chord))
+# print('R,'+str(starting_measure+0)+',0,1,'+notes[0])
+# print('R,'+str(starting_measure+0)+',1,3,'+notes[1])
+# print('R,'+str(starting_measure+0)+',4,1,'+notes[2])
+# print('R,'+str(starting_measure+0)+',5,3,'+notes[3])
+# print('R,'+str(starting_measure+0)+',8,1,'+notes[4])
+# print('R,'+str(starting_measure+0)+',9,3,'+notes[5])
+# print('R,'+str(starting_measure+0)+',12,4,'+notes[6])
+# print('R,'+str(starting_measure+2)+',0,1,'+notes[7])
+# print('R,'+str(starting_measure+2)+',1,3,'+notes[8])
+# print('R,'+str(starting_measure+2)+',4,1,'+notes[9])
+# print('R,'+str(starting_measure+2)+',5,3,'+notes[10])
+# print('R,'+str(starting_measure+2)+',8,1,'+notes[11])
+# print('R,'+str(starting_measure+2)+',9,3,'+notes[12])
+# print('R,'+str(starting_measure+2)+',12,4,'+notes[13])
+# print('R,'+str(starting_measure+4)+',0,1,'+notes[0])
+# print('R,'+str(starting_measure+4)+',1,3,'+notes[1])
+# print('R,'+str(starting_measure+4)+',4,1,'+notes[2])
+# print('R,'+str(starting_measure+4)+',5,3,'+notes[3])
+# print('R,'+str(starting_measure+4)+',8,1,'+notes[4])
+# print('R,'+str(starting_measure+4)+',9,3,'+notes[5])
+# print('R,'+str(starting_measure+4)+',12,4,'+notes[6])
+# print('R,'+str(starting_measure+6)+',0,1,5C')
+# print('R,'+str(starting_measure+6)+',1,3,4B')
+# print('R,'+str(starting_measure+6)+',4,1,4G')
+# print('R,'+str(starting_measure+6)+',5,3,4A')
+# print('R,'+str(starting_measure+6)+',8,1,4B')
+# print('R,'+str(starting_measure+6)+',9,7,5C')
+
+
+
+
+
+L	0	1	7	3C
+L	1	1	7	3D
+L	2	1	7	3G
+L	3	1	7	3C
+L	4	1	7	3C
+L	5	1	7	3D
+L	6	1	7	3G
+L	7	1	7	3C
+L	0	1	7	3C
+L	1	1	7	3D
+L	2	1	7	3G
+L	3	1	7	3C
+L	4	1	7	3C
+L	5	1	7	3D
+L	6	1	7	3G
+L	7	1	7	3C
+R	0	0	1	5C
+R	0	1	3	4G
+R	0	4	1	4G
+R	0	5	3	5E
+R	0	8	1	5D
+R	0	9	3	4F
+R	0	12	4	4A
+R	2	0	1	4A
+R	2	1	3	4B
+R	2	4	1	4F
+R	2	5	3	4G
+R	2	8	1	4E
+R	2	9	3	5E
+R	2	12	4	5E
+R	4	0	1	5C
+R	4	1	3	4G
+R	4	4	1	4G
+R	4	5	3	5E
+R	4	8	1	5D
+R	4	9	3	4F
+R	4	12	4	4A
+R	6	0	1	5C
+R	6	1	3	4B
+R	6	4	1	4G
+R	6	5	3	4A
+R	6	8	1	4B
+R	6	9	7	5C
+L	8	1	7	3C
+L	9	1	7	3D
+L	10	1	7	3G
+L	11	1	7	3C
+L	12	1	7	3C
+L	13	1	7	3D
+L	14	1	7	3G
+L	15	1	7	3C
+L	8	1	7	3C
+L	9	1	7	3D
+L	10	1	7	3G
+L	11	1	7	3C
+L	12	1	7	3C
+L	13	1	7	3D
+L	14	1	7	3G
+L	15	1	7	3C
+R	8	0	1	5E
+R	8	1	3	5E
+R	8	4	1	5C
+R	8	5	3	4E
+R	8	8	1	4A
+R	8	9	3	5D
+R	8	12	4	4A
+R	10	0	1	4B
+R	10	1	3	4B
+R	10	4	1	4G
+R	10	5	3	4G
+R	10	8	1	5E
+R	10	9	3	5E
+R	10	12	4	4F
+R	12	0	1	5E
+R	12	1	3	5E
+R	12	4	1	5C
+R	12	5	3	4E
+R	12	8	1	4A
+R	12	9	3	5D
+R	12	12	4	4A
+R	14	0	1	5C
+R	14	1	3	4B
+R	14	4	1	4G
+R	14	5	3	4A
+R	14	8	1	4B
+R	14	9	7	5C
+L	16	1	7	3C
+L	17	1	7	3D
+L	18	1	7	3G
+L	19	1	7	3C
+L	20	1	7	3C
+L	21	1	7	3D
+L	22	1	7	3G
+L	23	1	7	3C
+L	16	1	7	3C
+L	17	1	7	3D
+L	18	1	7	3G
+L	19	1	7	3C
+L	20	1	7	3C
+L	21	1	7	3D
+L	22	1	7	3G
+L	23	1	7	3C
+R	16	0	1	4A
+R	16	1	3	4G
+R	16	4	1	4E
+R	16	5	3	4E
+R	16	8	1	5D
+R	16	9	3	5D
+R	16	12	4	4F
+R	18	0	1	4G
+R	18	1	3	5D
+R	18	4	1	4B
+R	18	5	3	4G
+R	18	8	1	5C
+R	18	9	3	5C
+R	18	12	4	4E
+R	20	0	1	4A
+R	20	1	3	4G
+R	20	4	1	4E
+R	20	5	3	4E
+R	20	8	1	5D
+R	20	9	3	5D
+R	20	12	4	4F
+R	22	0	1	5C
+R	22	1	3	4B
+R	22	4	1	4G
+R	22	5	3	4A
+R	22	8	1	4B
+R	22	9	7	5C
+L	24	1	7	3C
+L	25	1	7	3D
+L	26	1	7	3G
+L	27	1	7	3C
+L	28	1	7	3C
+L	29	1	7	3D
+L	30	1	7	3G
+L	31	1	7	3C
+L	24	1	7	3C
+L	25	1	7	3D
+L	26	1	7	3G
+L	27	1	7	3C
+L	28	1	7	3C
+L	29	1	7	3D
+L	30	1	7	3G
+L	31	1	7	3C
+R	24	0	1	4E
+R	24	1	3	4E
+R	24	4	1	4G
+R	24	5	3	5E
+R	24	8	1	4A
+R	24	9	3	4F
+R	24	12	4	4B
+R	26	0	1	5D
+R	26	1	3	4B
+R	26	4	1	4E
+R	26	5	3	4G
+R	26	8	1	4G
+R	26	9	3	4E
+R	26	12	4	5C
+R	28	0	1	4E
+R	28	1	3	4E
+R	28	4	1	4G
+R	28	5	3	5E
+R	28	8	1	4A
+R	28	9	3	4F
+R	28	12	4	4B
+R	30	0	1	5C
+R	30	1	3	4B
+R	30	4	1	4G
+R	30	5	3	4A
+R	30	8	1	4B
+R	30	9	7	5C
+L	32	1	7	3C
+L	33	1	7	3D
+L	34	1	7	3G
+L	35	1	7	3C
+L	36	1	7	3C
+L	37	1	7	3D
+L	38	1	7	3G
+L	39	1	7	3C
+L	32	1	7	3C
+L	33	1	7	3D
+L	34	1	7	3G
+L	35	1	7	3C
+L	36	1	7	3C
+L	37	1	7	3D
+L	38	1	7	3G
+L	39	1	7	3C
+R	32	0	1	4E
+R	32	1	3	5C
+R	32	4	1	4G
+R	32	5	3	4G
+R	32	8	1	4A
+R	32	9	3	4A
+R	32	12	4	4B
+R	34	0	1	5D
+R	34	1	3	4B
+R	34	4	1	5D
+R	34	5	3	5D
+R	34	8	1	5E
+R	34	9	3	5C
+R	34	12	4	5C
+R	36	0	1	4E
+R	36	1	3	5C
+R	36	4	1	4G
+R	36	5	3	4G
+R	36	8	1	4A
+R	36	9	3	4A
+R	36	12	4	4B
+R	38	0	1	5C
+R	38	1	3	4B
+R	38	4	1	4G
+R	38	5	3	4A
+R	38	8	1	4B
+R	38	9	7	5C
+
+
+
+
+
+

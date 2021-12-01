@@ -1,0 +1,31 @@
+# Axis progression I-V-vi-IV strumming with percussion
+# Trying to mimic guitar voicings on strings 2E,2A,3D,3G,3B,4E
+#!time_signature: 6/8
+#!microbeat_full_duration
+#!L_instrument:PIANO__HARPSICHORD
+#
+##Generator script (print note names):
+#chords = {
+# 'Am':['2E','2A','3E','3A','4C','4E'], #2
+# 'Bm':['2F#','2B','3D','3B','4D','4F#'], #3
+# 'C':['2E','3C','3E','3G','4C','4E'], #4
+# 'D':['2F#','2A','3D','3A','4D','4F#'], #5
+# 'Em':['2E','2B','3E','3G','3B','4E'], #6
+# 'G':['2G','2B','3D','3G','3B','4G'] #1
+#}
+#chord_list = ['G','D','Em','C','G','D','Em','C','G','D','Em','C','G','D','Em','C','G','D','Em','C','G','D','Em','C','G','D','Em','C','G','D','Em','C']
+#file = open("C:\\Users\\8maie\\OneDrive\\Desktop\\github_projects\\utilities\\midi-tools\\python_out.txt", "w")
+#for chord_num,chord_name in enumerate(chord_list):
+# for rep in range(2):
+#  measure = chord_num*2+rep
+#  rc = file.write('P\t'+str(measure)+'\t0\t3\t35\n')
+#  rc = file.write('P\t'+str(measure)+'\t3\t3\t38\n')
+#  for (beat,duration) in [(0,2),(2,1),(3,2),(5,1)]:
+#   for idx,note in enumerate(chords[chord_name]):
+#    rc = file.write('L'+'\t'+str(measure)+'\t'+str(beat)+'_'+str(idx)+'\t'+str(duration)+'\t'+note+'\n')
+#
+#file.close()
+
+# Detailed notes removed to save space, can be regenerated from script
+
+

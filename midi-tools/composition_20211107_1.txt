@@ -1,0 +1,298 @@
+# Ode to Joy (Easier) - intro
+# Synthesia built-in
+# Transposed into every key
+# Fixing a mistake in composition_20210421_2
+
+# C  - 4C 4D 4E 4F 4G 4A 4B
+L	0	0	4	3C
+L	0	4	4	3G
+L	0	8	4	3C
+L	0	12	2	3G
+L	0	14	2	3C
+R	0	0	1	4E
+R	0	1	1	4E
+R	0	2	1	4F
+R	0	3	1	4G
+R	0	4	1	4G
+R	0	5	1	4F
+R	0	6	1	4E
+R	0	7	1	4D
+R	0	8	1	4C
+R	0	9	1	4C
+R	0	10	1	4D
+R	0	11	1	4E
+R	0	12	1	4D
+R	0	13	1	4C
+R	0	14	2	4C
+
+# G - 3G 3A 3B 4C 4D 4E 4F#
+L	2	0	4	2G
+L	2	4	4	3D
+L	2	8	4	2G
+L	2	12	2	3D
+L	2	14	2	2G
+R	2	0	1	3B
+R	2	1	1	3B
+R	2	2	1	4C
+R	2	3	1	4D
+R	2	4	1	4D
+R	2	5	1	4C
+R	2	6	1	3B
+R	2	7	1	3A
+R	2	8	1	3G
+R	2	9	1	3G
+R	2	10	1	3A
+R	2	11	1	3B
+R	2	12	1	3A
+R	2	13	1	3G
+R	2	14	2	3G
+
+# D - 4D 4E 4F# 4G 4A 4B 5C#
+L	4	0	4	3D
+L	4	4	4	3A
+L	4	8	4	3D
+L	4	12	2	3A
+L	4	14	2	3D
+R	4	0	1	4F#
+R	4	1	1	4F#
+R	4	2	1	4G
+R	4	3	1	4A
+R	4	4	1	4A
+R	4	5	1	4G
+R	4	6	1	4F#
+R	4	7	1	4E
+R	4	8	1	4D
+R	4	9	1	4D
+R	4	10	1	4E
+R	4	11	1	4F#
+R	4	12	1	4E
+R	4	13	1	4D
+R	4	14	2	4D
+
+# A - 3A 3B 4C# 4D 4E 4F# 4G#
+L	6	0	4	2A
+L	6	4	4	3E
+L	6	8	4	2A
+L	6	12	2	3E
+L	6	14	2	2A
+R	6	0	1	4C#
+R	6	1	1	4C#
+R	6	2	1	4D
+R	6	3	1	4E
+R	6	4	1	4E
+R	6	5	1	4D
+R	6	6	1	4C#
+R	6	7	1	3B
+R	6	8	1	3A
+R	6	9	1	3A
+R	6	10	1	3B
+R	6	11	1	4C#
+R	6	12	1	3B
+R	6	13	1	3A
+R	6	14	2	3A
+
+# E - 4E 4F# 4G# 4A 4B 5C# 5D#
+L	8	0	4	3E
+L	8	4	4	3B
+L	8	8	4	3E
+L	8	12	2	3B
+L	8	14	2	3E
+R	8	0	1	4G#
+R	8	1	1	4G#
+R	8	2	1	4A
+R	8	3	1	4B
+R	8	4	1	4B
+R	8	5	1	4A
+R	8	6	1	4G#
+R	8	7	1	4F#
+R	8	8	1	4E
+R	8	9	1	4E
+R	8	10	1	4F#
+R	8	11	1	4G#
+R	8	12	1	4F#
+R	8	13	1	4E
+R	8	14	2	4E
+
+# B - 3B 4C# 4D# 4E 4F# 4G# 4A#
+L	10	0	4	2B
+L	10	4	4	3F#
+L	10	8	4	2B
+L	10	12	2	3F#
+L	10	14	2	2B
+R	10	0	1	4D#
+R	10	1	1	4D#
+R	10	2	1	4E
+R	10	3	1	4F#
+R	10	4	1	4F#
+R	10	5	1	4E
+R	10	6	1	4D#
+R	10	7	1	4C#
+R	10	8	1	3B
+R	10	9	1	3B
+R	10	10	1	4C#
+R	10	11	1	4D#
+R	10	12	1	4C#
+R	10	13	1	3B
+R	10	14	2	3B
+
+# F# - 4F# 4G# 4A# 4B 5C# 5D# 5E#
+# Gb - 4Gb 4Ab 4Bb 5Cb 5Db 5Eb 5F
+L	12	0	4	3F#
+L	12	4	4	4C#
+L	12	8	4	3F#
+L	12	12	2	4C#
+L	12	14	2	3F#
+R	12	0	1	4A#
+R	12	1	1	4A#
+R	12	2	1	4B
+R	12	3	1	5C#
+R	12	4	1	5C#
+R	12	5	1	4B
+R	12	6	1	4A#
+R	12	7	1	4G#
+R	12	8	1	4F#
+R	12	9	1	4F#
+R	12	10	1	4G#
+R	12	11	1	4A#
+R	12	12	1	4G#
+R	12	13	1	4F#
+R	12	14	2	4F#
+
+# C# - 4C# 4D# 4E# 4F# 4G# 4A# 4B#
+# Db - 4Db 4Eb 4F 4Gb 4Ab 4Bb 5C
+L	14	0	4	3Db
+L	14	4	4	3Ab
+L	14	8	4	3Db
+L	14	12	2	3Ab
+L	14	14	2	3Db
+R	14	0	1	4F
+R	14	1	1	4F
+R	14	2	1	4Gb
+R	14	3	1	4Ab
+R	14	4	1	4Ab
+R	14	5	1	4Gb
+R	14	6	1	4F
+R	14	7	1	4Eb
+R	14	8	1	4Db
+R	14	9	1	4Db
+R	14	10	1	4Eb
+R	14	11	1	4F
+R	14	12	1	4Eb
+R	14	13	1	4Db
+R	14	14	2	4Db
+
+# Ab - 4Ab 4Bb 5C 5Db 5Eb 5F 5G
+L	16	0	4	3Ab
+L	16	4	4	4Eb
+L	16	8	4	3Ab
+L	16	12	2	4Eb
+L	16	14	2	3Ab
+R	16	0	1	5C
+R	16	1	1	5C
+R	16	2	1	5Db
+R	16	3	1	5Eb
+R	16	4	1	5Eb
+R	16	5	1	5Db
+R	16	6	1	5C
+R	16	7	1	4Bb
+R	16	8	1	4Ab
+R	16	9	1	4Ab
+R	16	10	1	4Bb
+R	16	11	1	5C
+R	16	12	1	4Bb
+R	16	13	1	4Ab
+R	16	14	2	4Ab
+
+# Eb - 4Eb 4F 4G 4Ab 4Bb 5C 5D
+L	18	0	4	3Eb
+L	18	4	4	3Bb
+L	18	8	4	3Eb
+L	18	12	2	3Bb
+L	18	14	2	3Eb
+R	18	0	1	4G
+R	18	1	1	4G
+R	18	2	1	4Ab
+R	18	3	1	4Bb
+R	18	4	1	4Bb
+R	18	5	1	4Ab
+R	18	6	1	4G
+R	18	7	1	4F
+R	18	8	1	4Eb
+R	18	9	1	4Eb
+R	18	10	1	4F
+R	18	11	1	4G
+R	18	12	1	4F
+R	18	13	1	4Eb
+R	18	14	2	4Eb
+
+# Bb - 4Bb 5C 5D 5Eb 5F 5G 5A
+L	20	0	4	3Bb
+L	20	4	4	4F
+L	20	8	4	3Bb
+L	20	12	2	4F
+L	20	14	2	3Bb
+R	20	0	1	5D
+R	20	1	1	5D
+R	20	2	1	5Eb
+R	20	3	1	5F
+R	20	4	1	5F
+R	20	5	1	5Eb
+R	20	6	1	5D
+R	20	7	1	5C
+R	20	8	1	4Bb
+R	20	9	1	4Bb
+R	20	10	1	5C
+R	20	11	1	5D
+R	20	12	1	5C
+R	20	13	1	4Bb
+R	20	14	2	4Bb
+
+# F - 4F 4G 4A 4Bb 5C 5D 5E
+L	22	0	4	3F
+L	22	4	4	4C
+L	22	8	4	3F
+L	22	12	2	4C
+L	22	14	2	3F
+R	22	0	1	4A
+R	22	1	1	4A
+R	22	2	1	4Bb
+R	22	3	1	5C
+R	22	4	1	5C
+R	22	5	1	4Bb
+R	22	6	1	4A
+R	22	7	1	4G
+R	22	8	1	4F
+R	22	9	1	4F
+R	22	10	1	4G
+R	22	11	1	4A
+R	22	12	1	4G
+R	22	13	1	4F
+R	22	14	2	4F
+
+# C  - 4C 4D 4E 4F 4G 4A 4B
+L	24	0	4	3C
+L	24	4	4	3G
+L	24	8	4	3C
+L	24	12	2	3G
+L	24	14	2	3C
+R	24	0	1	4E
+R	24	1	1	4E
+R	24	2	1	4F
+R	24	3	1	4G
+R	24	4	1	4G
+R	24	5	1	4F
+R	24	6	1	4E
+R	24	7	1	4D
+R	24	8	1	4C
+R	24	9	1	4C
+R	24	10	1	4D
+R	24	11	1	4E
+R	24	12	1	4D
+R	24	13	1	4C
+R	24	14	2	4C
+
+
+
+
+
+

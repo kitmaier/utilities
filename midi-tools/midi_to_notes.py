@@ -3,7 +3,23 @@
 # https://stackoverflow.com/questions/3964245/convert-file-to-hex-string-python
 
 #filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Hit The Road, Jack - Ray Charles (70 BPM).mid'
-filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Hey, Soul Sister - Train (105 BPM).mid'
+#filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Hey, Soul Sister - Train (105 BPM).mid'
+#filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/All Eyes On Me - Bo Burnham (105 BPM).mid'
+#filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/The Addams Family Theme (100 BPM).mid'
+# *** filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Believer - Imagine Dragons (100 BPM).mid'
+# *** filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Canon in D Major - Johann Pachelbel (70 BPM).mid'
+# *** filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Gaston - Beauty And The Beast (53 BPM).mid'
+#filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Hallelujah - Leonard Cohen (82 bpm).mid'
+#filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Mad World (From Donnie Darko) (88 BPM).mid'
+#filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Part Of Your World - The Little Mermaid (120 BPM).mid'
+#filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Piano Man - Billy Joel (117 BPM).mid'
+#filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Pink Panther Theme (117 BPM).mid'
+
+filename = '/Users/8maie/OneDrive/Desktop/Easy Keys Midi Files/Pure Imagination - Willy Wonka And The Chocolate Factory (88 BPM).mid'
+
+
+
+
 with open(filename,'rb') as f:
   content = f.read().hex()
 
