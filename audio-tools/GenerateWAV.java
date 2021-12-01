@@ -129,28 +129,33 @@ public static void main(String[] args) throws IOException {
 		//return getFundamental(1, 1000000, z);
 		return getNote(1, 1000000, z);
 	}
+	public static List<Double> pair(double a, double b) {
+		List<Double> newPair = new ArrayList<>();
+		newPair.add(a);
+		newPair.add(b);
+		return newPair;
+	}
 	public static double getJumps(double time) {
-		double t1 = 0;
-		double t2 = 4;
-		double t3 = 8;
-		double t4 = 12;
-		double a1 = 400;
-		double a2 = 500;
-		double a3 = 650;
-		double a4 = 800;
-		double b1 = 0;
-		double b2 = a1*t2+b1-a2*t2;
-		double b3 = a2*t3+b2-a3*t3;
-		double b4 = a3*t4+b3-a4*t4;
-		double z = a1*time;
-		if(time<=t2) {
-			z = a1*time+b1;
-		} else if(time<=t3) {
-			z = a2*time+b2;
-		} else if(time<=t4) {
-			z = a3*time+b3;
-		} else {
-			z = a4*time+b4;
+		List<List<Double>> jumps = new ArrayList<>();
+		jumps.add(pair(0,400));
+		jumps.add(pair(4,500));
+		jumps.add(pair(8,600));
+		jumps.add(pair(12,800));
+		List<List<Double>> params = new ArrayList<>();
+		double lastA = 0;
+		double lastB = 0;
+		for(List<Double> jumpPair : jumps) {
+			double A = jumpPair.get(1);
+			double B = (lastA-A)*jumpPair.get(0)+lastB;
+			params.add(pair(A,B));
+			lastA = A;
+			lastB = B;
+		}
+		double z = 0;
+		for(int k=0; k<jumps.size(); k++) {
+			if(time>=jumps.get(k).get(0)) {
+				z = params.get(k).get(0)*time+params.get(k).get(1);
+			}
 		}
 		//return getFundamental(1, 1000000, z);
 		return getNote(1, 1000000, z);
