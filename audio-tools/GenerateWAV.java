@@ -67,7 +67,8 @@ public static void main(String[] args) throws IOException {
 		//total += getIpanemaChordsStretchNote(tick, timeResidue);
 		//total += getIpanemaChordsGridNote(tick, timeResidue);
 		//total += getBend(time);
-		total += getJumps(time);
+		//total += getJumps(time);
+		total += getJumpsAndBends(time);
 		return total;
 	}
 	public static double getBend(double time) {
@@ -135,12 +136,29 @@ public static void main(String[] args) throws IOException {
 		newPair.add(b);
 		return newPair;
 	}
+	public static List<Double> triad(double a, double b, double c) {
+		List<Double> newTriad = new ArrayList<>();
+		newTriad.add(a);
+		newTriad.add(b);
+		newTriad.add(c);
+		return newTriad;
+	}
 	public static double getJumps(double time) {
 		List<List<Double>> jumps = new ArrayList<>();
-		jumps.add(pair(0,400));
-		jumps.add(pair(4,500));
-		jumps.add(pair(8,600));
-		jumps.add(pair(12,800));
+		// tonic: 400
+		// minor third: 480
+		// major third: 500
+		// fourth: 533
+		// tritone: 560
+		// fifth: 600
+		jumps.add(pair(0,533));
+		jumps.add(pair(1,560));
+		jumps.add(pair(2,600));
+		jumps.add(pair(3,533));
+		jumps.add(pair(4,480));
+		jumps.add(pair(5,533));
+		jumps.add(pair(6,480));
+		jumps.add(pair(7,400));
 		List<List<Double>> params = new ArrayList<>();
 		double lastA = 0;
 		double lastB = 0;
@@ -155,6 +173,71 @@ public static void main(String[] args) throws IOException {
 		for(int k=0; k<jumps.size(); k++) {
 			if(time>=jumps.get(k).get(0)) {
 				z = params.get(k).get(0)*time+params.get(k).get(1);
+			}
+		}
+		//return getFundamental(1, 1000000, z);
+		return getNote(1, 1000000, z);
+	}
+	public static class JumpsAndBendsHelper {
+		double startTime = 0;
+		double frequency = 0;
+		String rule = "jump";
+		List<Double> params = new ArrayList<>();
+		public JumpsAndBendsHelper(double startTime, double frequency, String rule) {
+			this.startTime = startTime;
+			this.frequency = frequency;
+			this.rule = rule;
+		}
+	}
+	public static List<JumpsAndBendsHelper> jumps = null;
+	public static double getJumpsAndBends(double time) {
+		if(jumps==null) {
+			jumps = new ArrayList<>();
+			jumps.add(new JumpsAndBendsHelper(0,533,"jump"));
+			jumps.add(new JumpsAndBendsHelper(1,600,"bend"));
+			jumps.add(new JumpsAndBendsHelper(2,600,"jump"));
+			jumps.add(new JumpsAndBendsHelper(3,533,"jump"));
+			jumps.add(new JumpsAndBendsHelper(4,480,"jump"));
+			jumps.add(new JumpsAndBendsHelper(5,500,"bend"));
+			jumps.add(new JumpsAndBendsHelper(6,480,"jump"));
+			jumps.add(new JumpsAndBendsHelper(7,400,"jump"));
+			double lastEndValue = 0;
+			for(int k=0; k<jumps.size(); k++) {
+				JumpsAndBendsHelper jump = jumps.get(k);
+				JumpsAndBendsHelper nextJump = k+1==jumps.size() ? null : jumps.get(k+1);
+				JumpsAndBendsHelper lastJump = k-1<0 ? null : jumps.get(k-1);
+				if(jump.rule.equals("jump")) {
+					double A = jump.frequency;
+					double B = lastEndValue-A*jump.startTime;
+					jump.params = pair(A,B);
+					if(nextJump!=null) {
+						lastEndValue = A*nextJump.startTime+B;
+						//System.out.println(lastEndValue);
+					}
+				} else { // bend
+					double p1 = Math.log(lastJump.frequency); // cannot have bend in first position
+					double p2 = Math.log(jump.frequency);
+					double B = (p2-p1)/(nextJump.startTime-jump.startTime); // cannot have bend in final position
+					double A = Math.exp(p1-Math.log(B)-B*jump.startTime);
+					double C = lastEndValue-A*Math.exp(B*jump.startTime);
+					jump.params = triad(A,B,C);
+					if(nextJump!=null) {
+						lastEndValue = A*Math.exp(B*nextJump.startTime)+C;
+					}
+				}
+				//System.out.println(jump.startTime+","+jump.frequency+","+jump.rule+","+jump.params);
+			}
+		}
+		double z = 0;
+		for(int k=jumps.size()-1; k>=0; k--) {
+			JumpsAndBendsHelper jump = jumps.get(k);
+			if(time>=jump.startTime) {
+				if(jump.rule.equals("jump")) {
+					z = jump.params.get(0)*time+jump.params.get(1);
+				} else { // bend
+					z = jump.params.get(0)*Math.exp(jump.params.get(1)*time)+jump.params.get(2);
+				}
+				break;
 			}
 		}
 		//return getFundamental(1, 1000000, z);
