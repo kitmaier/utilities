@@ -180,12 +180,20 @@ public static void main(String[] args) throws IOException {
 	}
 	public static class JumpsAndBendsHelper {
 		double startTime = 0;
-		double frequency = 0;
+		double startFrequency = 0;
+		double endFrequency = 0;
 		String rule = "jump";
 		List<Double> params = new ArrayList<>();
 		public JumpsAndBendsHelper(double startTime, double frequency, String rule) {
 			this.startTime = startTime;
-			this.frequency = frequency;
+			this.startFrequency = frequency;
+			this.endFrequency = frequency;
+			this.rule = rule;
+		}
+		public JumpsAndBendsHelper(double startTime, double startFrequency, double endFrequency, String rule) {
+			this.startTime = startTime;
+			this.startFrequency = startFrequency;
+			this.endFrequency = endFrequency;
 			this.rule = rule;
 		}
 	}
@@ -194,20 +202,19 @@ public static void main(String[] args) throws IOException {
 		if(jumps==null) {
 			jumps = new ArrayList<>();
 			jumps.add(new JumpsAndBendsHelper(0,533,"jump"));
-			jumps.add(new JumpsAndBendsHelper(1,600,"bend"));
+			jumps.add(new JumpsAndBendsHelper(1,533,600,"bend"));
 			jumps.add(new JumpsAndBendsHelper(2,600,"jump"));
 			jumps.add(new JumpsAndBendsHelper(3,533,"jump"));
-			jumps.add(new JumpsAndBendsHelper(4,480,"jump"));
-			jumps.add(new JumpsAndBendsHelper(5,500,"bend"));
+			jumps.add(new JumpsAndBendsHelper(4,480,500,"bend"));
+			jumps.add(new JumpsAndBendsHelper(5,600,"jump"));
 			jumps.add(new JumpsAndBendsHelper(6,480,"jump"));
 			jumps.add(new JumpsAndBendsHelper(7,400,"jump"));
 			double lastEndValue = 0;
 			for(int k=0; k<jumps.size(); k++) {
 				JumpsAndBendsHelper jump = jumps.get(k);
 				JumpsAndBendsHelper nextJump = k+1==jumps.size() ? null : jumps.get(k+1);
-				JumpsAndBendsHelper lastJump = k-1<0 ? null : jumps.get(k-1);
 				if(jump.rule.equals("jump")) {
-					double A = jump.frequency;
+					double A = jump.startFrequency;
 					double B = lastEndValue-A*jump.startTime;
 					jump.params = pair(A,B);
 					if(nextJump!=null) {
@@ -215,8 +222,8 @@ public static void main(String[] args) throws IOException {
 						//System.out.println(lastEndValue);
 					}
 				} else { // bend
-					double p1 = Math.log(lastJump.frequency); // cannot have bend in first position
-					double p2 = Math.log(jump.frequency);
+					double p1 = Math.log(jump.startFrequency);
+					double p2 = Math.log(jump.endFrequency);
 					double B = (p2-p1)/(nextJump.startTime-jump.startTime); // cannot have bend in final position
 					double A = Math.exp(p1-Math.log(B)-B*jump.startTime);
 					double C = lastEndValue-A*Math.exp(B*jump.startTime);
