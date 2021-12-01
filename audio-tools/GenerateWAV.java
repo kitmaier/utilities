@@ -66,7 +66,8 @@ public static void main(String[] args) throws IOException {
 		//total += getChromaticIntervals(tick, timeResidue);
 		//total += getIpanemaChordsStretchNote(tick, timeResidue);
 		//total += getIpanemaChordsGridNote(tick, timeResidue);
-		total += getBend(time);
+		//total += getBend(time);
+		total += getJumps(time);
 		return total;
 	}
 	public static double getBend(double time) {
@@ -107,8 +108,8 @@ public static void main(String[] args) throws IOException {
 		//   j = exp(p2)
 		//   F(t2) = a*exp(b*t2)+c = H(t2) = j*t2+k
 		//   k = a*exp(b*t2)+c-j*t2
-		double p1 = Math.log(400); // pitch representation for 400hz frequency
-		double p2 = Math.log(800); // pitch representation for 800hz frequency
+		double p1 = Math.log(200); // pitch representation for 400hz frequency
+		double p2 = Math.log(400); // pitch representation for 800hz frequency
 		double t1 = 4; // start bend after 4 seconds
 		double t2 = 14; // continue bend for 10 seconds
 		double m = Math.exp(p1);
@@ -125,7 +126,34 @@ public static void main(String[] args) throws IOException {
 		} else {
 			z = j*time+k; // H(t)
 		}
-		return getFundamental(1, 1000000, z);
+		//return getFundamental(1, 1000000, z);
+		return getNote(1, 1000000, z);
+	}
+	public static double getJumps(double time) {
+		double t1 = 0;
+		double t2 = 4;
+		double t3 = 8;
+		double t4 = 12;
+		double a1 = 400;
+		double a2 = 500;
+		double a3 = 650;
+		double a4 = 800;
+		double b1 = 0;
+		double b2 = a1*t2+b1-a2*t2;
+		double b3 = a2*t3+b2-a3*t3;
+		double b4 = a3*t4+b3-a4*t4;
+		double z = a1*time;
+		if(time<=t2) {
+			z = a1*time+b1;
+		} else if(time<=t3) {
+			z = a2*time+b2;
+		} else if(time<=t4) {
+			z = a3*time+b3;
+		} else {
+			z = a4*time+b4;
+		}
+		//return getFundamental(1, 1000000, z);
+		return getNote(1, 1000000, z);
 	}
 	public static double getChromaticIntervals(int tick, double timeResidue) {
 		int note = 0;
