@@ -19,6 +19,8 @@ Feature wish list:
 		Is there more than one way for the bending to sound?
 		The ability to specify bending from one microtonal note to another, or to bend up or down by a given number of cents
 		Doppler effect?
+		TODO: implement non-linear bend (x^1.6)
+		TODO: implement percussive effects (tick, drum, cymbal) and guitar pick attack pattern (how???)
 */
 
 public class GenerateWAV {
@@ -204,7 +206,8 @@ public static void main(String[] args) throws IOException {
 		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
 		jumps.add(new JumpsAndBendsHelper(0.5,246,"jump")); // B
 		jumps.add(new JumpsAndBendsHelper(0.5,277,"jump")); // C#
-		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.49,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.01,215,"jump")); // beat
 		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
 		jumps.add(new JumpsAndBendsHelper(0.5,246,"jump")); // B
 		jumps.add(new JumpsAndBendsHelper(0.5,277,"jump")); // C#
@@ -214,7 +217,8 @@ public static void main(String[] args) throws IOException {
 		jumps.add(new JumpsAndBendsHelper(1,329,"jump")); // E
 		jumps.add(new JumpsAndBendsHelper(0.5,277,"jump")); // C#
 		jumps.add(new JumpsAndBendsHelper(0.5,293,"jump")); // D
-		jumps.add(new JumpsAndBendsHelper(1,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.99,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.01,321,"jump")); // beat
 		jumps.add(new JumpsAndBendsHelper(0.25,329,"jump")); // E
 		jumps.add(new JumpsAndBendsHelper(0.25,370,"jump")); // F#
 		jumps.add(new JumpsAndBendsHelper(0.25,329,"jump")); // E
@@ -226,13 +230,15 @@ public static void main(String[] args) throws IOException {
 		jumps.add(new JumpsAndBendsHelper(0.25,329,"jump")); // E
 		jumps.add(new JumpsAndBendsHelper(0.25,293,"jump")); // D
 		jumps.add(new JumpsAndBendsHelper(0.5,277,"jump")); // C#
-		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
-		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
-		jumps.add(new JumpsAndBendsHelper(0.5,165,"jump")); // E
-		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.49,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.01,215,"jump")); // beat
 		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
 		jumps.add(new JumpsAndBendsHelper(0.5,165,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.99,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.01,215,"jump")); // beat
 		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.5,165,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(1,220,"jump")); // A
 	}
 	public static void fillJumpsList1(List<JumpsAndBendsHelper> jumps) {
 		jumps.add(new JumpsAndBendsHelper(0.25,208,"jump")); // Ab
@@ -406,7 +412,495 @@ public static void main(String[] args) throws IOException {
 		jumps.add(new JumpsAndBendsHelper(0.33,261,247,"bend")); // C bend
 		jumps.add(new JumpsAndBendsHelper(0.17,247,"jump")); // B
 		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
+	}
+	public static void fillJumpsList4(List<JumpsAndBendsHelper> jumps) {
+		// https://www.justinguitar.com/guitar-lessons/01-srv-p1-flat-5-slide-bl-501
+		jumps.add(new JumpsAndBendsHelper(0.3,293,329,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.01,300,"jump")); // beat
+		jumps.add(new JumpsAndBendsHelper(0.29,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.3,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.3,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.1,293,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.2,311,"jump")); // Eb
+		jumps.add(new JumpsAndBendsHelper(0.3,293,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.3,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.1,293,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.2,311,"jump")); // Eb
+		jumps.add(new JumpsAndBendsHelper(0.3,293,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.3,261,293,"bend")); // C -> D
+		jumps.add(new JumpsAndBendsHelper(0.3,293,"jump")); // D
+		fillJumpsList_vibrato(jumps,0.15,6,293,300); // D
+		jumps.add(new JumpsAndBendsHelper(0.3,293,"jump")); // D
+	}
+	public static void fillJumpsList5(List<JumpsAndBendsHelper> jumps) {
+		// https://www.justinguitar.com/guitar-lessons/22-srv-p2-maj-3-bend-bl-522
+		jumps.add(new JumpsAndBendsHelper(0.2,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.1,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.2,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.1,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.5,293,329,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.5,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.5,277,294,"bend")); // C# -> D
+		jumps.add(new JumpsAndBendsHelper(0.5,293,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.6,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.01,200,"jump")); // beat
+		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
+		fillJumpsList_vibrato(jumps,0.3,4,220,225); // A
+		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
+	}
+	public static void fillJumpsList6(List<JumpsAndBendsHelper> jumps) {
+		// https://www.justinguitar.com/guitar-lessons/29-srv-p1-classic-p-bl-529
+		jumps.add(new JumpsAndBendsHelper(0.05,146.83,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.05,196,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.05,247,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.3,523,587,"bend")); // C -> D
+		jumps.add(new JumpsAndBendsHelper(0.6,587,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.3,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.6,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.3,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.3,293,329,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.3,329,293,"bend")); // E -> D
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.3,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.3,293,329,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.3,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+		fillJumpsList_vibrato(jumps,0.15,2,261,275); // C
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+	}
+	public static void fillJumpsList7(List<JumpsAndBendsHelper> jumps) {
+		double duration = 0.03;
+		int reps = 20;
+		for(int k=0; k<reps; k++) {
+			jumps.add(new JumpsAndBendsHelper(duration,196,"jump")); // G
+			jumps.add(new JumpsAndBendsHelper(duration,261,"jump")); // C
+			jumps.add(new JumpsAndBendsHelper(duration,329,"jump")); // E
+		}
+		for(int k=0; k<reps; k++) {
+			jumps.add(new JumpsAndBendsHelper(duration,196,"jump")); // G
+			jumps.add(new JumpsAndBendsHelper(duration,247,"jump")); // B
+			jumps.add(new JumpsAndBendsHelper(duration,293,"jump")); // D
+		}
+		for(int k=0; k<reps; k++) {
+			jumps.add(new JumpsAndBendsHelper(duration,220,"jump")); // A
+			jumps.add(new JumpsAndBendsHelper(duration,261,"jump")); // C
+			jumps.add(new JumpsAndBendsHelper(duration,329,"jump")); // E
+		}
+		for(int k=0; k<reps; k++) {
+			jumps.add(new JumpsAndBendsHelper(duration,220,"jump")); // A
+			jumps.add(new JumpsAndBendsHelper(duration,261,"jump")); // C
+			jumps.add(new JumpsAndBendsHelper(duration,349,"jump")); // F
+		}
+		for(int k=0; k<reps; k++) {
+			jumps.add(new JumpsAndBendsHelper(duration,196,"jump")); // G
+			jumps.add(new JumpsAndBendsHelper(duration,261,"jump")); // C
+			jumps.add(new JumpsAndBendsHelper(duration,329,"jump")); // E
+		}
+		for(int k=0; k<reps; k++) {
+			jumps.add(new JumpsAndBendsHelper(duration,220,"jump")); // A
+			jumps.add(new JumpsAndBendsHelper(duration,261,"jump")); // C
+			jumps.add(new JumpsAndBendsHelper(duration,329,"jump")); // E
+		}
+		for(int k=0; k<reps; k++) {
+			jumps.add(new JumpsAndBendsHelper(duration,220,"jump")); // A
+			jumps.add(new JumpsAndBendsHelper(duration,293,"jump")); // D
+			jumps.add(new JumpsAndBendsHelper(duration,349,"jump")); // F
+		}
+		for(int k=0; k<reps; k++) {
+			jumps.add(new JumpsAndBendsHelper(duration,247,"jump")); // B
+			jumps.add(new JumpsAndBendsHelper(duration,293,"jump")); // D
+			jumps.add(new JumpsAndBendsHelper(duration,392,"jump")); // G
+		}
+		for(int k=0; k<reps; k++) {
+			jumps.add(new JumpsAndBendsHelper(duration,261,"jump")); // C
+			jumps.add(new JumpsAndBendsHelper(duration,329,"jump")); // E
+			jumps.add(new JumpsAndBendsHelper(duration,392,"jump")); // G
+		}
+	}
+	public static void fillJumpsList8(List<JumpsAndBendsHelper> jumps) {
+		// https://www.justinguitar.com/guitar-lessons/43-srv-p1-b9-hammer-bl-543
+		jumps.add(new JumpsAndBendsHelper(0.05,293,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.35,293,329,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.1,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.1,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.6,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.6,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.3,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.6,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.3,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,466,"jump")); // A#
+		jumps.add(new JumpsAndBendsHelper(0.6,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.6,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.05,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.35,523,587,"bend")); // C -> D
+		jumps.add(new JumpsAndBendsHelper(0.2,587,"jump")); // D
+		fillJumpsList_vibrato(jumps,0.15,2,587,575); // D
+		jumps.add(new JumpsAndBendsHelper(0.3,587,"jump")); // D
+	}
+	public static void fillJumpsList9(List<JumpsAndBendsHelper> jumps) {
+		// https://www.justinguitar.com/guitar-lessons/50-srv-p1-9th-hammer-bl-550
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.05,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.55,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.05,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.55,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.05,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.55,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.05,466,"jump")); // Bb
+		jumps.add(new JumpsAndBendsHelper(0.3,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.3,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.3,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.3,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.05,293,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.35,293,329,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.2,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.3,293,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.05,293,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.35,293,311,"bend")); // D -> D#
+		jumps.add(new JumpsAndBendsHelper(0.2,311,"jump")); // D#
+		jumps.add(new JumpsAndBendsHelper(0.6,329,"jump")); // E
+		fillJumpsList_vibrato(jumps,0.15,4,329,320); // E
+		jumps.add(new JumpsAndBendsHelper(0.3,329,"jump")); // E
+	}
+	public static void fillJumpsList10(List<JumpsAndBendsHelper> jumps) {
+		// https://www.justinguitar.com/guitar-lessons/09-a-king-p3-double-flick-bl-509
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.05,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.35,523,587,"bend")); // C -> D
+		jumps.add(new JumpsAndBendsHelper(0.2,587,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.15,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.45,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.15,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.15,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.6,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.25,523,554,"bend")); // C -> C#
+		jumps.add(new JumpsAndBendsHelper(0.15,554,587,"bend")); // C# -> D
+		jumps.add(new JumpsAndBendsHelper(1,587,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+	}
+	public static void fillJumpsList11(List<JumpsAndBendsHelper> jumps) {
+		// https://www.justinguitar.com/guitar-lessons/23-a-king-p2-call-it-bl-523
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.15,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.45,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.15,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.45,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.15,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.15,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.3,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.3,587,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.05,587,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.35,587,659,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.2,659,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.15,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.45,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.15,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.45,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.15,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.45,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.15,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.45,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.05,587,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.35,587,659,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.2,659,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.05,587,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.35,587,659,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.2,659,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.15,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.1,440,"jump")); // A
+		fillJumpsList_vibrato(jumps,0.15,2,440,450); // A
+		jumps.add(new JumpsAndBendsHelper(0.05,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.3,440,"jump")); // A
+		fillJumpsList_vibrato(jumps,0.15,2,440,450); // A
+		jumps.add(new JumpsAndBendsHelper(2,10,"jump")); // rest
+	}
+	public static void fillJumpsList12(List<JumpsAndBendsHelper> jumps) {
+		// https://www.guitarlessons.com/guitar-lessons/lead-guitar/4-essential-blues-licks
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.3,659,"jump")); // E
+		fillJumpsList_vibrato(jumps,0.15,6,659,674); // E
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.05,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,440,466,"bend")); // A -> A#
+		jumps.add(new JumpsAndBendsHelper(0.15,466,440,"bend")); // A# -> A
+		jumps.add(new JumpsAndBendsHelper(0.2,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(1,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.55,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.05,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.05,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,440,494,"bend")); // A -> B
+		jumps.add(new JumpsAndBendsHelper(0.15,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.2,587,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.05,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,440,466,"bend")); // A -> A#
+		jumps.add(new JumpsAndBendsHelper(0.15,466,440,"bend")); // A# -> A
+		jumps.add(new JumpsAndBendsHelper(0.2,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(1,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.1,587,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.5,587,659,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.55,659,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.05,659,630,"bend")); // E -> E-
+		jumps.add(new JumpsAndBendsHelper(0.05,630,659,"bend")); // E- -> E
+		jumps.add(new JumpsAndBendsHelper(0.5,659,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.05,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,440,466,"bend")); // A -> A#
+		jumps.add(new JumpsAndBendsHelper(0.15,466,440,"bend")); // A# -> A
+		jumps.add(new JumpsAndBendsHelper(0.2,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(1,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.4,164.81,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.2,196,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.4,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,233,"jump")); // A#
+		jumps.add(new JumpsAndBendsHelper(0.4,247,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.2,294,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.6,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.1,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,440,494,"bend")); // A -> B
+		jumps.add(new JumpsAndBendsHelper(0.2,494,440,"bend")); // B -> A
+		jumps.add(new JumpsAndBendsHelper(0.4,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(1,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+	}
+	public static void fillJumpsList13(List<JumpsAndBendsHelper> jumps) {
+		// https://www.guitarlessons.com/guitar-lessons/lead-guitar/3-classic-bending-licks
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.3,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.3,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.3,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.05,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.2,392,440,"bend")); // G -> A
+		jumps.add(new JumpsAndBendsHelper(0.05,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.3,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,587,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.05,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.3,523,587,"bend")); // C -> D
+		jumps.add(new JumpsAndBendsHelper(0.1,587,"jump")); // D
+		fillJumpsList_vibrato(jumps,0.15,4,587,570); // D
+	}
+	public static void fillJumpsList14(List<JumpsAndBendsHelper> jumps) {
+		// https://www.guitarlessons.com/guitar-lessons/lead-guitar/3-classic-bending-licks
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.1,370,"jump")); // F#
+		jumps.add(new JumpsAndBendsHelper(0.05,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.1,370,"jump")); // F#
+		jumps.add(new JumpsAndBendsHelper(0.05,10,"jump")); // rest
 		
+		jumps.add(new JumpsAndBendsHelper(0.05,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.4,440,453,"bend")); // A -> A+
+		jumps.add(new JumpsAndBendsHelper(0.15,453,"jump")); // A+
+		
+		jumps.add(new JumpsAndBendsHelper(0.05,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.4,440,480,"bend")); // A -> A#+
+		jumps.add(new JumpsAndBendsHelper(0.15,480,"jump")); // A#+
+		
+		jumps.add(new JumpsAndBendsHelper(0.05,466,"jump")); // A#
+		jumps.add(new JumpsAndBendsHelper(0.4,466,480,"bend")); // A# -> A#+
+		jumps.add(new JumpsAndBendsHelper(0.15,480,"jump")); // A#+
+		
+		jumps.add(new JumpsAndBendsHelper(0.05,466,"jump")); // A#
+		jumps.add(new JumpsAndBendsHelper(0.4,466,494,"bend")); // A# -> B
+		jumps.add(new JumpsAndBendsHelper(0.15,494,"jump")); // B
+		
+		jumps.add(new JumpsAndBendsHelper(0.05,466,"jump")); // A#
+		jumps.add(new JumpsAndBendsHelper(0.4,466,509,"bend")); // A# -> B+
+		jumps.add(new JumpsAndBendsHelper(0.15,509,"jump")); // B+
+		
+		jumps.add(new JumpsAndBendsHelper(0.05,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.4,494,509,"bend")); // B -> B+
+		jumps.add(new JumpsAndBendsHelper(0.15,509,"jump")); // B+
+		
+		jumps.add(new JumpsAndBendsHelper(0.05,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.4,494,523,"bend")); // B -> C
+		jumps.add(new JumpsAndBendsHelper(0.15,523,"jump")); // C
+		
+		jumps.add(new JumpsAndBendsHelper(0.05,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.4,494,539,"bend")); // B -> C+
+		jumps.add(new JumpsAndBendsHelper(0.15,539,"jump")); // C+
+		
+		jumps.add(new JumpsAndBendsHelper(0.05,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.4,494,554,"bend")); // B -> C#
+		jumps.add(new JumpsAndBendsHelper(0.15,554,"jump")); // C#
+		
+		jumps.add(new JumpsAndBendsHelper(0.05,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.25,494,554,"bend")); // B -> C#
+		jumps.add(new JumpsAndBendsHelper(0.15,554,"jump")); // C#
+		
+		jumps.add(new JumpsAndBendsHelper(0.15,494,554,"bend")); // B -> C#
+		
+		jumps.add(new JumpsAndBendsHelper(0.05,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.4,494,554,"bend")); // B -> C#
+		jumps.add(new JumpsAndBendsHelper(0.15,554,"jump")); // C#
+		fillJumpsList_vibrato(jumps,0.15,4,554,539); // C#
+		
+		jumps.add(new JumpsAndBendsHelper(0.05,494,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.15,494,554,"bend")); // B -> C#
+		jumps.add(new JumpsAndBendsHelper(0.1,554,"jump")); // C#
+		
+		jumps.add(new JumpsAndBendsHelper(0.15,440,"jump")); // A
+		
+		jumps.add(new JumpsAndBendsHelper(0.45,370,"jump")); // F#
+		fillJumpsList_vibrato(jumps,0.15,8,370,381); // F#
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+	}
+	public static void fillJumpsList15(List<JumpsAndBendsHelper> jumps) {
+		// https://www.guitarlessons.com/guitar-lessons/lead-guitar/3-classic-bending-licks
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.05,294,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.4,294,329,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.15,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.4,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.4,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.05,294,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.4,294,329,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.15,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.4,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.4,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.05,294,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.4,294,329,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.15,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.4,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.4,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.2,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.05,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.4,392,440,"bend")); // G -> A
+		jumps.add(new JumpsAndBendsHelper(0.15,440,"jump")); // A
+		fillJumpsList_vibrato(jumps,0.15,4,440,428); // A
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+	}
+	public static void fillJumpsList16(List<JumpsAndBendsHelper> jumps) {
+		// https://youtu.be/Kr3quGh7pJA?t=850
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(2,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.67,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.33,329,277,"bend")); // E -> C#
+		jumps.add(new JumpsAndBendsHelper(1,277,"jump")); // C#
+		jumps.add(new JumpsAndBendsHelper(0.67,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.33,440,370,"bend")); // A -> F#
+		jumps.add(new JumpsAndBendsHelper(1,370,"jump")); // F#
+		jumps.add(new JumpsAndBendsHelper(0.67,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.33,329,277,"bend")); // E -> C#
+		jumps.add(new JumpsAndBendsHelper(1,277,"jump")); // C#
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+	}
+	public static void fillJumpsList17(List<JumpsAndBendsHelper> jumps) {
+		// https://youtu.be/wSbT0ovpr7Y?t=216
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.2,277,"jump")); // Db
+		jumps.add(new JumpsAndBendsHelper(0.2,277,554,"bend")); // Db -> Db
+		jumps.add(new JumpsAndBendsHelper(0.4,554,"jump")); // Db
+		jumps.add(new JumpsAndBendsHelper(0.15,554,494,"bend")); // Db -> Cb
+		jumps.add(new JumpsAndBendsHelper(0.65,494,"jump")); // Cb
+		jumps.add(new JumpsAndBendsHelper(0.15,494,466,"bend")); // Cb -> Bb
+		fillJumpsList_vibrato(jumps,0.125,4,466,485); // Bb
+		jumps.add(new JumpsAndBendsHelper(0.15,466,"jump")); // Bb
+		jumps.add(new JumpsAndBendsHelper(0.15,466,494,"bend")); // Bb -> Cb
+		jumps.add(new JumpsAndBendsHelper(0.65,494,"jump")); // Cb
+		jumps.add(new JumpsAndBendsHelper(0.15,494,277,"bend")); // Cb -> Db
+		jumps.add(new JumpsAndBendsHelper(0.2,277,"jump")); // Db
+		jumps.add(new JumpsAndBendsHelper(0.2,277,554,"bend")); // Db -> Db
+		jumps.add(new JumpsAndBendsHelper(0.4,554,"jump")); // Db
+		jumps.add(new JumpsAndBendsHelper(0.15,554,494,"bend")); // Db -> Cb
+		jumps.add(new JumpsAndBendsHelper(0.65,494,"jump")); // Cb
+		jumps.add(new JumpsAndBendsHelper(0.15,494,466,"bend")); // Cb -> Bb
+		fillJumpsList_vibrato(jumps,0.125,4,466,485); // Bb
+		jumps.add(new JumpsAndBendsHelper(0.15,466,"jump")); // Bb
+		jumps.add(new JumpsAndBendsHelper(0.15,466,494,"bend")); // Bb -> Cb
+		jumps.add(new JumpsAndBendsHelper(0.8,494,"jump")); // Cb
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		jumps.add(new JumpsAndBendsHelper(0.2,554,"jump")); // Db
+		jumps.add(new JumpsAndBendsHelper(0.2,554,1108,"bend")); // Db -> Db
+		jumps.add(new JumpsAndBendsHelper(0.4,1108,"jump")); // Db
+		jumps.add(new JumpsAndBendsHelper(0.15,1108,988,"bend")); // Db -> Cb
+		jumps.add(new JumpsAndBendsHelper(0.65,988,"jump")); // Cb
+		jumps.add(new JumpsAndBendsHelper(0.15,988,932,"bend")); // Cb -> Bb
+		fillJumpsList_vibrato(jumps,0.125,4,932,970); // Bb
+		jumps.add(new JumpsAndBendsHelper(0.15,932,"jump")); // Bb
+		jumps.add(new JumpsAndBendsHelper(0.15,932,988,"bend")); // Bb -> Cb
+		jumps.add(new JumpsAndBendsHelper(0.65,988,"jump")); // Cb
+		jumps.add(new JumpsAndBendsHelper(0.15,988,554,"bend")); // Cb -> Db
+		jumps.add(new JumpsAndBendsHelper(0.2,554,"jump")); // Db
+		jumps.add(new JumpsAndBendsHelper(0.2,554,1108,"bend")); // Db -> Db
+		jumps.add(new JumpsAndBendsHelper(0.4,1108,"jump")); // Db
+		jumps.add(new JumpsAndBendsHelper(0.15,1108,988,"bend")); // Db -> Cb
+		jumps.add(new JumpsAndBendsHelper(0.65,988,"jump")); // Cb
+		jumps.add(new JumpsAndBendsHelper(0.15,988,932,"bend")); // Cb -> Bb
+		fillJumpsList_vibrato(jumps,0.125,4,932,970); // Bb
+		jumps.add(new JumpsAndBendsHelper(0.15,932,"jump")); // Bb
+		jumps.add(new JumpsAndBendsHelper(0.15,932,988,"bend")); // Bb -> Cb
+		jumps.add(new JumpsAndBendsHelper(0.8,988,"jump")); // Cb
+		jumps.add(new JumpsAndBendsHelper(0.6,10,"jump")); // rest
+		
+		
+		/*
+		jumps.add(new JumpsAndBendsHelper(0.05,146.83,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.05,196,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.05,247,"jump")); // B
+		jumps.add(new JumpsAndBendsHelper(0.3,523,587,"bend")); // C -> D
+		jumps.add(new JumpsAndBendsHelper(0.6,587,"jump")); // D
+		jumps.add(new JumpsAndBendsHelper(0.3,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.6,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,392,"jump")); // G
+		jumps.add(new JumpsAndBendsHelper(0.3,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.3,293,329,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.3,329,293,"bend")); // E -> D
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.3,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.3,293,329,"bend")); // D -> E
+		jumps.add(new JumpsAndBendsHelper(0.3,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+		fillJumpsList_vibrato(jumps,0.15,2,261,275); // C
+		jumps.add(new JumpsAndBendsHelper(0.3,261,"jump")); // C
+		*/
+		/*
+		// https://www.guitarplayer.com/lessons/12-killer-blues-licks-you-must-know
+		// straight
+		jumps.add(new JumpsAndBendsHelper(0.5,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.5,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.5,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.5,261,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(1,146.83,"jump")); // D
+		// with swing
+		jumps.add(new JumpsAndBendsHelper(0.33,523,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.67,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.33,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.67,261,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.33,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(1.67,146.83,"jump")); // D
+		// with swing and bends
+		jumps.add(new JumpsAndBendsHelper(0.33,523,540,"bend")); // C bend
+		jumps.add(new JumpsAndBendsHelper(0.67,440,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.33,329,"jump")); // E
+		jumps.add(new JumpsAndBendsHelper(0.67,261,"jump")); // C
+		jumps.add(new JumpsAndBendsHelper(0.33,220,"jump")); // A
+		jumps.add(new JumpsAndBendsHelper(0.27,146.83,"jump")); // D
+		fillJumpsList_vibrato(jumps,0.2,7,146,148); // D
+		*/
 		/*
 		jumps.add(new JumpsAndBendsHelper(0.25,196,"jump")); // G
 		jumps.add(new JumpsAndBendsHelper(0.5,220,"jump")); // A
@@ -474,10 +968,24 @@ public static void main(String[] args) throws IOException {
 	public static double getJumpsAndBends(double time) {
 		if(jumps==null) {
 			jumps = new ArrayList<>(); // change start/end time to duration
+			//fillJumpsList_FrereJacques(jumps);
 			//fillJumpsList1(jumps);
 			//fillJumpsList2(jumps);
-			fillJumpsList3(jumps);
-			//fillJumpsList_FrereJacques(jumps);
+			//fillJumpsList3(jumps);
+			//fillJumpsList4(jumps);
+			//fillJumpsList5(jumps);
+			//fillJumpsList6(jumps);
+			//fillJumpsList7(jumps);
+			//fillJumpsList8(jumps);
+			//fillJumpsList9(jumps);
+			//fillJumpsList10(jumps);
+			//fillJumpsList11(jumps);
+			//fillJumpsList12(jumps);
+			//fillJumpsList13(jumps);
+			//fillJumpsList14(jumps);
+			//fillJumpsList15(jumps);
+			//fillJumpsList16(jumps);
+			fillJumpsList17(jumps);
 			double lastEndTime = 0;
 			double lastEndValue = 0;
 			for(int k=0; k<jumps.size(); k++) {
