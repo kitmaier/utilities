@@ -70,8 +70,159 @@ public static void main(String[] args) throws IOException {
 		//total += getIpanemaChordsGridNote(tick, timeResidue);
 		//total += getBend(time);
 		//total += getJumps(time);
-		total += getJumpsAndBends(time);
+		//total += getJumpsAndBends(time);
+		//total += getDrone(time);
+		total += getBasicGuitarChord("Am",0,1,time);
+		total += getBasicGuitarChord("F",1,2,time);
+		total += getBasicGuitarChord("C",2,3,time);
+		total += getBasicGuitarChord("G",3,4,time);
+		total += getBasicGuitarChord("Am",4,5,time);
+		total += getBasicGuitarChord("F",5,6,time);
+		total += getBasicGuitarChord("C",6,7,time);
+		total += getBasicGuitarChord("G",7,8,time);
+		total += getBasicGuitarChord("Am",8,9,time);
+		total += getBasicGuitarChord("F",9,10,time);
+		total += getBasicGuitarChord("C",10,11,time);
+		total += getBasicGuitarChord("G",11,12,time);
+		total += getBasicGuitarChord("C",12,16,time);
 		return total;
+	}
+	public static double getBasicGuitarChord(String name, double start, double end, double time) {
+		double value = 0;
+		double offset = 0.03;
+		//double offset = 0;
+		setupStandardGuitarChords();
+		String chord = standardGuitarChord.get(name);
+		String[] notes = chord.split(",");
+		for(int k=0; k<notes.length; k++) {
+			//value += getStandardNote(notes[k],start+offset*k,end,time);
+			//value += getStandardDecayingNote(notes[k],0.5,start+offset*k,end,time);
+			value += getStandardDecayingNote2(notes[k],start+offset*k,end,time);
+		}
+		return 0.5*value;
+	}
+	public static Map<String,String> standardGuitarChord = null;
+	public static void setupStandardGuitarChords() {
+		// Bass notes:
+		// E1 41.20
+		// A1 55.00
+		// D2 73.42
+		// G2 98.00
+		// E1,A1,D2,G2
+		// Guitar notes:
+		// E2 82.41
+		// A2 110.00
+		// D3 146.83
+		// G3 196.00
+		// B3 246.94
+		// E4 329.63
+		// 2E,2A,3D,3G,3B,4E
+		if(standardGuitarChord!=null) return;
+		standardGuitarChord = new HashMap<>();
+		standardGuitarChord.put("C","3C,3E,3G,4C,4E");
+		standardGuitarChord.put("Dm","3D,3A,4D,4F");
+		standardGuitarChord.put("Em","2E,2B,3E,3G,3B,4E");
+		standardGuitarChord.put("F","2F,3C,3F,3A,4C,4F");
+		standardGuitarChord.put("G","2G,2B,3D,3G,3B,4G");
+		standardGuitarChord.put("Am","2A,3E,3A,4C,4E");
+	}
+	public static double getStandardNote(String note, double start, double end, double time) {
+		if(time<=start || time>=end) return 0;
+		setupStandardNoteFrequencies();
+		double durationInTime = end-start;
+		double timeInNote = time-start;
+		double amplitude = 0.2;
+		double frequency = standardNoteFrequency.get(note);
+		double cycle = 2*Math.PI*frequency;
+		double envelope = 1;
+		if(timeInNote<0.01) envelope = timeInNote*100;
+		if(timeInNote>durationInTime-0.01) envelope = (durationInTime-timeInNote)*100;
+		double total = 0;
+		total += 100*Math.sin(1*cycle*timeInNote);
+		total += 100*Math.sin(2*cycle*timeInNote);
+		total += 10*Math.sin(3*cycle*timeInNote);
+		total += 10*Math.sin(4*cycle*timeInNote);
+		total += 1*Math.sin(5*cycle*timeInNote);
+		total += 1*Math.sin(6*cycle*timeInNote);
+		total += 1*Math.sin(7*cycle*timeInNote);
+		total *= 1/223.0;
+		return total*envelope*amplitude;
+	}
+	public static double getStandardDecayingNote(String note, double rate, double start, double end, double time) {
+		if(time<=start || time>=end) return 0;
+		setupStandardNoteFrequencies();
+		double durationInTime = end-start;
+		double timeInNote = time-start;
+		double amplitude = 0.2;
+		double frequency = standardNoteFrequency.get(note);
+		double cycle = 2*Math.PI*frequency;
+		double envelope = 1;
+		if(timeInNote<0.01) envelope = timeInNote*100;
+		if(timeInNote>durationInTime-0.01) envelope = (durationInTime-timeInNote)*100;
+		envelope *= Math.pow(rate,timeInNote);
+		double total = 0;
+		total += 100*Math.sin(1*cycle*timeInNote);
+		total += 100*Math.sin(2*cycle*timeInNote);
+		total += 10*Math.sin(3*cycle*timeInNote);
+		total += 10*Math.sin(4*cycle*timeInNote);
+		total += 1*Math.sin(5*cycle*timeInNote);
+		total += 1*Math.sin(6*cycle*timeInNote);
+		total += 1*Math.sin(7*cycle*timeInNote);
+		total *= 1/223.0;
+		return total*envelope*amplitude;
+	}
+	public static double getStandardDecayingNote2(String note, double start, double end, double time) {
+		if(time<=start || time>=end) return 0;
+		setupStandardNoteFrequencies();
+		double durationInTime = end-start;
+		double timeInNote = time-start;
+		double amplitude = 0.2;
+		double frequency = standardNoteFrequency.get(note);
+		double cycle = 2*Math.PI*frequency;
+		double envelope = 1;
+		if(timeInNote<0.01) envelope = timeInNote*100;
+		if(timeInNote>durationInTime-0.01) envelope = (durationInTime-timeInNote)*100;
+		double decay = Math.pow(0.5,timeInNote);
+		double decay2 = decay*decay;
+		double decay3 = decay2*decay;
+		double total = 0;
+		total += 100*Math.sin(1*cycle*timeInNote)*decay;
+		total += 100*Math.sin(2*cycle*timeInNote)*decay2;
+		total += 10*Math.sin(3*cycle*timeInNote)*decay2;
+		total += 10*Math.sin(4*cycle*timeInNote)*decay3;
+		total += 1*Math.sin(5*cycle*timeInNote)*decay3;
+		total += 1*Math.sin(6*cycle*timeInNote)*decay3;
+		total += 1*Math.sin(7*cycle*timeInNote)*decay3;
+		total *= 1/223.0;
+		return total*envelope*amplitude;
+	}
+	public static Map<String,Double> standardNoteFrequency = null;
+	public static void setupStandardNoteFrequencies() {
+		if(standardNoteFrequency!=null) return;
+		standardNoteFrequency = new HashMap<>();
+		String rawNotesData = "0C,16.35;0C#,17.32;0Db,17.32;0D,18.35;0D#,19.45;0Eb,19.45;0E,20.6;0F,21.83;0F#,23.12;0Gb,23.12;0G,24.5;0Ab,25.96;0G#,25.96;0A,27.5;0A#,29.14;0Bb,29.14;0B,30.87;1C,32.7;1C#,34.65;1Db,34.65;1D,36.71;1D#,38.89;1Eb,38.89;1E,41.2;1F,43.65;1F#,46.25;1Gb,46.25;1G,49;1Ab,51.91;1G#,51.91;1A,55;1A#,58.27;1Bb,58.27;1B,61.74;2C,65.41;2C#,69.3;2Db,69.3;2D,73.42;2D#,77.78;2Eb,77.78;2E,82.41;2F,87.31;2F#,92.5;2Gb,92.5;2G,98;2Ab,103.83;2G#,103.83;2A,110;2A#,116.54;2Bb,116.54;2B,123.47;3C,130.81;3C#,138.59;3Db,138.59;3D,146.83;3D#,155.56;3Eb,155.56;3E,164.81;3F,174.61;3F#,185;3Gb,185;3G,196;3Ab,207.65;3G#,207.65;3A,220;3A#,233.08;3Bb,233.08;3B,246.94;4C,261.63;4C#,277.18;4Db,277.18;4D,293.66;4D#,311.13;4Eb,311.13;4E,329.63;4F,349.23;4F#,369.99;4Gb,369.99;4G,392;4Ab,415.3;4G#,415.3;4A,440;4A#,466.16;4Bb,466.16;4B,493.88;5C,523.25;5C#,554.37;5Db,554.37;5D,587.33;5D#,622.25;5Eb,622.25;5E,659.25;5F,698.46;5F#,739.99;5Gb,739.99;5G,783.99;5Ab,830.61;5G#,830.61;5A,880;5A#,932.33;5Bb,932.33;5B,987.77;6C,1046.5;6C#,1108.73;6Db,1108.73;6D,1174.66;6D#,1244.51;6Eb,1244.51;6E,1318.51;6F,1396.91;6F#,1479.98;6Gb,1479.98;6G,1567.98;6Ab,1661.22;6G#,1661.22;6A,1760;6A#,1864.66;6Bb,1864.66;6B,1975.53;7C,2093;7C#,2217.46;7Db,2217.46;7D,2349.32;7D#,2489.02;7Eb,2489.02;7E,2637.02;7F,2793.83;7F#,2959.96;7Gb,2959.96;7G,3135.96;7Ab,3322.44;7G#,3322.44;7A,3520;7A#,3729.31;7Bb,3729.31;7B,3951.07;8C,4186.01;8C#,4434.92;8Db,4434.92;8D,4698.63;8D#,4978.03;8Eb,4978.03;8E,5274.04;8F,5587.65;8F#,5919.91;8Gb,5919.91;8G,6271.93;8Ab,6644.88;8G#,6644.88;8A,7040;8A#,7458.62;8Bb,7458.62;8B,7902.13";
+		String[] items = rawNotesData.split(";");
+		for(int k=0; k<items.length; k++) {
+			String[] fields = items[k].split(",");
+			standardNoteFrequency.put(fields[0],Double.parseDouble(fields[1]));
+		}
+	}
+	public static double getDrone(double time) {
+		double value = 0;
+		//value += 0.5*getNote(58.27, 1000000, time); // Bb
+		//value += 0.5*getNote(73.42, 1000000, time); // D
+		//value += 0.5*getNote(82.41, 1000000, time); // E
+		value += 0.5*getNote(98, 1000000, time); // G
+		//value += 0.5*getNote(110, 1000000, time); // A
+		//value += 0.5*getNote(116.54, 1000000, time); // Bb
+		value += 0.5*getNote(123, 1000000, time); // B
+		value += 0.5*getNote(146.83, 1000000, time); // D
+		//value += 0.5*getNote(164.81, 1000000, time); // E
+		value += 0.5*getNote(196, 1000000, time); // G
+		//value += 0.5*getNote(220, 1000000, time); // A
+		value += 0.5*getNote(247, 1000000, time); // B
+		//value += 0.5*getNote(329.63, 1000000, time); // E
+		return value;
 	}
 	public static double getBend(double time) {
 		// In order to bend from one note to another, we need to keep track of several related variables
@@ -977,7 +1128,7 @@ public static void main(String[] args) throws IOException {
 			//fillJumpsList6(jumps);
 			//fillJumpsList7(jumps);
 			//fillJumpsList8(jumps);
-			//fillJumpsList9(jumps);
+			fillJumpsList9(jumps);
 			//fillJumpsList10(jumps);
 			//fillJumpsList11(jumps);
 			//fillJumpsList12(jumps);
@@ -985,7 +1136,7 @@ public static void main(String[] args) throws IOException {
 			//fillJumpsList14(jumps);
 			//fillJumpsList15(jumps);
 			//fillJumpsList16(jumps);
-			fillJumpsList17(jumps);
+			//fillJumpsList17(jumps);
 			double lastEndTime = 0;
 			double lastEndValue = 0;
 			for(int k=0; k<jumps.size(); k++) {
