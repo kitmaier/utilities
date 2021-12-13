@@ -76,25 +76,42 @@ public static void main(String[] args) throws IOException {
 		//	double t = k*1;
 		//	total += getBasicGuitarChord("C",t,t+1,time);
 		//}
-		total += getBell(200,0,1,time);
-		total += getBell(400,1,2,time);
-		total += getBell(300,2,3,time);
-		total += getBell(220,3,4,time);
-		total += getBell(233,4,5,time);
-		total += getBell(300,5,6,time);
-		total += getBell(200,6,10,time);
-		total += getBell(400,6,10,time);
+		total += getBellsMusic(time);
+		return total;
+	}
+	public static double getBellsMusic(double time) {
+		double total = 0;
+		total += getBell(200,0,1,time); // 1
+		total += getBell(400,1,2,time); // 8
+		total += getBell(300,2,3,time); // 5
+		total += getBell(225,3,4,time); // 2
+		total += getBell(233,4,5,time); // 3m
+		total += getBell(300,5,6,time); // 5
+		total += getBell(200,6,8,time); // 1
+		total += getBell(400,6,8,time); // 8
+		total += getBell(267,8,9,time); // 4
+		total += getBell(250,9,9.5,time); // 3
+		total += getBell(267,9.5,10,time); // 4
+		total += getBell(225,10,11,time); // 2
+		total += getBell(267,11,12,time); // 4
+		total += getBell(250,12,12.5,time); // 3
+		total += getBell(267,12.5,13,time); // 4
+		total += getBell(225,13,14,time); // 2
+		total += getBell(267,14,15,time); // 4
+		total += getBell(250,15,15.5,time); // 3
+		total += getBell(267,15.5,16,time); // 4
+		total += getBell(225,16,18,time); // 2
+		total += getBell(200,18,22,time); // 1
+		total += getBell(300,18,22,time); // 5
+		total += getBell(400,18,22,time); // 8
 		return total;
 	}
 	public static double getBell(double frequency, double start, double end, double time) {
 		// http://acoustics.ae.illinois.edu/pdfs/Vibration%20of%20Plates%20(Leissa,%20NASA%20SP-160).pdf
 		if(time<=start || time>=end) return 0;
-		//setupStandardNoteFrequencies();
 		double durationInTime = end-start;
 		double timeInNote = time-start;
 		double amplitude = 0.3;
-		//double frequency = standardNoteFrequency.get(note);
-		//double frequency = 250;
 		double cycle = 2*Math.PI*frequency;
 		double envelope = 1;
 		if(timeInNote<0.01) envelope = timeInNote*100;
