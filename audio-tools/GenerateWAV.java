@@ -72,32 +72,62 @@ public static void main(String[] args) throws IOException {
 		//total += getJumps(time);
 		//total += getJumpsAndBends(time);
 		//total += getDrone(time);
-		total += getBasicGuitarChord("Am",0,1,time);
-		total += getBasicGuitarChord("F",1,2,time);
-		total += getBasicGuitarChord("C",2,3,time);
-		total += getBasicGuitarChord("G",3,4,time);
-		total += getBasicGuitarChord("Am",4,5,time);
-		total += getBasicGuitarChord("F",5,6,time);
-		total += getBasicGuitarChord("C",6,7,time);
-		total += getBasicGuitarChord("G",7,8,time);
-		total += getBasicGuitarChord("Am",8,9,time);
-		total += getBasicGuitarChord("F",9,10,time);
-		total += getBasicGuitarChord("C",10,11,time);
-		total += getBasicGuitarChord("G",11,12,time);
-		total += getBasicGuitarChord("C",12,16,time);
+		//for(int k=0; k<24; k++) {
+		//	double t = k*1;
+		//	total += getBasicGuitarChord("C",t,t+1,time);
+		//}
+		total += getBell(200,0,1,time);
+		total += getBell(400,1,2,time);
+		total += getBell(300,2,3,time);
+		total += getBell(220,3,4,time);
+		total += getBell(233,4,5,time);
+		total += getBell(300,5,6,time);
+		total += getBell(200,6,10,time);
+		total += getBell(400,6,10,time);
 		return total;
 	}
+	public static double getBell(double frequency, double start, double end, double time) {
+		// http://acoustics.ae.illinois.edu/pdfs/Vibration%20of%20Plates%20(Leissa,%20NASA%20SP-160).pdf
+		if(time<=start || time>=end) return 0;
+		//setupStandardNoteFrequencies();
+		double durationInTime = end-start;
+		double timeInNote = time-start;
+		double amplitude = 0.3;
+		//double frequency = standardNoteFrequency.get(note);
+		//double frequency = 250;
+		double cycle = 2*Math.PI*frequency;
+		double envelope = 1;
+		if(timeInNote<0.01) envelope = timeInNote*100;
+		if(timeInNote>durationInTime-0.01) envelope = (durationInTime-timeInNote)*100;
+		double decay = Math.pow(0.5,timeInNote);
+		double decay2 = decay*decay;
+		double decay3 = decay2*decay;
+		double total = 0;
+		total += 100*Math.sin(1*cycle*timeInNote)*decay;
+		total += 100*Math.sin(1.70*cycle*timeInNote)*decay2;
+		total += 10*Math.sin(2.29*cycle*timeInNote)*decay2;
+		total += 10*Math.sin(3.99*cycle*timeInNote)*decay3;
+		total += 1*Math.sin(4.10*cycle*timeInNote)*decay3;
+		total += 1*Math.sin(6.19*cycle*timeInNote)*decay3;
+		total += 1*Math.sin(6.79*cycle*timeInNote)*decay3;
+		total += 1*Math.sin(7.51*cycle*timeInNote)*decay3;
+		total += 1*Math.sin(8.80*cycle*timeInNote)*decay3;
+		total *= 1/224.0;
+		return total*envelope*amplitude;
+	}
 	public static double getBasicGuitarChord(String name, double start, double end, double time) {
+		// TODO: this runs pretty slow
+		if(time<start || time>end) return 0;
 		double value = 0;
-		double offset = 0.03;
-		//double offset = 0;
+		//double offset = 0.03;
+		double offset = 0;
 		setupStandardGuitarChords();
 		String chord = standardGuitarChord.get(name);
 		String[] notes = chord.split(",");
 		for(int k=0; k<notes.length; k++) {
-			//value += getStandardNote(notes[k],start+offset*k,end,time);
+			value += getStandardNote(notes[k],start+offset*k,end,time);
 			//value += getStandardDecayingNote(notes[k],0.5,start+offset*k,end,time);
-			value += getStandardDecayingNote2(notes[k],start+offset*k,end,time);
+			//value += getStandardDecayingNote2(notes[k],start+offset*k,end,time);
 		}
 		return 0.5*value;
 	}
