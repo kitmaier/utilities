@@ -6,9 +6,7 @@ import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 /*
@@ -24,7 +22,10 @@ Feature wish list:
 */
 
 public class GenerateWAV {
-public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
+		//try {createPinkNoise();} catch(Exception e) {e.printStackTrace();}
+		try {loadPinkNoise();} catch(Exception e) {e.printStackTrace();}
+		
 		final double sampleRate = 44100.0;
 		final double seconds = 25.0;
 		
@@ -76,8 +77,101 @@ public static void main(String[] args) throws IOException {
 		//	double t = k*1;
 		//	total += getBasicGuitarChord("C",t,t+1,time);
 		//}
-		total += getBellsMusic(time);
+		//total += getBellsMusic(time);
+		//total += getWhiteNoise(0,24,time);
+		//total += getPinkNoise(0,24,time);
+		total += getBrownNoise(0,24,1234,time);
 		return total;
+	}
+	// TODO: is this random number generator well enough distributed for signal processing applications?
+	public static Random rand = new Random(0);
+	public static double getWhiteNoise(double start, double end, double time) {
+		if(time<=start || time>=end) return 0;
+		// Generate "gaussian white noise"
+		double amplitude = 0.1;//0.01;
+		double value = rand.nextGaussian()*amplitude;
+		double durationInTime = end-start;
+		double timeInNote = time-start;
+		double envelope = 1;
+		if(timeInNote<0.01) envelope = timeInNote*100;
+		if(timeInNote>durationInTime-0.01) envelope = (durationInTime-timeInNote)*100;
+		return Math.min(Math.max(-0.9,value*envelope),0.9);
+	}
+	public static Map<Integer,Double> brownNoiseData = new HashMap<>();
+	public static double getBrownNoise(double start, double end, int key, double time) {
+		// https://en.wikipedia.org/wiki/Brownian_noise
+		if(time<=start || time>=end) return 0;
+		double lastValue = brownNoiseData.getOrDefault(key,0.0);
+		double value = lastValue*0.99+rand.nextGaussian()*0.01;
+		value = Math.min(Math.max(value,-0.9),0.9);
+		brownNoiseData.put(key,value);
+		double durationInTime = end-start;
+		double timeInNote = time-start;
+		double envelope = 1;
+		if(timeInNote<0.01) envelope = timeInNote*100;
+		if(timeInNote>durationInTime-0.01) envelope = (durationInTime-timeInNote)*100;
+		return value*envelope;
+	}
+	public static double getPinkNoise(double start, double end, double time) {
+		if(time<=start || time>=end) return 0;
+		// This and the other pinkNoise functions will need to change if the sample rate does
+		double sampleRate = 44100;
+		double amplitude = 10.0;
+		double durationInTime = end-start;
+		double timeInNote = time-start;
+		// This will go out of bounds if the duration lasts longer than the loaded sample
+		int index = (int)(timeInNote*sampleRate+0.5);
+		double value = pinkNoiseData[index];
+		double envelope = 1;
+		if(timeInNote<0.01) envelope = timeInNote*100;
+		if(timeInNote>durationInTime-0.01) envelope = (durationInTime-timeInNote)*100;
+		return value*envelope*amplitude;
+	}
+	public static void createPinkNoise() throws Exception {
+		// https://stackoverflow.com/questions/616897/how-can-i-make-a-pink-noise-generator
+		// had longs for variables samples and i, but caused lossy conversion to int error for array index
+		int seconds = 30;
+		int quality = 5000;
+		double lowestFrequency = 20;
+		double highestFrequency = 20000;
+		double volumeAdjust = 1.0;
+		int sampleRate = 44100;
+		int samples = sampleRate * seconds;
+		double[] d = new double[samples];
+		double[] offsets = new double[samples];
+		//double lowestWavelength = highestFrequency / lowestFrequency;
+		double initialPitch = Math.log(lowestFrequency);
+		double limitPitch = Math.log(highestFrequency);
+		for (int j = 0; j < quality; j++) {
+			System.out.println(j);
+			double pitch = (limitPitch-initialPitch)*(j*1.0/quality)+initialPitch;
+			double frequency = Math.exp(pitch);
+			//double wavelength = Math.pow(lowestWavelength, (j * 1.0) / quality)  * sampleRate / highestFrequency;
+			//double frequency = 1/wavelength;
+			// Important offset is needed, as otherwise all the waves will be almost in phase, and this will ruin the effect!
+			double offset = rand.nextDouble() * Math.PI*2;
+			for (int i = 0; i < samples; i++) {
+				d[i] += Math.cos(i * Math.PI * 2 * frequency / sampleRate + offset) / quality * volumeAdjust;
+			}
+		}
+		BufferedWriter out = new BufferedWriter(new FileWriter("./pinknoise_gitignore.txt"));
+		out.write(d.length+"\n");
+		for(int k=0; k<d.length; k++) {
+			out.write(k+","+d[k]+"\n");
+		}
+		out.close();
+	}
+	public static double[] pinkNoiseData = null;
+	public static void loadPinkNoise() throws Exception {
+		if(pinkNoiseData!=null) return;
+		Scanner scan = new Scanner(new File("./pinknoise_gitignore.txt"));
+		int samples = Integer.parseInt(scan.nextLine());
+		pinkNoiseData = new double[samples];
+		for(int k=0; k<samples; k++) {
+			String line = scan.nextLine();
+			String[] fields = line.split(",");
+			pinkNoiseData[k] = Double.parseDouble(fields[1]);
+		}
 	}
 	public static double getBellsMusic(double time) {
 		double total = 0;

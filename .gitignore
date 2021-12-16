@@ -4,3 +4,4 @@ node_modules/
 hello-world.zip
 audio-tools/out10.wav
 *_gitignore.wav
+*_gitignore.txt
