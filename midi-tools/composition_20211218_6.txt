@@ -1,0 +1,35 @@
+# Major II chord cascade (C D E F# Ab Bb C)
+# Son clave beat pattern (https://en.wikipedia.org/wiki/Clave_(rhythm))
+#!L_instrument:PIPE__OCARINA
+#
+##Generator script:
+#chords = {
+# 'C':['3C','3E','3G','4C','4E','4G'],
+# 'G':['3D','3G','3B','4D','4G','4B'],
+# 'D':['3D','3F#','3A','4D','4F#','4A'],
+# 'A':['3C#','3E','3A','4C#','4E','4A'],
+# 'E':['3E','3G#','3B','4E','4G#','4B'],
+# 'B':['3D#','3F#','3B','4D#','4F#','4B'],
+# 'F#':['3C#','3F#','3A#','4C#','4F#','4A#'],
+# 'Db':['3Db','3F','3Ab','4Db','4F','4Ab'],
+# 'Ab':['3C','3Eb','3Ab','4C','4Eb','4Ab'],
+# 'Eb':['3Eb','3G','3Bb','4Eb','4G','4Bb'],
+# 'Bb':['3D','3F','3Bb','4D','4F','4Bb'],
+# 'F':['3C','3F','3A','4C','4F','4A'],
+#}
+#file = open("C:\\Users\\8maie\\OneDrive\\Desktop\\github_projects\\utilities\\midi-tools\\python_out.txt", "w")
+#for loop in range(20):
+# loop_chords = ['C','D','E','F#','Ab','Bb']
+# for (idx,chord_name) in enumerate(loop_chords):
+#  measure = loop*2*len(loop_chords)+idx*2
+#  chord = chords[chord_name]
+#  for (beat,duration) in [(0,3),(3,1),(6,1),(10,2),(12,4)]:
+#   for note in chord:
+#    rc = file.write('L'+'\t'+str(measure)+'\t'+str(beat)+'\t'+str(duration)+'\t'+note+'\n')
+#
+#file.close()
+
+
+# Detailed notes removed to save space, can be regenerated from script
+
+

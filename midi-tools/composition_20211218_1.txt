@@ -1,0 +1,24 @@
+# Chord progression (C G Am D) long loop
+# Son clave beat pattern (https://en.wikipedia.org/wiki/Clave_(rhythm))
+#!L_instrument:PIPE__OCARINA
+#
+##Generator script:
+#chords = {
+# 'C':['3C','3E','3G','4C','4E','4G'],
+# 'D':['3D','3F','3A','4D','4F','4A'],
+# 'G':['3D','3G','3B','4D','4G','4B'],
+# 'Am':['3C','3E','3A','4C','4E','4A']
+#}
+#file = open("C:\\Users\\8maie\\OneDrive\\Desktop\\github_projects\\utilities\\midi-tools\\python_out.txt", "w")
+#for loop in range(30):
+# for (idx,chord_name) in enumerate(['C','G','Am','D']):
+#  measure = loop*8+idx*2
+#  chord = chords[chord_name]
+#  for (beat,duration) in [(0,3),(3,1),(6,1),(10,2),(12,4)]:
+#   for note in chord:
+#    rc = file.write('L'+'\t'+str(measure)+'\t'+str(beat)+'\t'+str(duration)+'\t'+note+'\n')
+#
+#file.close()
+
+
+# Detailed notes removed to save space, can be regenerated from script
