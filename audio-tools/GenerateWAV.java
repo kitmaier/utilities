@@ -91,7 +91,7 @@ public class GenerateWAV {
 		//total += getIpanemaChordsGridNote(tick, timeResidue);
 		//total += getBend(time);
 		//total += getJumps(time);
-		total += getJumpsAndBends(time);
+		//total += getJumpsAndBends(time);
 		//total += getDrone(time);
 		//total += getAxisPattern(time);
 		//total += getFakeAndalusianPattern(time);
@@ -134,6 +134,7 @@ public class GenerateWAV {
 		//total += get12BarBluesPattern(time);
 		//total += get12BarBlues7Pattern(time);
 		//total += getGuitar145Pattern(time);
+		total += getGuitarQuarterTonePattern(time);
 		//total += getPluckStarSpangledBanner(time);
 		//total += 0.1*getPluckWhatItsLikeIntro(time);
 		//total += getAndalusian2Pattern(time);
@@ -1202,6 +1203,33 @@ public class GenerateWAV {
 		}
 		return total;
 	}
+	public static double getGuitarQuarterTonePattern(double time) {
+		double total = 0;
+		//int cycles = 3;
+		int cycles = 40;
+		for(int k=0; k<cycles; k++) {
+			double t = k*16;
+			if(time<t||time>t+16) continue;
+			double step = 1;
+			total += getBasicGuitarChord("C",t,t+1,time); t += step;
+			total += getBasicGuitarChord("C",t,t+1,time); t += step;
+			total += getQuarterToneGuitarChord("D",t,t+1,time); t += step;
+			total += getQuarterToneGuitarChord("D",t,t+1,time); t += step;
+			total += getBasicGuitarChord("C",t,t+1,time); t += step;
+			total += getBasicGuitarChord("C",t,t+1,time); t += step;
+			total += getQuarterToneGuitarChord("D",t,t+1,time); t += step;
+			total += getQuarterToneGuitarChord("D",t,t+1,time); t += step;
+			total += getBasicGuitarChord("C",t,t+1,time); t += step;
+			total += getBasicGuitarChord("C",t,t+1,time); t += step;
+			total += getQuarterToneGuitarChord("D",t,t+1,time); t += step;
+			total += getQuarterToneGuitarChord("D",t,t+1,time); t += step;
+			total += getBasicGuitarChord("F",t,t+1,time); t += step;
+			total += getBasicGuitarChord("F",t,t+1,time); t += step;
+			total += getBasicGuitarChord("F",t,t+1,time); t += step;
+			total += getBasicGuitarChord("F",t,t+1,time); t += step;
+		}
+		return total;
+	}
 	public static double getAxisPattern(double time) {
 		double total = 0;
 		//int cycles = 3;
@@ -1476,6 +1504,12 @@ public class GenerateWAV {
 	public static double getAudacityPluckStandardNote(double start, double end, String note, int key, double time) {
 		setupStandardNoteFrequencies();
 		double frequency = standardNoteFrequency.get(note);
+		return getAudacityPluck(start,end,frequency,key,time);
+	}
+	public static double getAudacityPluckQuarterToneNote(double start, double end, String note, int key, double time) {
+		setupStandardNoteFrequencies();
+		// shifting up by one even tempered quarter tone = 2^(1/24)
+		double frequency = standardNoteFrequency.get(note)*1.02930223664;
 		return getAudacityPluck(start,end,frequency,key,time);
 	}
 	public static double getPluck(String note, double start, double end, double time) {
@@ -1820,6 +1854,20 @@ public class GenerateWAV {
 		}
 		return Math.max(Math.min(0.5*value,0.75),-0.75);
 	}
+	public static double getQuarterToneGuitarChord(String name, double start, double end, double time) {
+		// TODO: this runs pretty slow
+		// TODO: come up with a better set of parameters for this function
+		if(time<start || time>end) return 0;
+		double value = 0;
+		double offset = 0.02;
+		setupStandardGuitarChords();
+		String chord = standardGuitarChord.get(name);
+		String[] notes = chord.split(",");
+		for(int k=0; k<notes.length; k++) {
+			value += 0.2*getAudacityPluckQuarterToneNote(start+offset*k,end,notes[k],-1,time);
+		}
+		return Math.max(Math.min(0.5*value,0.75),-0.75);
+	}
 	public static Map<String,String> standardGuitarChord = null;
 	public static void setupStandardGuitarChords() {
 		// Bass notes:
@@ -1843,6 +1891,7 @@ public class GenerateWAV {
 		//standardGuitarChord.put("C7","3C,3E,3Bb,4C,4E"); // TODO: Shouldn't this have a G?
 		standardGuitarChord.put("C7","3C,3E,3G,3Bb,4E");
 		standardGuitarChord.put("Dm","3D,3A,4D,4F");
+		standardGuitarChord.put("D","3D,3A,4D,4F#");
 		standardGuitarChord.put("D7","3D,3A,4C,4F#");
 		standardGuitarChord.put("Em","2E,2B,3E,3G,3B,4E");
 		standardGuitarChord.put("E7","2E,2B,3E,3G#,4D,4E");
