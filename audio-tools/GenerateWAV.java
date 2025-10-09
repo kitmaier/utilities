@@ -91,7 +91,7 @@ public class GenerateWAV {
 		//total += getIpanemaChordsGridNote(tick, timeResidue);
 		//total += getBend(time);
 		//total += getJumps(time);
-		//total += getJumpsAndBends(time);
+		total += getJumpsAndBends(time);
 		//total += getDrone(time);
 		//total += getAxisPattern(time);
 		//total += getFakeAndalusianPattern(time);
@@ -134,7 +134,7 @@ public class GenerateWAV {
 		//total += get12BarBluesPattern(time);
 		//total += get12BarBlues7Pattern(time);
 		//total += getGuitar145Pattern(time);
-		total += getGuitarQuarterTonePattern(time);
+		//total += getGuitarQuarterTonePattern(time);
 		//total += getPluckStarSpangledBanner(time);
 		//total += 0.1*getPluckWhatItsLikeIntro(time);
 		//total += getAndalusian2Pattern(time);
@@ -3252,7 +3252,7 @@ public class GenerateWAV {
 		// https://www.youtube.com/watch?v=73ejjQ37WLc
 		
 		setupStandardNoteFrequencies();
-		double ss = Math.pow(2,0.86/12);
+		double ss = Math.pow(2,0.86/12); // even tempered minor third to just intonation major third
 		double G = standardNoteFrequency.get("3G");
 		double G3 = standardNoteFrequency.get("3Bb");
 		double G3ss = G3*ss;
@@ -3466,6 +3466,38 @@ public class GenerateWAV {
 		jumps.add(new JumpsAndBendsHelper(1,220,"jump")); // A
 		*/
 	}
+	public static void fillJumpsList25(List<JumpsAndBendsHelper> jumps) {
+		// exploring interesting sounding note or pitch range between major 3 and 4 scale degrees
+		// TODO: consider using multiline string feature to generate inline config that can be parsed to control behavior instead of verbose code blocks like this (could also try the same without multiline strings)
+		//   https://docs.oracle.com/en/java/javase/15/text-blocks/index.html
+		setupStandardNoteFrequencies();
+		double ss = Math.pow(2,0.5/12); // quarter tone
+		double C = standardNoteFrequency.get("3C");
+		double E = standardNoteFrequency.get("3E");
+		double F = standardNoteFrequency.get("3F");
+		double G = standardNoteFrequency.get("3G");
+		double C2 = C*2;
+		double W = 0.00579294107; // 10 cents
+		double W2 = 0.00057778951; // 1 cent
+		
+		//jumps.add(new JumpsAndBendsHelper(1.0,F,"jump"));
+		//jumps.add(new JumpsAndBendsHelper(1.0,E*ss,"jump"));
+		//jumps.add(new JumpsAndBendsHelper(1.0,E*ss,E*ss*(1+W),"bend"));
+		//jumps.add(new JumpsAndBendsHelper(1.0,E*ss*(1-W),E*ss,"bend"));
+		//jumps.add(new JumpsAndBendsHelper(1.0,F,E*ss,"bend"));
+		//jumps.add(new JumpsAndBendsHelper(1.0,E*ss,E*ss*(1+2*W),"bend"));
+		//fillJumpsList_vibrato(jumps,0.3,10,E*ss/(1+3*W),E*ss*(1+3*W));
+		//jumps.add(new JumpsAndBendsHelper(0.4,F,E*ss*(1-2*W),"bend"));
+		
+		for(int k=0; k<4; k++) {
+			jumps.add(new JumpsAndBendsHelper(1.0,0.1,"jump")); // rest
+			jumps.add(new JumpsAndBendsHelper(1.0,C,"jump"));
+			jumps.add(new JumpsAndBendsHelper(0.3,F,"jump"));
+			jumps.add(new JumpsAndBendsHelper(0.1,F,E*ss*(1-2*W),"bend"));
+			jumps.add(new JumpsAndBendsHelper(0.6,E*ss*(1-2*W),"jump"));
+			jumps.add(new JumpsAndBendsHelper(1.0,C,"jump"));
+		}
+	}
 	public static double getJumpsAndBends(double time) {
 		if(jumps==null) {
 			jumps = new ArrayList<>(); // change start/end time to duration
@@ -3493,7 +3525,8 @@ public class GenerateWAV {
 			//fillJumpsList21(jumps);
 			//fillJumpsList22(jumps);
 			//fillJumpsList23(jumps);
-			fillJumpsList24(jumps);
+			//fillJumpsList24(jumps);
+			fillJumpsList25(jumps);
 			double lastEndTime = 0;
 			double lastEndValue = 0;
 			for(int k=0; k<jumps.size(); k++) {
